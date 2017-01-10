@@ -30,7 +30,7 @@ namespace Atividades
                 sql.AppendLine("CREATE TABLE IF NOT EXISTS [tbAtividades] ([codAtividade] INTEGER PRIMARY KEY AUTOINCREMENT,");
                 sql.AppendLine("[codProjeto] INTEGER, [dataAtividade]DATETIME, [entrada1] VARCHAR(5), [entrada2] VARCHAR(5),");
                 sql.AppendLine("[entrada3] VARCHAR(5), [saida1] VARCHAR(5), [saida2] VARCHAR(5), [saida3] VARCHAR(5),");
-                sql.AppendLine("[ObsAtividade] VARCHAR(1000), [Extra]VARCHAR(10));");
+                sql.AppendLine("[codColaborador] INT, [ObsAtividade] VARCHAR(1000), [Extra]VARCHAR(10));");
 
                 //SE NÃO EXISTIR CRIA A TABELA PROJEITOS
                 sql.AppendLine("CREATE TABLE IF NOT EXISTS [tbProjetos] ( [codProjeto] INTEGER PRIMARY KEY,");
@@ -51,6 +51,7 @@ namespace Atividades
                 try
                 {
                     cmd.ExecuteNonQuery();
+                    conn.Close();
                 }
                 catch (Exception ex)
                 {

@@ -44,22 +44,22 @@
             this.textCodigoProjeto = new System.Windows.Forms.TextBox();
             this.labCodProjeto = new System.Windows.Forms.Label();
             this.labEntrada1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.maskSaida1 = new System.Windows.Forms.TextBox();
+            this.maskEntrada1 = new System.Windows.Forms.TextBox();
             this.labSaida1 = new System.Windows.Forms.Label();
             this.labPeriodo1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.maskSaida2 = new System.Windows.Forms.TextBox();
+            this.maskEntrada2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.labPeriodo2 = new System.Windows.Forms.Label();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
             this.labEntrada2 = new System.Windows.Forms.Label();
             this.labPeriodo3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.maskSaida3 = new System.Windows.Forms.TextBox();
+            this.maskEntrada3 = new System.Windows.Forms.TextBox();
             this.labSaida3 = new System.Windows.Forms.Label();
-            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
             this.labEntrada3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -67,7 +67,9 @@
             this.comboColaborador = new System.Windows.Forms.ComboBox();
             this.butInserirAtividade = new System.Windows.Forms.Button();
             this.butExcluirAtividade = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.TextObservacao = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textCodColaborador = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -167,6 +169,7 @@
             this.comboProjeto.Name = "comboProjeto";
             this.comboProjeto.Size = new System.Drawing.Size(214, 21);
             this.comboProjeto.TabIndex = 2;
+            this.comboProjeto.SelectedIndexChanged += new System.EventHandler(this.comboProjeto_SelectedIndexChanged);
             // 
             // labProjeto
             // 
@@ -181,9 +184,10 @@
             // textCodigoProjeto
             // 
             this.textCodigoProjeto.Location = new System.Drawing.Point(245, 40);
+            this.textCodigoProjeto.MaxLength = 8;
             this.textCodigoProjeto.Name = "textCodigoProjeto";
             this.textCodigoProjeto.Size = new System.Drawing.Size(76, 20);
-            this.textCodigoProjeto.TabIndex = 4;
+            this.textCodigoProjeto.TabIndex = 3;
             // 
             // labCodProjeto
             // 
@@ -203,35 +207,37 @@
             this.labEntrada1.TabIndex = 7;
             this.labEntrada1.Text = "Entrada:";
             // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(6, 29);
-            this.maskedTextBox1.Mask = "00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(36, 20);
-            this.maskedTextBox1.TabIndex = 6;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.maskedTextBox2);
+            this.panel1.Controls.Add(this.maskSaida1);
+            this.panel1.Controls.Add(this.maskEntrada1);
             this.panel1.Controls.Add(this.labSaida1);
             this.panel1.Controls.Add(this.labPeriodo1);
-            this.panel1.Controls.Add(this.maskedTextBox1);
             this.panel1.Controls.Add(this.labEntrada1);
             this.panel1.Location = new System.Drawing.Point(12, 80);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(103, 53);
             this.panel1.TabIndex = 8;
             // 
-            // maskedTextBox2
+            // maskSaida1
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(56, 28);
-            this.maskedTextBox2.Mask = "00:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(36, 20);
-            this.maskedTextBox2.TabIndex = 9;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.maskSaida1.Location = new System.Drawing.Point(54, 29);
+            this.maskSaida1.MaxLength = 4;
+            this.maskSaida1.Name = "maskSaida1";
+            this.maskSaida1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.maskSaida1.Size = new System.Drawing.Size(44, 20);
+            this.maskSaida1.TabIndex = 8;
+            this.maskSaida1.Leave += new System.EventHandler(this.validaHoraSaida1);
+            // 
+            // maskEntrada1
+            // 
+            this.maskEntrada1.Location = new System.Drawing.Point(4, 29);
+            this.maskEntrada1.MaxLength = 4;
+            this.maskEntrada1.Name = "maskEntrada1";
+            this.maskEntrada1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.maskEntrada1.Size = new System.Drawing.Size(44, 20);
+            this.maskEntrada1.TabIndex = 7;
+            this.maskEntrada1.Leave += new System.EventHandler(this.validaHoraEntrada1);
             // 
             // labSaida1
             // 
@@ -255,24 +261,35 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.maskedTextBox3);
+            this.panel2.Controls.Add(this.maskSaida2);
+            this.panel2.Controls.Add(this.maskEntrada2);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.labPeriodo2);
-            this.panel2.Controls.Add(this.maskedTextBox4);
             this.panel2.Controls.Add(this.labEntrada2);
             this.panel2.Location = new System.Drawing.Point(123, 79);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(103, 53);
             this.panel2.TabIndex = 11;
             // 
-            // maskedTextBox3
+            // maskSaida2
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(56, 28);
-            this.maskedTextBox3.Mask = "00:00";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(36, 20);
-            this.maskedTextBox3.TabIndex = 9;
-            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
+            this.maskSaida2.Location = new System.Drawing.Point(56, 30);
+            this.maskSaida2.MaxLength = 4;
+            this.maskSaida2.Name = "maskSaida2";
+            this.maskSaida2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.maskSaida2.Size = new System.Drawing.Size(44, 20);
+            this.maskSaida2.TabIndex = 8;
+            this.maskSaida2.Leave += new System.EventHandler(this.validaHoraSaida2);
+            // 
+            // maskEntrada2
+            // 
+            this.maskEntrada2.Location = new System.Drawing.Point(6, 30);
+            this.maskEntrada2.MaxLength = 4;
+            this.maskEntrada2.Name = "maskEntrada2";
+            this.maskEntrada2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.maskEntrada2.Size = new System.Drawing.Size(44, 20);
+            this.maskEntrada2.TabIndex = 7;
+            this.maskEntrada2.Leave += new System.EventHandler(this.validaHoraEntrada2);
             // 
             // label6
             // 
@@ -291,15 +308,6 @@
             this.labPeriodo2.Size = new System.Drawing.Size(54, 13);
             this.labPeriodo2.TabIndex = 8;
             this.labPeriodo2.Text = "Período 2";
-            // 
-            // maskedTextBox4
-            // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(6, 29);
-            this.maskedTextBox4.Mask = "00:00";
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(36, 20);
-            this.maskedTextBox4.TabIndex = 6;
-            this.maskedTextBox4.ValidatingType = typeof(System.DateTime);
             // 
             // labEntrada2
             // 
@@ -321,24 +329,35 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.maskedTextBox5);
+            this.panel3.Controls.Add(this.maskSaida3);
+            this.panel3.Controls.Add(this.maskEntrada3);
             this.panel3.Controls.Add(this.labSaida3);
             this.panel3.Controls.Add(this.labPeriodo3);
-            this.panel3.Controls.Add(this.maskedTextBox6);
             this.panel3.Controls.Add(this.labEntrada3);
             this.panel3.Location = new System.Drawing.Point(232, 80);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(103, 53);
             this.panel3.TabIndex = 12;
             // 
-            // maskedTextBox5
+            // maskSaida3
             // 
-            this.maskedTextBox5.Location = new System.Drawing.Point(56, 28);
-            this.maskedTextBox5.Mask = "00:00";
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(36, 20);
-            this.maskedTextBox5.TabIndex = 9;
-            this.maskedTextBox5.ValidatingType = typeof(System.DateTime);
+            this.maskSaida3.Location = new System.Drawing.Point(56, 30);
+            this.maskSaida3.MaxLength = 4;
+            this.maskSaida3.Name = "maskSaida3";
+            this.maskSaida3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.maskSaida3.Size = new System.Drawing.Size(44, 20);
+            this.maskSaida3.TabIndex = 8;
+            this.maskSaida3.Leave += new System.EventHandler(this.validaHoraSaida3);
+            // 
+            // maskEntrada3
+            // 
+            this.maskEntrada3.Location = new System.Drawing.Point(6, 30);
+            this.maskEntrada3.MaxLength = 4;
+            this.maskEntrada3.Name = "maskEntrada3";
+            this.maskEntrada3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.maskEntrada3.Size = new System.Drawing.Size(44, 20);
+            this.maskEntrada3.TabIndex = 7;
+            this.maskEntrada3.Leave += new System.EventHandler(this.validaHoraEntrada3);
             // 
             // labSaida3
             // 
@@ -348,15 +367,6 @@
             this.labSaida3.Size = new System.Drawing.Size(37, 13);
             this.labSaida3.TabIndex = 10;
             this.labSaida3.Text = "Saida:";
-            // 
-            // maskedTextBox6
-            // 
-            this.maskedTextBox6.Location = new System.Drawing.Point(6, 29);
-            this.maskedTextBox6.Mask = "00:00";
-            this.maskedTextBox6.Name = "maskedTextBox6";
-            this.maskedTextBox6.Size = new System.Drawing.Size(36, 20);
-            this.maskedTextBox6.TabIndex = 6;
-            this.maskedTextBox6.ValidatingType = typeof(System.DateTime);
             // 
             // labEntrada3
             // 
@@ -373,7 +383,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(339, 40);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(97, 20);
-            this.dateTimePicker1.TabIndex = 13;
+            this.dateTimePicker1.TabIndex = 4;
             // 
             // dataGridView1
             // 
@@ -395,10 +405,10 @@
             // comboColaborador
             // 
             this.comboColaborador.FormattingEnabled = true;
-            this.comboColaborador.Location = new System.Drawing.Point(457, 43);
+            this.comboColaborador.Location = new System.Drawing.Point(442, 39);
             this.comboColaborador.Name = "comboColaborador";
-            this.comboColaborador.Size = new System.Drawing.Size(214, 21);
-            this.comboColaborador.TabIndex = 15;
+            this.comboColaborador.Size = new System.Drawing.Size(138, 21);
+            this.comboColaborador.TabIndex = 5;
             // 
             // butInserirAtividade
             // 
@@ -408,6 +418,7 @@
             this.butInserirAtividade.TabIndex = 17;
             this.butInserirAtividade.Text = "Inserir";
             this.butInserirAtividade.UseVisualStyleBackColor = true;
+            this.butInserirAtividade.Click += new System.EventHandler(this.butInserirAtividade_Click);
             // 
             // butExcluirAtividade
             // 
@@ -418,21 +429,39 @@
             this.butExcluirAtividade.Text = "Excluir";
             this.butExcluirAtividade.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // TextObservacao
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(342, 73);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(238, 68);
-            this.richTextBox1.TabIndex = 19;
-            this.richTextBox1.Text = "";
+            this.TextObservacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextObservacao.Location = new System.Drawing.Point(342, 73);
+            this.TextObservacao.Name = "TextObservacao";
+            this.TextObservacao.Size = new System.Drawing.Size(238, 68);
+            this.TextObservacao.TabIndex = 19;
+            this.TextObservacao.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(592, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Cod. Colaborador:";
+            // 
+            // textCodColaborador
+            // 
+            this.textCodColaborador.Location = new System.Drawing.Point(595, 40);
+            this.textCodColaborador.Name = "textCodColaborador";
+            this.textCodColaborador.Size = new System.Drawing.Size(76, 20);
+            this.textCodColaborador.TabIndex = 6;
             // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 385);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textCodColaborador);
+            this.Controls.Add(this.TextObservacao);
             this.Controls.Add(this.butExcluirAtividade);
             this.Controls.Add(this.butInserirAtividade);
             this.Controls.Add(this.labColaborador);
@@ -475,22 +504,16 @@
         private System.Windows.Forms.TextBox textCodigoProjeto;
         private System.Windows.Forms.Label labCodProjeto;
         private System.Windows.Forms.Label labEntrada1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labPeriodo1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Label labSaida1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labPeriodo2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
         private System.Windows.Forms.Label labEntrada2;
         private System.Windows.Forms.Label labPeriodo3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
         private System.Windows.Forms.Label labSaida3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox6;
         private System.Windows.Forms.Label labEntrada3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
@@ -507,7 +530,15 @@
         private System.Windows.Forms.ToolStripMenuItem relatórioDeAtividadesToolStripMenuItem;
         private System.Windows.Forms.Button butInserirAtividade;
         private System.Windows.Forms.Button butExcluirAtividade;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox TextObservacao;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textCodColaborador;
+        private System.Windows.Forms.TextBox maskSaida1;
+        private System.Windows.Forms.TextBox maskEntrada1;
+        private System.Windows.Forms.TextBox maskSaida2;
+        private System.Windows.Forms.TextBox maskEntrada2;
+        private System.Windows.Forms.TextBox maskSaida3;
+        private System.Windows.Forms.TextBox maskEntrada3;
     }
 }
 

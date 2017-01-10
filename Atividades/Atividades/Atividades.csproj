@@ -69,7 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassValidaTime.cs" />
     <Compile Include="DataConnect.cs" />
+    <Compile Include="DataInsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataQuery.cs" />
     <Compile Include="FormProjeto.cs">
       <SubType>Form</SubType>
     </Compile>
