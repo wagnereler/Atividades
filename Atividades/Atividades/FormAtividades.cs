@@ -194,7 +194,7 @@ namespace Atividades
                     if (minutosEntrada2 <= minutosSaida1)
                     {
                         MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro");
-                        maskSaida1.Focus();
+                        maskEntrada2.Focus();
                     }
 
 
@@ -275,7 +275,7 @@ namespace Atividades
                     if (minutosEntrada3 <= minutosSaida2)
                     {
                         MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro");
-                        maskSaida1.Focus();
+                        maskEntrada3.Focus();
                     }
 
                 }
@@ -434,7 +434,7 @@ namespace Atividades
                     if (minutosSaida2 <= minutosEntrada2)
                     {
                         MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro");
-                        maskSaida1.Focus();
+                        maskSaida2.Focus();
                     }
 
                 }
@@ -514,7 +514,7 @@ namespace Atividades
                     if (minutosSaida3 <= minutosEntrada3)
                     {
                         MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro");
-                        maskSaida1.Focus();
+                        maskSaida3.Focus();
                     }
 
                 }
