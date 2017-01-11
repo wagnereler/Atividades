@@ -545,15 +545,19 @@ namespace Atividades
 
             if (textCodigoProjeto.Text == string.Empty)
             {
-                listaCampos += "Por favor selecione um projeto ou digite um código válido\n";
+                listaCampos += "Por favor selecione um projeto ou digite um código válido.\n";
             }
             if (textCodColaborador.Text == string.Empty)
             {
-                listaCampos += "Por favor selecione um colaborador ou digite um código válido\n";
+                listaCampos += "Por favor selecione um colaborador ou digite um código válido.\n";
             }
             if (maskEntrada1.Text == string.Empty || maskSaida1.Text == string.Empty)
             {
                 listaCampos += "Insira pelo menos os dados de entrada e saída do primeiro perído!\n";
+            }
+            if (TextObservacao.Text.Length < 5)
+            {
+                listaCampos += "O campo Observação deve ter no mínimo 5 caracteres.";
             }
 
 
@@ -588,8 +592,10 @@ namespace Atividades
                     maskSaida1.Text = string.Empty;
                     maskEntrada3.Text = string.Empty;
                     maskSaida1.Text = string.Empty;
+                    maskEntrada2.Text = string.Empty;
                     maskSaida2.Text = string.Empty;
                     maskSaida3.Text = string.Empty;
+                    TextObservacao.Text = string.Empty;
                 }
                 catch (Exception ex)
                 {

@@ -413,17 +413,17 @@
             // 
             // butInserirAtividade
             // 
-            this.butInserirAtividade.Location = new System.Drawing.Point(596, 69);
+            this.butInserirAtividade.Location = new System.Drawing.Point(595, 73);
             this.butInserirAtividade.Name = "butInserirAtividade";
             this.butInserirAtividade.Size = new System.Drawing.Size(75, 23);
             this.butInserirAtividade.TabIndex = 17;
-            this.butInserirAtividade.Text = "Inserir";
+            this.butInserirAtividade.Text = "Gravar";
             this.butInserirAtividade.UseVisualStyleBackColor = true;
             this.butInserirAtividade.Click += new System.EventHandler(this.butInserirAtividade_Click);
             // 
             // butExcluirAtividade
             // 
-            this.butExcluirAtividade.Location = new System.Drawing.Point(596, 135);
+            this.butExcluirAtividade.Location = new System.Drawing.Point(596, 109);
             this.butExcluirAtividade.Name = "butExcluirAtividade";
             this.butExcluirAtividade.Size = new System.Drawing.Size(75, 23);
             this.butExcluirAtividade.TabIndex = 18;
@@ -457,7 +457,7 @@
             // 
             // butAtualizar
             // 
-            this.butAtualizar.Location = new System.Drawing.Point(596, 104);
+            this.butAtualizar.Location = new System.Drawing.Point(595, 325);
             this.butAtualizar.Name = "butAtualizar";
             this.butAtualizar.Size = new System.Drawing.Size(75, 23);
             this.butAtualizar.TabIndex = 22;
