@@ -90,10 +90,8 @@ namespace Atividades
 
 
 
-
-
-
                 SQLiteCommand cmd = new SQLiteCommand(sql.ToString(), conn);
+
                 try
                 {
                     cmd.ExecuteNonQuery();

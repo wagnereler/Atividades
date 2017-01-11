@@ -541,43 +541,72 @@ namespace Atividades
         private void butInserirAtividade_Click(object sender, EventArgs e)
         {
 
+            string listaCampos = "";
+
+            if (textCodigoProjeto.Text == string.Empty)
+            {
+                listaCampos += "Por favor selecione um projeto ou digite um código válido\n";
+            }
+            if (textCodColaborador.Text == string.Empty)
+            {
+                listaCampos += "Por favor selecione um colaborador ou digite um código válido\n";
+            }
+            if (maskEntrada1.Text == string.Empty || maskSaida1.Text == string.Empty)
+            {
+                listaCampos += "Insira pelo menos os dados de entrada e saída do primeiro perído!\n";
+            }
+
+
+            //Se os campos obrigadóiro forem preenchido o formulário será gravado
+            if (listaCampos.Length == 0)
+            {
+                SQLiteConnection conn = new SQLiteConnection(connectBase);
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2, entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade)  VALUES(@codProjeto, @dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade)", conn);
+
+
+                cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
+                cmd.Parameters.AddWithValue("dataAtividade", dateTimePicker1.Value);
+                cmd.Parameters.AddWithValue("entrada1", maskEntrada1.Text.Trim());
+                cmd.Parameters.AddWithValue("entrada2", maskSaida1.Text.Trim());
+                cmd.Parameters.AddWithValue("entrada3", maskEntrada3.Text.Trim());
+                cmd.Parameters.AddWithValue("saida1", maskSaida1.Text.Trim());
+                cmd.Parameters.AddWithValue("saida2", maskSaida2.Text.Trim());
+                cmd.Parameters.AddWithValue("saida3", maskSaida3.Text.Trim());
+                cmd.Parameters.AddWithValue("codColaborador", textCodColaborador.Text.Trim());
+                cmd.Parameters.AddWithValue("ObsAtividade", TextObservacao.Text.Trim());
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Registro Salvo com Sucesso!");
+                    maskEntrada1.Text = string.Empty;
+                    maskSaida1.Text = string.Empty;
+                    maskEntrada3.Text = string.Empty;
+                    maskSaida1.Text = string.Empty;
+                    maskSaida2.Text = string.Empty;
+                    maskSaida3.Text = string.Empty;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao salvar arquivo: " + ex.Message);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Atenção! Verifique os seguintes campos:\n\n" +listaCampos);
+
+                
+            }
+
+
+
             
-           
-            SQLiteConnection conn = new SQLiteConnection(connectBase);
-            if (conn.State == System.Data.ConnectionState.Closed)
-            {
-                conn.Open();
-            }
-
-            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2, entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade)  VALUES(@codProjeto, @dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade)", conn);
-
-
-            cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
-            cmd.Parameters.AddWithValue("dataAtividade", dateTimePicker1.Value);
-            cmd.Parameters.AddWithValue("entrada1", maskEntrada1.Text.Trim());
-            cmd.Parameters.AddWithValue("entrada2", maskSaida1.Text.Trim());
-            cmd.Parameters.AddWithValue("entrada3", maskEntrada3.Text.Trim());
-            cmd.Parameters.AddWithValue("saida1", maskSaida1.Text.Trim());
-            cmd.Parameters.AddWithValue("saida2", maskSaida2.Text.Trim());
-            cmd.Parameters.AddWithValue("saida3", maskSaida3.Text.Trim());
-            cmd.Parameters.AddWithValue("codColaborador", textCodColaborador.Text.Trim());
-            cmd.Parameters.AddWithValue("ObsAtividade", TextObservacao.Text.Trim());
-
-            try
-            {
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Registro Salvo com Sucesso!");
-                maskEntrada1.Text = string.Empty;
-                maskSaida1.Text = string.Empty;
-                maskEntrada3.Text = string.Empty;
-                maskSaida1.Text = string.Empty;
-                maskSaida2.Text = string.Empty;
-                maskSaida3.Text = string.Empty;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao salvar arquivo: " + ex.Message);
-            }
 
 
         }
@@ -588,6 +617,11 @@ namespace Atividades
         }
 
         private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

@@ -70,6 +70,7 @@
             this.TextObservacao = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textCodColaborador = new System.Windows.Forms.TextBox();
+            this.butAtualizar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -412,7 +413,7 @@
             // 
             // butInserirAtividade
             // 
-            this.butInserirAtividade.Location = new System.Drawing.Point(596, 75);
+            this.butInserirAtividade.Location = new System.Drawing.Point(596, 69);
             this.butInserirAtividade.Name = "butInserirAtividade";
             this.butInserirAtividade.Size = new System.Drawing.Size(75, 23);
             this.butInserirAtividade.TabIndex = 17;
@@ -422,7 +423,7 @@
             // 
             // butExcluirAtividade
             // 
-            this.butExcluirAtividade.Location = new System.Drawing.Point(596, 118);
+            this.butExcluirAtividade.Location = new System.Drawing.Point(596, 135);
             this.butExcluirAtividade.Name = "butExcluirAtividade";
             this.butExcluirAtividade.Size = new System.Drawing.Size(75, 23);
             this.butExcluirAtividade.TabIndex = 18;
@@ -454,11 +455,22 @@
             this.textCodColaborador.Size = new System.Drawing.Size(76, 20);
             this.textCodColaborador.TabIndex = 6;
             // 
+            // butAtualizar
+            // 
+            this.butAtualizar.Location = new System.Drawing.Point(596, 104);
+            this.butAtualizar.Name = "butAtualizar";
+            this.butAtualizar.Size = new System.Drawing.Size(75, 23);
+            this.butAtualizar.TabIndex = 22;
+            this.butAtualizar.Text = "Atualizar";
+            this.butAtualizar.UseVisualStyleBackColor = true;
+            this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 385);
+            this.Controls.Add(this.butAtualizar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textCodColaborador);
             this.Controls.Add(this.TextObservacao);
@@ -539,6 +551,7 @@
         private System.Windows.Forms.TextBox maskEntrada2;
         private System.Windows.Forms.TextBox maskSaida3;
         private System.Windows.Forms.TextBox maskEntrada3;
+        private System.Windows.Forms.Button butAtualizar;
     }
 }
 
