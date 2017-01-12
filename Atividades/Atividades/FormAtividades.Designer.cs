@@ -71,6 +71,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textCodColaborador = new System.Windows.Forms.TextBox();
             this.butAtualizar = new System.Windows.Forms.Button();
+            this.DataAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Entrada1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Entrada2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Entrada3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Saida1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Saida2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Saida3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodGerente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeGerente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorasTrabalhadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorasExtras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -388,11 +404,32 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DataAtividade,
+            this.Entrada1,
+            this.Entrada2,
+            this.Entrada3,
+            this.Saida1,
+            this.Saida2,
+            this.Saida3,
+            this.Observacao,
+            this.CodGerente,
+            this.CodProjeto,
+            this.NomeProjeto,
+            this.NomeGerente,
+            this.CodUsuario,
+            this.NomeUsuario,
+            this.HorasTrabalhadas,
+            this.HorasExtras});
             this.dataGridView1.Location = new System.Drawing.Point(12, 167);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(659, 137);
             this.dataGridView1.TabIndex = 14;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // labColaborador
             // 
@@ -464,6 +501,102 @@
             this.butAtualizar.Text = "Atualizar";
             this.butAtualizar.UseVisualStyleBackColor = true;
             this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // DataAtividade
+            // 
+            this.DataAtividade.HeaderText = "Data";
+            this.DataAtividade.Name = "DataAtividade";
+            this.DataAtividade.ReadOnly = true;
+            // 
+            // Entrada1
+            // 
+            this.Entrada1.HeaderText = "Entrada1";
+            this.Entrada1.Name = "Entrada1";
+            this.Entrada1.ReadOnly = true;
+            // 
+            // Entrada2
+            // 
+            this.Entrada2.HeaderText = "Entrada2";
+            this.Entrada2.Name = "Entrada2";
+            this.Entrada2.ReadOnly = true;
+            // 
+            // Entrada3
+            // 
+            this.Entrada3.HeaderText = "Entrada3";
+            this.Entrada3.Name = "Entrada3";
+            this.Entrada3.ReadOnly = true;
+            // 
+            // Saida1
+            // 
+            this.Saida1.HeaderText = "Saida1";
+            this.Saida1.Name = "Saida1";
+            this.Saida1.ReadOnly = true;
+            // 
+            // Saida2
+            // 
+            this.Saida2.HeaderText = "Saida2";
+            this.Saida2.Name = "Saida2";
+            this.Saida2.ReadOnly = true;
+            // 
+            // Saida3
+            // 
+            this.Saida3.HeaderText = "Saida3";
+            this.Saida3.Name = "Saida3";
+            this.Saida3.ReadOnly = true;
+            // 
+            // Observacao
+            // 
+            this.Observacao.HeaderText = "Observacao";
+            this.Observacao.Name = "Observacao";
+            this.Observacao.ReadOnly = true;
+            // 
+            // CodGerente
+            // 
+            this.CodGerente.HeaderText = "CodGerente";
+            this.CodGerente.Name = "CodGerente";
+            this.CodGerente.ReadOnly = true;
+            // 
+            // CodProjeto
+            // 
+            this.CodProjeto.HeaderText = "CodProjeto";
+            this.CodProjeto.Name = "CodProjeto";
+            this.CodProjeto.ReadOnly = true;
+            // 
+            // NomeProjeto
+            // 
+            this.NomeProjeto.HeaderText = "NomeProjeto";
+            this.NomeProjeto.Name = "NomeProjeto";
+            this.NomeProjeto.ReadOnly = true;
+            // 
+            // NomeGerente
+            // 
+            this.NomeGerente.HeaderText = "NomeGerente";
+            this.NomeGerente.Name = "NomeGerente";
+            this.NomeGerente.ReadOnly = true;
+            // 
+            // CodUsuario
+            // 
+            this.CodUsuario.HeaderText = "CodUsuario";
+            this.CodUsuario.Name = "CodUsuario";
+            this.CodUsuario.ReadOnly = true;
+            // 
+            // NomeUsuario
+            // 
+            this.NomeUsuario.HeaderText = "NomeUsuario";
+            this.NomeUsuario.Name = "NomeUsuario";
+            this.NomeUsuario.ReadOnly = true;
+            // 
+            // HorasTrabalhadas
+            // 
+            this.HorasTrabalhadas.HeaderText = "HorasTrabalhadas";
+            this.HorasTrabalhadas.Name = "HorasTrabalhadas";
+            this.HorasTrabalhadas.ReadOnly = true;
+            // 
+            // HorasExtras
+            // 
+            this.HorasExtras.HeaderText = "HorasExtras";
+            this.HorasExtras.Name = "HorasExtras";
+            this.HorasExtras.ReadOnly = true;
             // 
             // FormAtividades
             // 
@@ -552,6 +685,22 @@
         private System.Windows.Forms.TextBox maskSaida3;
         private System.Windows.Forms.TextBox maskEntrada3;
         private System.Windows.Forms.Button butAtualizar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataAtividade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Entrada1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Entrada2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Entrada3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Saida1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Saida2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Saida3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Observacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodGerente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodProjeto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeProjeto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeGerente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HorasTrabalhadas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HorasExtras;
     }
 }
 
