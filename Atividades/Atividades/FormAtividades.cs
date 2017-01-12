@@ -540,7 +540,54 @@ namespace Atividades
 
         private void butInserirAtividade_Click(object sender, EventArgs e)
         {
+            //verifica as horas digitadas e as converte em minutos, gravando em uma variável
+            int totalMinutos = 0;
+            int totalExtra = 0;
 
+            //Primeiro perído
+            if (maskEntrada1.Text != string.Empty )
+            {
+                //Converte em mintos o valor do primeiro campo
+                int valor1a = (Convert.ToInt32(maskEntrada1.Text.Substring(0,2)) * 60);
+                int valor1b = (Convert.ToInt32(maskEntrada1.Text.Substring(3, 2)));
+                //Converte em mintos o valor do primeiro campo
+                int valor2a = (Convert.ToInt32(maskSaida1.Text.Substring(0, 2)) * 60);
+                int valor2b = (Convert.ToInt32(maskSaida1.Text.Substring(3, 2)));
+
+                //calcula a quantidade em mintuso e grava em uma variável
+                totalMinutos += (valor2a + valor2b) - (valor1a + valor1b);
+            }
+
+            //Segundo perído
+            if (maskEntrada2.Text != string.Empty)
+            {
+                //Converte em mintos o valor do primeiro campo
+                int valor1a = (Convert.ToInt32(maskEntrada2.Text.Substring(0, 2)) * 60);
+                int valor1b = (Convert.ToInt32(maskEntrada2.Text.Substring(3, 2)));
+                //Converte em mintos o valor do primeiro campo
+                int valor2a = (Convert.ToInt32(maskSaida2.Text.Substring(0, 2)) * 60);
+                int valor2b = (Convert.ToInt32(maskSaida2.Text.Substring(3, 2)));
+
+                //calcula a quantidade em mintuso e grava em uma variável
+                totalMinutos += (valor2a + valor2b) - (valor1a + valor1b);
+            }
+
+            //Segundo perído
+            if (maskEntrada3.Text != string.Empty)
+            {
+                //Converte em mintos o valor do primeiro campo
+                int valor1a = (Convert.ToInt32(maskEntrada3.Text.Substring(0, 2)) * 60);
+                int valor1b = (Convert.ToInt32(maskEntrada3.Text.Substring(3, 2)));
+                //Converte em mintos o valor do primeiro campo
+                int valor2a = (Convert.ToInt32(maskSaida3.Text.Substring(0, 2)) * 60);
+                int valor2b = (Convert.ToInt32(maskSaida3.Text.Substring(3, 2)));
+
+                //calcula a quantidade em mintuso e grava em uma variável
+                totalMinutos += (valor2a + valor2b) - (valor1a + valor1b);
+            }
+
+
+            //Verifique se há campos preenchidos o suficientes para gravar informações. 
             string listaCampos = "";
 
             if (textCodigoProjeto.Text == string.Empty)
@@ -596,6 +643,7 @@ namespace Atividades
                     maskSaida2.Text = string.Empty;
                     maskSaida3.Text = string.Empty;
                     TextObservacao.Text = string.Empty;
+                    MessageBox.Show(Convert.ToString(totalMinutos));
                 }
                 catch (Exception ex)
                 {
