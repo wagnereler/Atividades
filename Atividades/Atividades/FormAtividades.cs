@@ -617,7 +617,7 @@ namespace Atividades
                     conn.Open();
                 }
 
-                SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2, entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade)  VALUES(@codProjeto, @dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade)", conn);
+                SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2, entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade, totalMinutos, minutosExtras)  VALUES(@codProjeto, @dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade, @totalMinutos, @minutosExtras)", conn);
 
 
                 cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
@@ -630,6 +630,18 @@ namespace Atividades
                 cmd.Parameters.AddWithValue("saida3", maskSaida3.Text.Trim());
                 cmd.Parameters.AddWithValue("codColaborador", textCodColaborador.Text.Trim());
                 cmd.Parameters.AddWithValue("ObsAtividade", TextObservacao.Text.Trim());
+                //verificar o que fazer para identificar o domingo, pois atualmente o código não irá gerar horas trabalhadas no domingo como extra
+
+                if (totalMinutos > 480)
+                {
+                    cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
+                    cmd.Parameters.AddWithValue("minutosExtras", (totalMinutos - 480));
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
+                    cmd.Parameters.AddWithValue("minutosExtras", 0);
+                }
 
                 try
                 {

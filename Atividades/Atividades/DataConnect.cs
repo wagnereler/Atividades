@@ -51,7 +51,8 @@ namespace Atividades
                 sql.AppendLine("CREATE TABLE IF NOT EXISTS [tbAtividades] ([codAtividade] INTEGER PRIMARY KEY AUTOINCREMENT,");
                 sql.AppendLine("[codProjeto] INT, [dataAtividade] DATETIME, [entrada1] VARCHAR(5), [entrada2] VARCHAR(5),");
                 sql.AppendLine("[entrada3] VARCHAR(5), [saida1] VARCHAR(5), [saida2] VARCHAR(5), [saida3] VARCHAR(5),");
-                sql.AppendLine("[codColaborador] INT, [codGerente] INT,  [obsAtividade] VARCHAR(1000), [horasTrabalhadas] INT, [extra] INT, ");
+                sql.AppendLine("[codColaborador] INT, [codGerente] INT,  [obsAtividade] VARCHAR(1000), ");
+                sql.AppendLine("[totalMinutos] INT, [minutosExtras] INT,");
                 sql.AppendLine("FOREIGN KEY (codProjeto) REFERENCES tbProjetos (codProjeto),");
                 sql.AppendLine("FOREIGN KEY (codColaborador) REFERENCES tbPessoas (codPessoa),");
                 sql.AppendLine("FOREIGN KEY (codGerente) REFERENCES tbProjetos (codPessoa) );");
