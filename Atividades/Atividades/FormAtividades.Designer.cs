@@ -39,6 +39,7 @@
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusAtividades = new System.Windows.Forms.ToolStripStatusLabel();
             this.comboProjeto = new System.Windows.Forms.ComboBox();
             this.labProjeto = new System.Windows.Forms.Label();
             this.textCodigoProjeto = new System.Windows.Forms.TextBox();
@@ -87,7 +88,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textCodColaborador = new System.Windows.Forms.TextBox();
             this.butAtualizar = new System.Windows.Forms.Button();
-            this.statusAtividades = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -183,6 +183,12 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
+            // 
+            // statusAtividades
+            // 
+            this.statusAtividades.Name = "statusAtividades";
+            this.statusAtividades.Size = new System.Drawing.Size(45, 17);
+            this.statusAtividades.Text = "Status: ";
             // 
             // comboProjeto
             // 
@@ -602,12 +608,6 @@
             this.butAtualizar.Text = "Atualizar";
             this.butAtualizar.UseVisualStyleBackColor = true;
             this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // statusAtividades
-            // 
-            this.statusAtividades.Name = "statusAtividades";
-            this.statusAtividades.Size = new System.Drawing.Size(45, 17);
-            this.statusAtividades.Text = "Status: ";
             // 
             // FormAtividades
             // 

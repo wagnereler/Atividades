@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -17,6 +18,7 @@ namespace Atividades
     {
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
+        private static string[] listaD = { "Projeto 1", "Projeto2"};
 
         public FormAtividades()
         {
@@ -534,7 +536,7 @@ namespace Atividades
 
         private void comboProjeto_SelectedIndexChanged(object sender, EventArgs e)
         {
-             
+
 
         }
 
@@ -677,6 +679,7 @@ namespace Atividades
                         maskSaida2.Text = string.Empty;
                         maskSaida3.Text = string.Empty;
                         TextObservacao.Text = string.Empty;
+
                     }
                     catch (Exception ex)
                     {

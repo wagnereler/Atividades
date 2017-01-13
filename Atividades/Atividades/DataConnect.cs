@@ -43,7 +43,7 @@ namespace Atividades
                 //SE NÃO EXISTIR CRIA A TABELA PROJEITOS
                 sql.AppendLine("CREATE TABLE IF NOT EXISTS [tbProjetos] ( [codProjeto] INT PRIMARY KEY,");
                 sql.AppendLine("[nomeProjeto] VARCHAR(60), [codGerente] INT, [codUf] VARCHAR(2), [codCidade] INT,");
-                sql.AppendLine("FOREIGN KEY (idGerente) REFERENCES tbPessoas (idGerente),");
+                sql.AppendLine("FOREIGN KEY (codGerente) REFERENCES tbPessoas (codPessoa),");
                 sql.AppendLine("FOREIGN KEY (codUf) REFERENCES tbUF (codUf),");
                 sql.AppendLine("FOREIGN KEY (codCidade) REFERENCES tbCidades (codCidade));");
 
