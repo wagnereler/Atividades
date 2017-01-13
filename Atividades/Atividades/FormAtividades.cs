@@ -541,7 +541,7 @@ namespace Atividades
         private void butInserirAtividade_Click(object sender, EventArgs e)
         {
             string DiaSemana = Convert.ToString(dateTimePicker1.Value.DayOfWeek);
-            MessageBox.Show(DiaSemana);
+
             
 
             //verifica as horas digitadas e as converte em minutos, gravando em uma variável
@@ -668,6 +668,7 @@ namespace Atividades
                     {
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Registro Salvo com Sucesso!");
+                        statusAtividades.Text = "Status: Registro Salvo com Sucesso!";
                         maskEntrada1.Text = string.Empty;
                         maskSaida1.Text = string.Empty;
                         maskEntrada3.Text = string.Empty;
@@ -676,7 +677,6 @@ namespace Atividades
                         maskSaida2.Text = string.Empty;
                         maskSaida3.Text = string.Empty;
                         TextObservacao.Text = string.Empty;
-                        MessageBox.Show(Convert.ToString(totalMinutos));
                     }
                     catch (Exception ex)
                     {
@@ -723,6 +723,23 @@ namespace Atividades
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void carregarGridAtividades()
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand(
+                
+                "", 
+                
+                conn);
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

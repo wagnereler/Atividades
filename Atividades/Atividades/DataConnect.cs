@@ -35,14 +35,14 @@ namespace Atividades
                 sql.AppendLine("[NomePessoa] VARCHAR(100) , [Gerente] BOOL, [colaboradorPadrao] BOOL);");
 
                 //SE NÃO EXISTIR CRIA A TABELA CIDADES
-                sql.AppendLine("CREATE TABLE IF NOT EXISTS [tbCidates] ([codCidade] INTEGER PRIMARY KEY AUTOINCREMENT,");
+                sql.AppendLine("CREATE TABLE IF NOT EXISTS [tbCidades] ([codCidade] INTEGER PRIMARY KEY AUTOINCREMENT,");
                 sql.AppendLine("[codUf] VARCHAR(2) NOT NULL, [nomeCidade] VARCHAR(60),");
                 sql.AppendLine("FOREIGN KEY (codUf) REFERENCES tbUF (codUf) );");
                               
 
                 //SE NÃO EXISTIR CRIA A TABELA PROJEITOS
                 sql.AppendLine("CREATE TABLE IF NOT EXISTS [tbProjetos] ( [codProjeto] INT PRIMARY KEY,");
-                sql.AppendLine("[nomeProjeto] VARCHAR(60), [idGerente] INT, [codUf] VARCHAR(2), [codCidade] INT,");
+                sql.AppendLine("[nomeProjeto] VARCHAR(60), [codGerente] INT, [codUf] VARCHAR(2), [codCidade] INT,");
                 sql.AppendLine("FOREIGN KEY (idGerente) REFERENCES tbPessoas (idGerente),");
                 sql.AppendLine("FOREIGN KEY (codUf) REFERENCES tbUF (codUf),");
                 sql.AppendLine("FOREIGN KEY (codCidade) REFERENCES tbCidades (codCidade));");

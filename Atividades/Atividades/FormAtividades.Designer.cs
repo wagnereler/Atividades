@@ -63,14 +63,6 @@
             this.labEntrada3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.labColaborador = new System.Windows.Forms.Label();
-            this.comboColaborador = new System.Windows.Forms.ComboBox();
-            this.butInserirAtividade = new System.Windows.Forms.Button();
-            this.butExcluirAtividade = new System.Windows.Forms.Button();
-            this.TextObservacao = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textCodColaborador = new System.Windows.Forms.TextBox();
-            this.butAtualizar = new System.Windows.Forms.Button();
             this.DataAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Entrada1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Entrada2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,7 +79,17 @@
             this.NomeUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HorasTrabalhadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HorasExtras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labColaborador = new System.Windows.Forms.Label();
+            this.comboColaborador = new System.Windows.Forms.ComboBox();
+            this.butInserirAtividade = new System.Windows.Forms.Button();
+            this.butExcluirAtividade = new System.Windows.Forms.Button();
+            this.TextObservacao = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textCodColaborador = new System.Windows.Forms.TextBox();
+            this.butAtualizar = new System.Windows.Forms.Button();
+            this.statusAtividades = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -173,11 +175,14 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusAtividades});
             this.statusStrip1.Location = new System.Drawing.Point(0, 363);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(688, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
             // comboProjeto
             // 
@@ -431,77 +436,6 @@
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // labColaborador
-            // 
-            this.labColaborador.AutoSize = true;
-            this.labColaborador.Location = new System.Drawing.Point(454, 24);
-            this.labColaborador.Name = "labColaborador";
-            this.labColaborador.Size = new System.Drawing.Size(126, 13);
-            this.labColaborador.TabIndex = 16;
-            this.labColaborador.Text = "Selecione o Colaborador:";
-            // 
-            // comboColaborador
-            // 
-            this.comboColaborador.FormattingEnabled = true;
-            this.comboColaborador.Location = new System.Drawing.Point(442, 39);
-            this.comboColaborador.Name = "comboColaborador";
-            this.comboColaborador.Size = new System.Drawing.Size(138, 21);
-            this.comboColaborador.TabIndex = 5;
-            // 
-            // butInserirAtividade
-            // 
-            this.butInserirAtividade.Location = new System.Drawing.Point(595, 73);
-            this.butInserirAtividade.Name = "butInserirAtividade";
-            this.butInserirAtividade.Size = new System.Drawing.Size(75, 23);
-            this.butInserirAtividade.TabIndex = 17;
-            this.butInserirAtividade.Text = "Gravar";
-            this.butInserirAtividade.UseVisualStyleBackColor = true;
-            this.butInserirAtividade.Click += new System.EventHandler(this.butInserirAtividade_Click);
-            // 
-            // butExcluirAtividade
-            // 
-            this.butExcluirAtividade.Location = new System.Drawing.Point(596, 109);
-            this.butExcluirAtividade.Name = "butExcluirAtividade";
-            this.butExcluirAtividade.Size = new System.Drawing.Size(75, 23);
-            this.butExcluirAtividade.TabIndex = 18;
-            this.butExcluirAtividade.Text = "Excluir";
-            this.butExcluirAtividade.UseVisualStyleBackColor = true;
-            // 
-            // TextObservacao
-            // 
-            this.TextObservacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextObservacao.Location = new System.Drawing.Point(342, 73);
-            this.TextObservacao.Name = "TextObservacao";
-            this.TextObservacao.Size = new System.Drawing.Size(238, 68);
-            this.TextObservacao.TabIndex = 19;
-            this.TextObservacao.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(592, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Cod. Colaborador:";
-            // 
-            // textCodColaborador
-            // 
-            this.textCodColaborador.Location = new System.Drawing.Point(595, 40);
-            this.textCodColaborador.Name = "textCodColaborador";
-            this.textCodColaborador.Size = new System.Drawing.Size(76, 20);
-            this.textCodColaborador.TabIndex = 6;
-            // 
-            // butAtualizar
-            // 
-            this.butAtualizar.Location = new System.Drawing.Point(595, 325);
-            this.butAtualizar.Name = "butAtualizar";
-            this.butAtualizar.Size = new System.Drawing.Size(75, 23);
-            this.butAtualizar.TabIndex = 22;
-            this.butAtualizar.Text = "Atualizar";
-            this.butAtualizar.UseVisualStyleBackColor = true;
-            this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
-            // 
             // DataAtividade
             // 
             this.DataAtividade.HeaderText = "Data";
@@ -598,6 +532,83 @@
             this.HorasExtras.Name = "HorasExtras";
             this.HorasExtras.ReadOnly = true;
             // 
+            // labColaborador
+            // 
+            this.labColaborador.AutoSize = true;
+            this.labColaborador.Location = new System.Drawing.Point(454, 24);
+            this.labColaborador.Name = "labColaborador";
+            this.labColaborador.Size = new System.Drawing.Size(126, 13);
+            this.labColaborador.TabIndex = 16;
+            this.labColaborador.Text = "Selecione o Colaborador:";
+            // 
+            // comboColaborador
+            // 
+            this.comboColaborador.FormattingEnabled = true;
+            this.comboColaborador.Location = new System.Drawing.Point(442, 39);
+            this.comboColaborador.Name = "comboColaborador";
+            this.comboColaborador.Size = new System.Drawing.Size(138, 21);
+            this.comboColaborador.TabIndex = 5;
+            // 
+            // butInserirAtividade
+            // 
+            this.butInserirAtividade.Location = new System.Drawing.Point(595, 73);
+            this.butInserirAtividade.Name = "butInserirAtividade";
+            this.butInserirAtividade.Size = new System.Drawing.Size(75, 23);
+            this.butInserirAtividade.TabIndex = 17;
+            this.butInserirAtividade.Text = "Gravar";
+            this.butInserirAtividade.UseVisualStyleBackColor = true;
+            this.butInserirAtividade.Click += new System.EventHandler(this.butInserirAtividade_Click);
+            // 
+            // butExcluirAtividade
+            // 
+            this.butExcluirAtividade.Location = new System.Drawing.Point(596, 109);
+            this.butExcluirAtividade.Name = "butExcluirAtividade";
+            this.butExcluirAtividade.Size = new System.Drawing.Size(75, 23);
+            this.butExcluirAtividade.TabIndex = 18;
+            this.butExcluirAtividade.Text = "Excluir";
+            this.butExcluirAtividade.UseVisualStyleBackColor = true;
+            // 
+            // TextObservacao
+            // 
+            this.TextObservacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextObservacao.Location = new System.Drawing.Point(342, 73);
+            this.TextObservacao.Name = "TextObservacao";
+            this.TextObservacao.Size = new System.Drawing.Size(238, 68);
+            this.TextObservacao.TabIndex = 19;
+            this.TextObservacao.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(592, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Cod. Colaborador:";
+            // 
+            // textCodColaborador
+            // 
+            this.textCodColaborador.Location = new System.Drawing.Point(595, 40);
+            this.textCodColaborador.Name = "textCodColaborador";
+            this.textCodColaborador.Size = new System.Drawing.Size(76, 20);
+            this.textCodColaborador.TabIndex = 6;
+            // 
+            // butAtualizar
+            // 
+            this.butAtualizar.Location = new System.Drawing.Point(595, 325);
+            this.butAtualizar.Name = "butAtualizar";
+            this.butAtualizar.Size = new System.Drawing.Size(75, 23);
+            this.butAtualizar.TabIndex = 22;
+            this.butAtualizar.Text = "Atualizar";
+            this.butAtualizar.UseVisualStyleBackColor = true;
+            this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // statusAtividades
+            // 
+            this.statusAtividades.Name = "statusAtividades";
+            this.statusAtividades.Size = new System.Drawing.Size(45, 17);
+            this.statusAtividades.Text = "Status: ";
+            // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -628,6 +639,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -701,6 +714,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn HorasTrabalhadas;
         private System.Windows.Forms.DataGridViewTextBoxColumn HorasExtras;
+        private System.Windows.Forms.ToolStripStatusLabel statusAtividades;
     }
 }
 
