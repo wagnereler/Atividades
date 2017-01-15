@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +42,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusAtividades = new System.Windows.Forms.ToolStripStatusLabel();
             this.comboProjeto = new System.Windows.Forms.ComboBox();
+            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labProjeto = new System.Windows.Forms.Label();
             this.textCodigoProjeto = new System.Windows.Forms.TextBox();
             this.labCodProjeto = new System.Windows.Forms.Label();
@@ -90,6 +93,8 @@
             this.butAtualizar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -198,6 +203,14 @@
             this.comboProjeto.Size = new System.Drawing.Size(214, 21);
             this.comboProjeto.TabIndex = 2;
             this.comboProjeto.SelectedIndexChanged += new System.EventHandler(this.comboProjeto_SelectedIndexChanged);
+            // 
+            // dataConnectBindingSource1
+            // 
+            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
+            // 
+            // dataConnectBindingSource
+            // 
+            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
             // 
             // labProjeto
             // 
@@ -641,6 +654,8 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -715,6 +730,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HorasTrabalhadas;
         private System.Windows.Forms.DataGridViewTextBoxColumn HorasExtras;
         private System.Windows.Forms.ToolStripStatusLabel statusAtividades;
+        private System.Windows.Forms.BindingSource dataConnectBindingSource;
+        private System.Windows.Forms.BindingSource dataConnectBindingSource1;
     }
 }
 

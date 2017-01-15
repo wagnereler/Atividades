@@ -30,9 +30,49 @@ namespace Atividades
             //instancia a classe DataConnect para efetuar a conexão com o banco
             DataConnect connex = new DataConnect();
             connex.conectar();
-            
-            
+
+            carregarComboProjetos();
+
+
+
         }
+
+        public void carregarComboProjetos()
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand("SELECT NomeProjeto FROM tbProjetos", conn);
+            SQLiteDataReader DataReaderComboProjetos = cmd.ExecuteReader();
+            DataTable tabelaComboProjetos = new DataTable();
+            tabelaComboProjetos.Load(DataReaderComboProjetos);
+            comboProjeto.DisplayMember = "nomeProjeto";
+            comboProjeto.DataSource = tabelaComboProjetos;
+
+
+        }
+
+        public void carregarComboProjetosAlternativo()
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand("SELECT NomeProjeto FROM tbProjetos", conn);
+            //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
+            SQLiteDataAdapter daComboProjeto = new SQLiteDataAdapter(cmd);
+            DataTable dtComboProjetos = new DataTable();
+            daComboProjeto.Fill(dtComboProjetos);
+            foreach (DataRow drComboProjeto in dtComboProjetos.Rows)
+
+            {
+                comboProjeto.Items.Add(drComboProjeto["nomeProjeto"]);
+
+            }
+
+        }
+
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -624,7 +664,10 @@ namespace Atividades
                         conn.Open();
                     }
 
-                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2, entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade, totalMinutos, minutosExtras)  VALUES(@codProjeto, @dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade, @totalMinutos, @minutosExtras)", conn);
+                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2,"+
+                    "entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade, totalMinutos, minutosExtras)  VALUES(@codProjeto,"+
+                    "@dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade, "+
+                    "@totalMinutos, @minutosExtras)", conn);
 
 
                     cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
