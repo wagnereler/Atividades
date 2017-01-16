@@ -31,7 +31,10 @@ namespace Atividades
             DataConnect connex = new DataConnect();
             connex.conectar();
 
+            comboProjeto.Items.Clear();
+            comboColaborador.Items.Clear();
             carregarComboProjetos();
+            carregarComboColaborador();
 
 
 
@@ -52,12 +55,12 @@ namespace Atividades
 
         }
 
-        public void carregarComboProjetosAlternativo()
+        public void carregarComboColaborador()
         {
             SQLiteConnection conn = new SQLiteConnection(connectBase);
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT NomeProjeto FROM tbProjetos", conn);
+            SQLiteCommand cmd = new SQLiteCommand("SELECT nomePessoa FROM tbPessoas", conn);
             //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
             SQLiteDataAdapter daComboProjeto = new SQLiteDataAdapter(cmd);
             DataTable dtComboProjetos = new DataTable();
@@ -65,7 +68,7 @@ namespace Atividades
             foreach (DataRow drComboProjeto in dtComboProjetos.Rows)
 
             {
-                comboProjeto.Items.Add(drComboProjeto["nomeProjeto"]);
+                comboColaborador.Items.Add(drComboProjeto["nomePessoa"]);
 
             }
 
