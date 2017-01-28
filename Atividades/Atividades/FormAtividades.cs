@@ -18,7 +18,7 @@ namespace Atividades
     {
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
-        private static string[] listaD = { "Projeto 1", "Projeto2"};
+        private static string[] listaD = { "Projeto 1", "Projeto2" };
 
         public FormAtividades()
         {
@@ -170,7 +170,7 @@ namespace Atividades
                     maskEntrada1.Focus();
                 }
             }
-            
+
         }
 
         private void validaHoraEntrada2(object sender, EventArgs e)
@@ -251,7 +251,7 @@ namespace Atividades
                     maskEntrada2.Focus();
                 }
             }
-            
+
         }
 
         private void validaHoraEntrada3(object sender, EventArgs e)
@@ -410,7 +410,7 @@ namespace Atividades
                     maskSaida1.Focus();
                 }
             }
-            
+
         }
 
         private void validaHoraSaida2(object sender, EventArgs e)
@@ -418,7 +418,7 @@ namespace Atividades
             string Entrada = maskSaida2.Text.Trim();
             int z = Entrada.Length;
 
-            if(z != 0)
+            if (z != 0)
             {
                 try
                 {
@@ -490,7 +490,7 @@ namespace Atividades
                     maskSaida2.Focus();
                 }
             }
-            
+
         }
 
         private void validaHoraSaida3(object sender, EventArgs e)
@@ -587,7 +587,7 @@ namespace Atividades
         {
             string DiaSemana = Convert.ToString(dateTimePicker1.Value.DayOfWeek);
 
-            
+
 
             //verifica as horas digitadas e as converte em minutos, gravando em uma variável
             int totalMinutos = 0;
@@ -667,9 +667,9 @@ namespace Atividades
                         conn.Open();
                     }
 
-                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2,"+
-                    "entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade, totalMinutos, minutosExtras)  VALUES(@codProjeto,"+
-                    "@dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade, "+
+                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2," +
+                    "entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade, totalMinutos, minutosExtras)  VALUES(@codProjeto," +
+                    "@dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade, " +
                     "@totalMinutos, @minutosExtras)", conn);
 
 
@@ -684,7 +684,7 @@ namespace Atividades
                     cmd.Parameters.AddWithValue("codColaborador", textCodColaborador.Text.Trim());
                     cmd.Parameters.AddWithValue("ObsAtividade", TextObservacao.Text.Trim());
                     //verificar o que fazer para identificar o domingo, pois atualmente o código não irá gerar horas trabalhadas no domingo como extra
-                    
+
                     if (DiaSemana == "Sunday")
                     {
                         cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
@@ -710,7 +710,7 @@ namespace Atividades
                     }
 
 
-                    
+
 
                     try
                     {
@@ -744,21 +744,21 @@ namespace Atividades
             {
                 MessageBox.Show("Atenção! Verifique se os campos ENTRADA e Saída forma preenchidos.");
             }
-            
-
-
-           
 
 
 
-            
+
+
+
+
+
 
 
         }
 
         private void maskEntrada1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -782,9 +782,9 @@ namespace Atividades
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
             SQLiteCommand cmd = new SQLiteCommand(
-                
-                "", 
-                
+
+                "",
+
                 conn);
         }
 
