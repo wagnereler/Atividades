@@ -793,5 +793,13 @@ namespace Atividades
         {
 
         }
+
+        private void colaboradorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            FormPessoas pessoas = new FormPessoas();
+            pessoas.ShowDialog();
+            
+        }
     }
 }

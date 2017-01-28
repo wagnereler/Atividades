@@ -39,28 +39,58 @@ namespace Atividades
                 conn.Open();
             }
 
-            SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbPessoas(NomePessoa, Gerente, colaboradorPadrao,
+            if (radioUsuarioPadrao.Checked == false & radioGerente.Checked == false)
+            {
+                MessageBox.Show("Selecione o tipo de pessoa!");
+            }else
+            {
+                SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbPessoas (NomePessoa, Gerente, colaboradorPadrao)
             VALUES(@nomePessoa, @Gerente, @colaboradorPadrao)", conn);
 
-            //captrua os valores para os parametros do sql
-            cmd.Parameters.AddWithValue("NomePessoa", textNomePessoa.Text.Trim());
-            //convert verifica se é falso e converte para zero
-            if (radioGerente.Capture == false)
-            {
-                cmd.Parameters.AddWithValue("Gerente", 0);
-            }else
-            {
-                cmd.Parameters.AddWithValue("Gerente", 1);
+                //captrua os valores para os parametros do sql
+                cmd.Parameters.AddWithValue("NomePessoa", textNomePessoa.Text.Trim());
+                //convert verifica se é falso e converte para zero
+
+
+
+
+
+                if (radioGerente.Checked == true)
+                {
+                    cmd.Parameters.AddWithValue("Gerente", "1");
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("Gerente", "0");
+                }
+                if (radioUsuarioPadrao.Checked == true)
+                {
+                    cmd.Parameters.AddWithValue("colaboradorPadrao", "1");
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("colaboradorPadrao", "0");
+                }
+
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    textNomePessoa.Clear();
+                    radioGerente.Checked = false;
+                    radioUsuarioPadrao.Checked = false;
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao Criar Banco de Dados" + ex.Message);
+                }
             }
-            if (radioUsuarioPadrao.Capture == false)
-            {
-                cmd.Parameters.AddWithValue("colaboradorPadrao", 0);
-            }else
-            {
-                cmd.Parameters.AddWithValue("colaboradorPadrao", 1);
-            }
-            
-            
         }
+
+            
+
     }
 }

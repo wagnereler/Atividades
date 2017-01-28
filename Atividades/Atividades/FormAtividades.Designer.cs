@@ -33,8 +33,6 @@
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colaboradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colaboradorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.gerenteDeProjetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioDeAtividadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,8 +40,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusAtividades = new System.Windows.Forms.ToolStripStatusLabel();
             this.comboProjeto = new System.Windows.Forms.ComboBox();
-            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labProjeto = new System.Windows.Forms.Label();
             this.textCodigoProjeto = new System.Windows.Forms.TextBox();
             this.labCodProjeto = new System.Windows.Forms.Label();
@@ -92,14 +88,16 @@
             this.textCodColaborador = new System.Windows.Forms.TextBox();
             this.butAtualizar = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -127,29 +125,15 @@
             // projetoToolStripMenuItem
             // 
             this.projetoToolStripMenuItem.Name = "projetoToolStripMenuItem";
-            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.projetoToolStripMenuItem.Text = "&Projeto";
             // 
             // colaboradorToolStripMenuItem
             // 
-            this.colaboradorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colaboradorToolStripMenuItem1,
-            this.gerenteDeProjetoToolStripMenuItem});
             this.colaboradorToolStripMenuItem.Name = "colaboradorToolStripMenuItem";
-            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.colaboradorToolStripMenuItem.Text = "P&essoas";
-            // 
-            // colaboradorToolStripMenuItem1
-            // 
-            this.colaboradorToolStripMenuItem1.Name = "colaboradorToolStripMenuItem1";
-            this.colaboradorToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
-            this.colaboradorToolStripMenuItem1.Text = "C&olaborador";
-            // 
-            // gerenteDeProjetoToolStripMenuItem
-            // 
-            this.gerenteDeProjetoToolStripMenuItem.Name = "gerenteDeProjetoToolStripMenuItem";
-            this.gerenteDeProjetoToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.gerenteDeProjetoToolStripMenuItem.Text = "&Gerente de Projeto";
+            this.colaboradorToolStripMenuItem.Click += new System.EventHandler(this.colaboradorToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -204,14 +188,6 @@
             this.comboProjeto.Size = new System.Drawing.Size(214, 21);
             this.comboProjeto.TabIndex = 2;
             this.comboProjeto.SelectedIndexChanged += new System.EventHandler(this.comboProjeto_SelectedIndexChanged);
-            // 
-            // dataConnectBindingSource1
-            // 
-            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
-            // 
-            // dataConnectBindingSource
-            // 
-            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
             // 
             // labProjeto
             // 
@@ -634,6 +610,14 @@
             this.radioButton1.Text = "radioButton1";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // dataConnectBindingSource1
+            // 
+            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
+            // 
+            // dataConnectBindingSource
+            // 
+            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
+            // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -667,8 +651,6 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -676,6 +658,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -711,8 +695,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label labColaborador;
         private System.Windows.Forms.ComboBox comboColaborador;
-        private System.Windows.Forms.ToolStripMenuItem colaboradorToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem gerenteDeProjetoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relatórioDeAtividadesToolStripMenuItem;
         private System.Windows.Forms.Button butInserirAtividade;
         private System.Windows.Forms.Button butExcluirAtividade;
