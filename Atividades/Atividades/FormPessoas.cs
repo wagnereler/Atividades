@@ -16,6 +16,8 @@ namespace Atividades
     {
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
+        private string owner;
+
         public FormPessoas()
         {
             InitializeComponent();
@@ -39,9 +41,9 @@ namespace Atividades
                 conn.Open();
             }
 
-            if (radioUsuarioPadrao.Checked == false & radioGerente.Checked == false)
+            if (radioUsuarioPadrao.Checked == false & radioGerente.Checked == false || textNomePessoa.Text == string.Empty)
             {
-                MessageBox.Show("Selecione o tipo de pessoa!");
+                MessageBox.Show("Verifique se as informações foram preenchidas \b E se o tipo de pessoa foi selecionado");
             }else
             {
                 SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbPessoas (NomePessoa, Gerente, colaboradorPadrao)
@@ -50,10 +52,6 @@ namespace Atividades
                 //captrua os valores para os parametros do sql
                 cmd.Parameters.AddWithValue("NomePessoa", textNomePessoa.Text.Trim());
                 //convert verifica se é falso e converte para zero
-
-
-
-
 
                 if (radioGerente.Checked == true)
                 {
@@ -72,7 +70,6 @@ namespace Atividades
                     cmd.Parameters.AddWithValue("colaboradorPadrao", "0");
                 }
 
-
                 try
                 {
                     cmd.ExecuteNonQuery();
@@ -80,7 +77,6 @@ namespace Atividades
                     textNomePessoa.Clear();
                     radioGerente.Checked = false;
                     radioUsuarioPadrao.Checked = false;
-
 
                 }
                 catch (Exception ex)

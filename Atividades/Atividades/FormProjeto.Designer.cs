@@ -44,6 +44,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
+            this.butAtualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,11 +182,21 @@
             this.button2.Text = "Excluir";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // butAtualizar
+            // 
+            this.butAtualizar.Location = new System.Drawing.Point(161, 163);
+            this.butAtualizar.Name = "butAtualizar";
+            this.butAtualizar.Size = new System.Drawing.Size(75, 23);
+            this.butAtualizar.TabIndex = 16;
+            this.butAtualizar.Text = "Atualizar";
+            this.butAtualizar.UseVisualStyleBackColor = true;
+            // 
             // FormProjeto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 347);
+            this.Controls.Add(this.butAtualizar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
@@ -228,5 +239,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button butAtualizar;
     }
 }
