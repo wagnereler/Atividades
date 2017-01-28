@@ -91,6 +91,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textCodColaborador = new System.Windows.Forms.TextBox();
             this.butAtualizar = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource1)).BeginInit();
@@ -622,11 +623,23 @@
             this.butAtualizar.UseVisualStyleBackColor = true;
             this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(383, 6);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.TabIndex = 23;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "radioButton1";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 385);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.butAtualizar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textCodColaborador);
@@ -732,6 +745,7 @@
         private System.Windows.Forms.ToolStripStatusLabel statusAtividades;
         private System.Windows.Forms.BindingSource dataConnectBindingSource;
         private System.Windows.Forms.BindingSource dataConnectBindingSource1;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 

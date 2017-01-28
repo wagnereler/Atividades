@@ -18,7 +18,7 @@ namespace Atividades
     {
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
-        private static string[] listaD = { "Projeto 1", "Projeto2" };
+        //private static string[] listaD = { "Projeto 1", "Projeto2" };
 
         public FormAtividades()
         {
@@ -35,6 +35,7 @@ namespace Atividades
             comboColaborador.Items.Clear();
             carregarComboProjetos();
             carregarComboColaborador();
+            
 
 
 
@@ -60,7 +61,7 @@ namespace Atividades
             SQLiteConnection conn = new SQLiteConnection(connectBase);
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT nomePessoa FROM tbPessoas", conn);
+            SQLiteCommand cmd = new SQLiteCommand("SELECT nomePessoa FROM tbPessoas WHERE colaboradorPadrao = 1", conn);
             //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
             SQLiteDataAdapter daComboProjeto = new SQLiteDataAdapter(cmd);
             DataTable dtComboProjetos = new DataTable();
