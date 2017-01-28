@@ -801,5 +801,11 @@ namespace Atividades
             pessoas.ShowDialog();
             
         }
+
+        private void projetoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormProjeto Projetos = new FormProjeto();
+            Projetos.ShowDialog();
+        }
     }
 }

@@ -127,6 +127,7 @@
             this.projetoToolStripMenuItem.Name = "projetoToolStripMenuItem";
             this.projetoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.projetoToolStripMenuItem.Text = "&Projeto";
+            this.projetoToolStripMenuItem.Click += new System.EventHandler(this.projetoToolStripMenuItem_Click);
             // 
             // colaboradorToolStripMenuItem
             // 
