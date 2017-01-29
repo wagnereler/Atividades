@@ -65,8 +65,10 @@ namespace Atividades
                         comboGerente.Items.Add(drComboGerente["nomePessoa"]);
 
                     }
+                    
 
                 }
+                
             }
             catch(Exception ex)
             {
@@ -74,6 +76,47 @@ namespace Atividades
             }
             
 
+        }
+        public void carregarCodigoGerente()
+        {
+            try
+            {
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand("SELECT codPessoa FROM tbPessoas WHERE nomePessoa = '" + comboGerente.Text.Trim() + "'", conn);
+                    SQLiteDataReader ler = cmd.ExecuteReader();
+                    ler.Read();
+                    textCodGerente.Text = ler["codPessoa"].ToString();
+
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Gerente não selecionado \n ");
+            }
+        }
+        public void carregarCodigoCidade()
+        {
+            try
+            {
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand("SELECT codCidade FROM tbCidades WHERE nomeCidade = '" + comboCidade.Text.Trim() + "'", conn);
+                    SQLiteDataReader ler =  cmd.ExecuteReader();
+                    ler.Read();
+                    textCodCidade.Text = ler["codCidade"].ToString();
+                    
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cidade não selecionada \n ");
+            }
         }
         public void carregarUF()
         {
@@ -165,30 +208,37 @@ namespace Atividades
 Os campos UF, CIDADE e GERENTE DE PROJETO demve ser selecionados! \n
 O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
                     }
-                    /*
+                    
                     else
                     {
-                        SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbProjeto (codProjeto, nomeProjeto, codGerente, codUF, codCidade)
-                        VALUES(@codUf, @nomeCidade)", conn);
+                        
+                        SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbProjetos (codProjeto, nomeProjeto, codGerente, codUF, codCidade)
+                        VALUES(@codProjeto, @nomeProjeto, @codGerente, @codUF, @codCidade)", conn);
 
                         //captrua os valores para os parametros do sql
-                        cmd.Parameters.AddWithValue("codUf", comboCadatroUF.Text.Trim());
-                        cmd.Parameters.AddWithValue("nomeCidade", textCadastroCidade.Text.ToUpper().Trim());
+                        cmd.Parameters.AddWithValue("codProjeto", textCodProjeto.Text.Trim());
+                        cmd.Parameters.AddWithValue("nomeProjeto", textNomeProjeto.Text.ToUpper().Trim());
+                        cmd.Parameters.AddWithValue("codGerente", textCodGerente.Text.Trim());
+                        cmd.Parameters.AddWithValue("codUF", comboUF.Text.Trim());
+                        cmd.Parameters.AddWithValue("codCidade", textCodCidade.Text.Trim());
 
 
                         try
                         {
                             cmd.ExecuteNonQuery();
                             conn.Close();
-                            textCadastroCidade.Text = string.Empty;
-
+                            textCodProjeto.Text = string.Empty;
+                            textNomeProjeto.Text = string.Empty;
+                            textNomeProjeto.Text = string.Empty;
+                            textCodCidade.Text = string.Empty;
+                            textCodCidade.Text = string.Empty;
 
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show("Erro ao Inserir Dados" + ex.Message);
                         }
-                    }*/
+                    }
                 }
             }
             catch
@@ -211,6 +261,16 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
         {
             FormCidades Cidade = new FormCidades();
             Cidade.ShowDialog();
+        }
+
+        private void comboGerente_Leave(object sender, EventArgs e)
+        {
+            carregarCodigoGerente();
+        }
+
+        private void comboCidade_Leave(object sender, EventArgs e)
+        {
+            carregarCodigoCidade();
         }
     }
     }

@@ -60,7 +60,8 @@
             this.comboGerente.Location = new System.Drawing.Point(12, 79);
             this.comboGerente.Name = "comboGerente";
             this.comboGerente.Size = new System.Drawing.Size(275, 21);
-            this.comboGerente.TabIndex = 0;
+            this.comboGerente.TabIndex = 3;
+            this.comboGerente.Leave += new System.EventHandler(this.comboGerente_Leave);
             // 
             // label1
             // 
@@ -77,7 +78,7 @@
             this.textNomeProjeto.Location = new System.Drawing.Point(12, 41);
             this.textNomeProjeto.Name = "textNomeProjeto";
             this.textNomeProjeto.Size = new System.Drawing.Size(275, 20);
-            this.textNomeProjeto.TabIndex = 2;
+            this.textNomeProjeto.TabIndex = 1;
             // 
             // label2
             // 
@@ -95,7 +96,7 @@
             this.textCodProjeto.MaxLength = 7;
             this.textCodProjeto.Name = "textCodProjeto";
             this.textCodProjeto.Size = new System.Drawing.Size(89, 20);
-            this.textCodProjeto.TabIndex = 5;
+            this.textCodProjeto.TabIndex = 2;
             // 
             // label3
             // 
@@ -137,7 +138,7 @@
             this.button1.Location = new System.Drawing.Point(11, 163);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
+            this.button1.TabIndex = 6;
             this.button1.Text = "Inserir";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -214,7 +215,7 @@
             this.comboUF.Location = new System.Drawing.Point(14, 124);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(72, 21);
-            this.comboUF.TabIndex = 18;
+            this.comboUF.TabIndex = 4;
             // 
             // comboCidade
             // 
@@ -222,8 +223,9 @@
             this.comboCidade.Location = new System.Drawing.Point(100, 124);
             this.comboCidade.Name = "comboCidade";
             this.comboCidade.Size = new System.Drawing.Size(187, 21);
-            this.comboCidade.TabIndex = 19;
+            this.comboCidade.TabIndex = 5;
             this.comboCidade.Enter += new System.EventHandler(this.comboCidade_Enter);
+            this.comboCidade.Leave += new System.EventHandler(this.comboCidade_Leave);
             // 
             // textCodGerente
             // 
@@ -232,7 +234,7 @@
             this.textCodGerente.MaxLength = 7;
             this.textCodGerente.Name = "textCodGerente";
             this.textCodGerente.Size = new System.Drawing.Size(41, 20);
-            this.textCodGerente.TabIndex = 21;
+            this.textCodGerente.TabIndex = 0;
             this.textCodGerente.Visible = false;
             // 
             // textCodCidade
@@ -242,7 +244,7 @@
             this.textCodCidade.MaxLength = 7;
             this.textCodCidade.Name = "textCodCidade";
             this.textCodCidade.Size = new System.Drawing.Size(42, 20);
-            this.textCodCidade.TabIndex = 23;
+            this.textCodCidade.TabIndex = 0;
             this.textCodCidade.Visible = false;
             // 
             // FormProjeto
