@@ -30,15 +30,13 @@
         {
             this.comboGerente = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textNomeProjeto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textCodProjeto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textCodGerente = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.button1 = new System.Windows.Forms.Button();
@@ -48,7 +46,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pessoasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboUF = new System.Windows.Forms.ComboBox();
+            this.cidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboCidade = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,12 +72,12 @@
             this.label1.Text = "Nome do Projeto:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // textNomeProjeto
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(275, 20);
-            this.textBox1.TabIndex = 2;
+            this.textNomeProjeto.Location = new System.Drawing.Point(12, 41);
+            this.textNomeProjeto.Name = "textNomeProjeto";
+            this.textNomeProjeto.Size = new System.Drawing.Size(275, 20);
+            this.textNomeProjeto.TabIndex = 2;
             // 
             // label2
             // 
@@ -87,12 +88,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Gerente do Projeto:";
             // 
-            // textBox2
+            // textCodProjeto
             // 
-            this.textBox2.Location = new System.Drawing.Point(301, 43);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(89, 20);
-            this.textBox2.TabIndex = 5;
+            this.textCodProjeto.Location = new System.Drawing.Point(301, 43);
+            this.textCodProjeto.Name = "textCodProjeto";
+            this.textCodProjeto.Size = new System.Drawing.Size(89, 20);
+            this.textCodProjeto.TabIndex = 5;
             // 
             // label3
             // 
@@ -103,13 +104,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Código do Projeto:";
             // 
-            // textBox3
+            // textCodGerente
             // 
-            this.textBox3.Location = new System.Drawing.Point(301, 80);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(89, 20);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textCodGerente.Location = new System.Drawing.Point(301, 80);
+            this.textCodGerente.Name = "textCodGerente";
+            this.textCodGerente.Size = new System.Drawing.Size(89, 20);
+            this.textCodGerente.TabIndex = 7;
+            this.textCodGerente.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label4
             // 
@@ -121,13 +122,6 @@
             this.label4.Text = "Código do Gerente:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(11, 125);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(52, 20);
-            this.textBox4.TabIndex = 9;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -136,13 +130,6 @@
             this.label5.Size = new System.Drawing.Size(24, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "UF:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(97, 125);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(293, 20);
-            this.textBox5.TabIndex = 11;
             // 
             // label6
             // 
@@ -169,6 +156,7 @@
             this.button1.TabIndex = 13;
             this.button1.Text = "Inserir";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -210,6 +198,7 @@
             // 
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pessoasToolStripMenuItem,
+            this.cidadeToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -220,35 +209,58 @@
             this.pessoasToolStripMenuItem.Name = "pessoasToolStripMenuItem";
             this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pessoasToolStripMenuItem.Text = "&Pessoas";
+            this.pessoasToolStripMenuItem.Click += new System.EventHandler(this.pessoasToolStripMenuItem_Click);
+            // 
+            // comboUF
+            // 
+            this.comboUF.FormattingEnabled = true;
+            this.comboUF.Location = new System.Drawing.Point(14, 124);
+            this.comboUF.Name = "comboUF";
+            this.comboUF.Size = new System.Drawing.Size(72, 21);
+            this.comboUF.TabIndex = 18;
+            // 
+            // cidadeToolStripMenuItem
+            // 
+            this.cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
+            this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cidadeToolStripMenuItem.Text = "&Cidade";
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sairToolStripMenuItem.Text = "&Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
+            // comboCidade
+            // 
+            this.comboCidade.FormattingEnabled = true;
+            this.comboCidade.Location = new System.Drawing.Point(100, 124);
+            this.comboCidade.Name = "comboCidade";
+            this.comboCidade.Size = new System.Drawing.Size(290, 21);
+            this.comboCidade.TabIndex = 19;
+            this.comboCidade.Enter += new System.EventHandler(this.comboCidade_Enter);
             // 
             // FormProjeto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 347);
+            this.Controls.Add(this.comboCidade);
+            this.Controls.Add(this.comboUF);
             this.Controls.Add(this.butAtualizar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textCodGerente);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textCodProjeto);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textNomeProjeto);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboGerente);
             this.MainMenuStrip = this.menuStrip1;
@@ -267,15 +279,13 @@
 
         private System.Windows.Forms.ComboBox comboGerente;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textNomeProjeto;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textCodProjeto;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textCodGerente;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button button1;
@@ -285,6 +295,9 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pessoasToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboUF;
+        private System.Windows.Forms.ToolStripMenuItem cidadeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboCidade;
     }
 }
