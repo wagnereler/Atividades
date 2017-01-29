@@ -157,5 +157,11 @@ namespace Atividades
             carregarCidade();
             MessageBox.Show("Lista Carregada");
         }
+
+        private void cidadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCidades Cidade = new FormCidades();
+            Cidade.ShowDialog();
+        }
     }
     }

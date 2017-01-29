@@ -152,6 +152,7 @@
             this.HelpButton = true;
             this.Name = "FormPessoas";
             this.Text = "Cadastro de Pessoas";
+            this.Load += new System.EventHandler(this.FormPessoas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

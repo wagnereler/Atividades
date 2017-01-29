@@ -73,6 +73,12 @@
     <Compile Include="DataInsert.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormCidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCidades.Designer.cs">
+      <DependentUpon>FormCidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProjeto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAtividades.resx">
       <DependentUpon>FormAtividades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCidades.resx">
+      <DependentUpon>FormCidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPessoas.resx">
       <DependentUpon>FormPessoas.cs</DependentUpon>

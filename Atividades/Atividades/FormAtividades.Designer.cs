@@ -90,6 +90,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -117,7 +118,8 @@
             // 
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.projetoToolStripMenuItem,
-            this.colaboradorToolStripMenuItem});
+            this.colaboradorToolStripMenuItem,
+            this.sairToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.cadastroToolStripMenuItem.Text = "&Cadastro";
@@ -619,6 +621,12 @@
             // 
             this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
             // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sairToolStripMenuItem.Text = "&Sair";
+            // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -729,6 +737,7 @@
         private System.Windows.Forms.BindingSource dataConnectBindingSource;
         private System.Windows.Forms.BindingSource dataConnectBindingSource1;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
     }
 }
 

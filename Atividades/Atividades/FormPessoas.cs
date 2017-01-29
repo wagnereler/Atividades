@@ -86,7 +86,9 @@ namespace Atividades
             }
         }
 
-            
+        private void FormPessoas_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
