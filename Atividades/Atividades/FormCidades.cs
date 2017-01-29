@@ -72,47 +72,30 @@ namespace Atividades
                 {
                     MessageBox.Show("Selecione uma UF");
                 }
-                /*
+                
                 else
                 {
-                    SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbPessoas (NomePessoa, Gerente, colaboradorPadrao)
-            VALUES(@nomePessoa, @Gerente, @colaboradorPadrao)", conn);
+                    SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbCidades (codUf, nomeCidade)
+                    VALUES(@codUf, @nomeCidade)", conn);
 
                     //captrua os valores para os parametros do sql
-                    cmd.Parameters.AddWithValue("NomePessoa", textNomePessoa.Text.Trim());
-                    //convert verifica se é falso e converte para zero
-
-                    if (radioGerente.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("Gerente", "1");
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("Gerente", "0");
-                    }
-                    if (radioUsuarioPadrao.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("colaboradorPadrao", "1");
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("colaboradorPadrao", "0");
-                    }
+                    cmd.Parameters.AddWithValue("codUf", comboCadatroUF.Text.Trim());
+                    cmd.Parameters.AddWithValue("nomeCidade", textCadastroCidade.Text.Trim());
+              
 
                     try
                     {
                         cmd.ExecuteNonQuery();
                         conn.Close();
-                        textNomePessoa.Clear();
-                        radioGerente.Checked = false;
-                        radioUsuarioPadrao.Checked = false;
+                        textCadastroCidade.Text = string.Empty;
+
 
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Erro ao Criar Banco de Dados" + ex.Message);
                     }
-                }*/
+                }
             }
         }
     }
