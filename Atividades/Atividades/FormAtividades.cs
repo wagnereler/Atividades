@@ -61,7 +61,7 @@ namespace Atividades
             SQLiteConnection conn = new SQLiteConnection(connectBase);
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT nomePessoa FROM tbPessoas WHERE colaboradorPadrao = 1", conn);
+            SQLiteCommand cmd = new SQLiteCommand("SELECT nomePessoa FROM tbPessoas WHERE colaborador = 1", conn);
             //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
             SQLiteDataAdapter daComboProjeto = new SQLiteDataAdapter(cmd);
             DataTable dtComboProjetos = new DataTable();

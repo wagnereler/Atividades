@@ -46,11 +46,11 @@ namespace Atividades
                 MessageBox.Show("Verifique se as informações foram preenchidas \b E se o tipo de pessoa foi selecionado");
             }else
             {
-                SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbPessoas (NomePessoa, Gerente, colaboradorPadrao)
-            VALUES(@nomePessoa, @Gerente, @colaboradorPadrao)", conn);
+                SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbPessoas (NomePessoa, Gerente, colaborador)
+            VALUES(@nomePessoa, @Gerente, @colaborador)", conn);
 
                 //captrua os valores para os parametros do sql
-                cmd.Parameters.AddWithValue("NomePessoa", textNomePessoa.Text.Trim());
+                cmd.Parameters.AddWithValue("NomePessoa", textNomePessoa.Text.Trim().ToUpper());
                 //convert verifica se é falso e converte para zero
 
                 if (radioGerente.Checked == true)
@@ -63,11 +63,11 @@ namespace Atividades
                 }
                 if (radioUsuarioPadrao.Checked == true)
                 {
-                    cmd.Parameters.AddWithValue("colaboradorPadrao", "1");
+                    cmd.Parameters.AddWithValue("colaborador", "1");
                 }
                 else
                 {
-                    cmd.Parameters.AddWithValue("colaboradorPadrao", "0");
+                    cmd.Parameters.AddWithValue("colaborador", "0");
                 }
 
                 try

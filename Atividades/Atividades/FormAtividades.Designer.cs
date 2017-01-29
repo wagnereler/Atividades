@@ -33,6 +33,7 @@
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colaboradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioDeAtividadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,10 +88,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textCodColaborador = new System.Windows.Forms.TextBox();
             this.butAtualizar = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -127,16 +126,22 @@
             // projetoToolStripMenuItem
             // 
             this.projetoToolStripMenuItem.Name = "projetoToolStripMenuItem";
-            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.projetoToolStripMenuItem.Text = "&Projeto";
             this.projetoToolStripMenuItem.Click += new System.EventHandler(this.projetoToolStripMenuItem_Click);
             // 
             // colaboradorToolStripMenuItem
             // 
             this.colaboradorToolStripMenuItem.Name = "colaboradorToolStripMenuItem";
-            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.colaboradorToolStripMenuItem.Text = "P&essoas";
             this.colaboradorToolStripMenuItem.Click += new System.EventHandler(this.colaboradorToolStripMenuItem_Click);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.sairToolStripMenuItem.Text = "&Sair";
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -602,17 +607,6 @@
             this.butAtualizar.UseVisualStyleBackColor = true;
             this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(383, 6);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 23;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // dataConnectBindingSource1
             // 
             this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
@@ -621,18 +615,11 @@
             // 
             this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
             // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sairToolStripMenuItem.Text = "&Sair";
-            // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 385);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.butAtualizar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textCodColaborador);
@@ -736,7 +723,6 @@
         private System.Windows.Forms.ToolStripStatusLabel statusAtividades;
         private System.Windows.Forms.BindingSource dataConnectBindingSource;
         private System.Windows.Forms.BindingSource dataConnectBindingSource1;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
     }
 }

@@ -31,7 +31,7 @@ namespace Atividades
 
                 //SE NÃO EXISTIR CRIA A TABELA PESSOAS
                 sql.AppendLine(@"CREATE TABLE IF NOT EXISTS [tbPessoas] ([codPessoa] INTEGER PRIMARY KEY AUTOINCREMENT,
-                [NomePessoa] VARCHAR(100) , [Gerente] BOOL, [colaboradorPadrao] BOOL);");
+                [NomePessoa] VARCHAR(100) , [Gerente] BOOL, [colaborador] BOOL);");
 
                 //SE NÃO EXISTIR CRIA A TABELA CIDADES
                 sql.AppendLine(@"CREATE TABLE IF NOT EXISTS [tbCidades] ([codCidade] INTEGER PRIMARY KEY AUTOINCREMENT, 

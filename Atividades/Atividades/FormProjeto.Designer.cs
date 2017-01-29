@@ -34,8 +34,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textCodProjeto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textCodGerente = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -46,10 +44,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pessoasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboUF = new System.Windows.Forms.ComboBox();
             this.cidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboUF = new System.Windows.Forms.ComboBox();
             this.comboCidade = new System.Windows.Forms.ComboBox();
+            this.textCodGerente = new System.Windows.Forms.TextBox();
+            this.textCodCidade = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -90,7 +90,9 @@
             // 
             // textCodProjeto
             // 
-            this.textCodProjeto.Location = new System.Drawing.Point(301, 43);
+            this.textCodProjeto.AccessibleDescription = "";
+            this.textCodProjeto.Location = new System.Drawing.Point(301, 42);
+            this.textCodProjeto.MaxLength = 7;
             this.textCodProjeto.Name = "textCodProjeto";
             this.textCodProjeto.Size = new System.Drawing.Size(89, 20);
             this.textCodProjeto.TabIndex = 5;
@@ -103,24 +105,6 @@
             this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Código do Projeto:";
-            // 
-            // textCodGerente
-            // 
-            this.textCodGerente.Location = new System.Drawing.Point(301, 80);
-            this.textCodGerente.Name = "textCodGerente";
-            this.textCodGerente.Size = new System.Drawing.Size(89, 20);
-            this.textCodGerente.TabIndex = 7;
-            this.textCodGerente.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(301, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Código do Gerente:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -207,9 +191,22 @@
             // pessoasToolStripMenuItem
             // 
             this.pessoasToolStripMenuItem.Name = "pessoasToolStripMenuItem";
-            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.pessoasToolStripMenuItem.Text = "&Pessoas";
             this.pessoasToolStripMenuItem.Click += new System.EventHandler(this.pessoasToolStripMenuItem_Click);
+            // 
+            // cidadeToolStripMenuItem
+            // 
+            this.cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
+            this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.cidadeToolStripMenuItem.Text = "&Cidade";
+            this.cidadeToolStripMenuItem.Click += new System.EventHandler(this.cidadeToolStripMenuItem_Click);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.sairToolStripMenuItem.Text = "&Sair";
             // 
             // comboUF
             // 
@@ -219,33 +216,42 @@
             this.comboUF.Size = new System.Drawing.Size(72, 21);
             this.comboUF.TabIndex = 18;
             // 
-            // cidadeToolStripMenuItem
-            // 
-            this.cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
-            this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cidadeToolStripMenuItem.Text = "&Cidade";
-            this.cidadeToolStripMenuItem.Click += new System.EventHandler(this.cidadeToolStripMenuItem_Click);
-            // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sairToolStripMenuItem.Text = "&Sair";
-            // 
             // comboCidade
             // 
             this.comboCidade.FormattingEnabled = true;
             this.comboCidade.Location = new System.Drawing.Point(100, 124);
             this.comboCidade.Name = "comboCidade";
-            this.comboCidade.Size = new System.Drawing.Size(290, 21);
+            this.comboCidade.Size = new System.Drawing.Size(187, 21);
             this.comboCidade.TabIndex = 19;
             this.comboCidade.Enter += new System.EventHandler(this.comboCidade_Enter);
+            // 
+            // textCodGerente
+            // 
+            this.textCodGerente.AccessibleDescription = "";
+            this.textCodGerente.Location = new System.Drawing.Point(301, 79);
+            this.textCodGerente.MaxLength = 7;
+            this.textCodGerente.Name = "textCodGerente";
+            this.textCodGerente.Size = new System.Drawing.Size(41, 20);
+            this.textCodGerente.TabIndex = 21;
+            this.textCodGerente.Visible = false;
+            // 
+            // textCodCidade
+            // 
+            this.textCodCidade.AccessibleDescription = "";
+            this.textCodCidade.Location = new System.Drawing.Point(348, 80);
+            this.textCodCidade.MaxLength = 7;
+            this.textCodCidade.Name = "textCodCidade";
+            this.textCodCidade.Size = new System.Drawing.Size(42, 20);
+            this.textCodCidade.TabIndex = 23;
+            this.textCodCidade.Visible = false;
             // 
             // FormProjeto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 347);
+            this.Controls.Add(this.textCodCidade);
+            this.Controls.Add(this.textCodGerente);
             this.Controls.Add(this.comboCidade);
             this.Controls.Add(this.comboUF);
             this.Controls.Add(this.butAtualizar);
@@ -256,8 +262,6 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textCodGerente);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.textCodProjeto);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -284,8 +288,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textCodProjeto;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textCodGerente;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -300,5 +302,7 @@
         private System.Windows.Forms.ToolStripMenuItem cidadeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboCidade;
+        private System.Windows.Forms.TextBox textCodGerente;
+        private System.Windows.Forms.TextBox textCodCidade;
     }
 }

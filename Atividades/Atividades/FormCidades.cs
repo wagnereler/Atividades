@@ -80,7 +80,7 @@ namespace Atividades
 
                     //captrua os valores para os parametros do sql
                     cmd.Parameters.AddWithValue("codUf", comboCadatroUF.Text.Trim());
-                    cmd.Parameters.AddWithValue("nomeCidade", textCadastroCidade.Text.Trim());
+                    cmd.Parameters.AddWithValue("nomeCidade", textCadastroCidade.Text.ToUpper().Trim());
               
 
                     try
@@ -93,7 +93,7 @@ namespace Atividades
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Erro ao Criar Banco de Dados" + ex.Message);
+                        MessageBox.Show("Erro ao Inserir Dados" + ex.Message);
                     }
                 }
             }

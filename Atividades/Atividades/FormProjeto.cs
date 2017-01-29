@@ -147,6 +147,56 @@ namespace Atividades
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Convert.ToInt32(textCodProjeto.Text);
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == System.Data.ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    if (comboGerente.Text.ToUpper() != Convert.ToString(comboGerente.SelectedItem) || textNomeProjeto.Text.Length < 4 || 
+                        textCodProjeto.Text == string.Empty || comboUF.Text != Convert.ToString(comboUF.SelectedItem) ||
+                        comboCidade.Text.ToUpper() != Convert.ToString(comboCidade.SelectedItem))
+                    {
+                        MessageBox.Show(@"Prencher todos os campos! \n 
+Os campos UF, CIDADE e GERENTE DE PROJETO demve ser selecionados! \n
+O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
+                    }
+                    /*
+                    else
+                    {
+                        SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbProjeto (codProjeto, nomeProjeto, codGerente, codUF, codCidade)
+                        VALUES(@codUf, @nomeCidade)", conn);
+
+                        //captrua os valores para os parametros do sql
+                        cmd.Parameters.AddWithValue("codUf", comboCadatroUF.Text.Trim());
+                        cmd.Parameters.AddWithValue("nomeCidade", textCadastroCidade.Text.ToUpper().Trim());
+
+
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            textCadastroCidade.Text = string.Empty;
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Erro ao Inserir Dados" + ex.Message);
+                        }
+                    }*/
+                }
+            }
+            catch
+            {
+                MessageBox.Show("O campo Código deve conter somente caracteres noméricos.");
+                textCodProjeto.Text = string.Empty;
+            }
+
            
         }
 
@@ -155,7 +205,6 @@ namespace Atividades
             comboCidade.Items.Clear();
             comboCidade.Text = string.Empty;
             carregarCidade();
-            MessageBox.Show("Lista Carregada");
         }
 
         private void cidadeToolStripMenuItem_Click(object sender, EventArgs e)
