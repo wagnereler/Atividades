@@ -88,6 +88,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textCodColaborador = new System.Windows.Forms.TextBox();
             this.butAtualizar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
@@ -195,12 +196,11 @@
             this.comboProjeto.Name = "comboProjeto";
             this.comboProjeto.Size = new System.Drawing.Size(214, 21);
             this.comboProjeto.TabIndex = 2;
-            this.comboProjeto.SelectedIndexChanged += new System.EventHandler(this.comboProjeto_SelectedIndexChanged);
             // 
             // labProjeto
             // 
             this.labProjeto.AutoSize = true;
-            this.labProjeto.Location = new System.Drawing.Point(13, 21);
+            this.labProjeto.Location = new System.Drawing.Point(13, 25);
             this.labProjeto.Name = "labProjeto";
             this.labProjeto.Size = new System.Drawing.Size(102, 13);
             this.labProjeto.TabIndex = 3;
@@ -218,7 +218,7 @@
             // labCodProjeto
             // 
             this.labCodProjeto.AutoSize = true;
-            this.labCodProjeto.Location = new System.Drawing.Point(242, 24);
+            this.labCodProjeto.Location = new System.Drawing.Point(242, 25);
             this.labCodProjeto.Name = "labCodProjeto";
             this.labCodProjeto.Size = new System.Drawing.Size(79, 13);
             this.labCodProjeto.TabIndex = 5;
@@ -575,16 +575,16 @@
             // TextObservacao
             // 
             this.TextObservacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextObservacao.Location = new System.Drawing.Point(342, 73);
+            this.TextObservacao.Location = new System.Drawing.Point(342, 80);
             this.TextObservacao.Name = "TextObservacao";
-            this.TextObservacao.Size = new System.Drawing.Size(238, 68);
+            this.TextObservacao.Size = new System.Drawing.Size(238, 61);
             this.TextObservacao.TabIndex = 19;
             this.TextObservacao.Text = "";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(592, 24);
+            this.label1.Location = new System.Drawing.Point(592, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 21;
@@ -607,6 +607,15 @@
             this.butAtualizar.UseVisualStyleBackColor = true;
             this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(346, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Observação:";
+            // 
             // dataConnectBindingSource1
             // 
             this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
@@ -620,6 +629,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 385);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.butAtualizar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textCodColaborador);
@@ -642,6 +652,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormAtividades";
             this.Text = "Registro de Atividades";
+            this.Activated += new System.EventHandler(this.FormAtividades_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -724,6 +735,7 @@
         private System.Windows.Forms.BindingSource dataConnectBindingSource;
         private System.Windows.Forms.BindingSource dataConnectBindingSource1;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.Label label2;
     }
 }
 

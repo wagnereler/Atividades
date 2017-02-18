@@ -18,7 +18,6 @@ namespace Atividades
     {
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
-        //private static string[] listaD = { "Projeto 1", "Projeto2" };
 
         public FormAtividades()
         {
@@ -33,16 +32,31 @@ namespace Atividades
 
             comboProjeto.Items.Clear();
             comboColaborador.Items.Clear();
-            carregarComboProjetos();
             carregarComboColaborador();
-            
-
-
-
+            carregarComboProjetos();
         }
 
         public void carregarComboProjetos()
         {
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand("SELECT NomeProjeto FROM tbProjetos", conn);
+            SQLiteDataAdapter daComboProjeto = new SQLiteDataAdapter(cmd);
+            DataTable dtComboProjetos = new DataTable();
+            daComboProjeto.Fill(dtComboProjetos);
+            foreach (DataRow drComboProjeto in dtComboProjetos.Rows)
+
+            {
+                comboProjeto.Items.Add(drComboProjeto["NomeProjeto"]);
+
+            }
+            conn.Close();
+
+        }
+        /*Alternativa para a solução
+         * {
+
             SQLiteConnection conn = new SQLiteConnection(connectBase);
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
@@ -52,9 +66,10 @@ namespace Atividades
             tabelaComboProjetos.Load(DataReaderComboProjetos);
             comboProjeto.DisplayMember = "nomeProjeto";
             comboProjeto.DataSource = tabelaComboProjetos;
+            conn.Close();
 
 
-        }
+        }*/
 
         public void carregarComboColaborador()
         {
@@ -63,18 +78,60 @@ namespace Atividades
                 conn.Open();
             SQLiteCommand cmd = new SQLiteCommand("SELECT nomePessoa FROM tbPessoas WHERE colaborador = 1", conn);
             //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
-            SQLiteDataAdapter daComboProjeto = new SQLiteDataAdapter(cmd);
-            DataTable dtComboProjetos = new DataTable();
-            daComboProjeto.Fill(dtComboProjetos);
-            foreach (DataRow drComboProjeto in dtComboProjetos.Rows)
+            SQLiteDataAdapter daCombo = new SQLiteDataAdapter(cmd);
+            DataTable dtCombo = new DataTable();
+            daCombo.Fill(dtCombo);
+            foreach (DataRow drCombo in dtCombo.Rows)
 
             {
-                comboColaborador.Items.Add(drComboProjeto["nomePessoa"]);
+                comboColaborador.Items.Add(drCombo["nomePessoa"]);
 
             }
+            conn.Close();
 
         }
+        public void carregarCodigoProjeto()
+        {
+            try
+            {
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand("SELECT codProjeto FROM tbProjetos WHERE nomeProjeto = '" + comboProjeto.Text.Trim() + "'", conn);
+                    SQLiteDataReader ler = cmd.ExecuteReader();
+                    ler.Read();
+                    textCodigoProjeto.Text = ler["codProjeto"].ToString();
+                    conn.Close();
 
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Gerente não selecionado \n ");
+            }
+        }
+        public void carregarCodigoColaborador()
+        {
+            try
+            {
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand("SELECT codPessoa FROM tbPessoas WHERE nomePessoa = '" + comboColaborador.Text.Trim() + "'", conn);
+                    SQLiteDataReader ler = cmd.ExecuteReader();
+                    ler.Read();
+                    textCodColaborador.Text = ler["codProjeto"].ToString();
+                    conn.Close();
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Gerente não selecionado \n ");
+            }
+        }
 
 
 
@@ -726,6 +783,7 @@ namespace Atividades
                         maskSaida2.Text = string.Empty;
                         maskSaida3.Text = string.Empty;
                         TextObservacao.Text = string.Empty;
+                        conn.Close();
 
                     }
                     catch (Exception ex)
@@ -779,6 +837,7 @@ namespace Atividades
 
         private void carregarGridAtividades()
         {
+            /*
             SQLiteConnection conn = new SQLiteConnection(connectBase);
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
@@ -786,7 +845,7 @@ namespace Atividades
 
                 "",
 
-                conn);
+                conn);*/
         }
 
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -806,6 +865,44 @@ namespace Atividades
         {
             FormProjeto Projetos = new FormProjeto();
             Projetos.ShowDialog();
+        }
+
+        private void comboProjeto_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboColaborador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            carregarComboColaborador();
+        }
+
+        private void comboProjeto_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboColaborador_Enter(object sender, EventArgs e)
+        {
+  
+        }
+
+        private void comboColaborador_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboProjeto_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void FormAtividades_Activated(object sender, EventArgs e)
+        {
+            comboColaborador.Items.Clear();
+            comboProjeto.Items.Clear();
+            carregarComboProjetos();
+            carregarComboColaborador();
         }
     }
 }

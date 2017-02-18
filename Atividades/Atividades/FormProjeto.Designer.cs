@@ -61,6 +61,7 @@
             this.comboGerente.Name = "comboGerente";
             this.comboGerente.Size = new System.Drawing.Size(275, 21);
             this.comboGerente.TabIndex = 3;
+            this.comboGerente.SelectedIndexChanged += new System.EventHandler(this.comboGerente_SelectedIndexChanged);
             this.comboGerente.Leave += new System.EventHandler(this.comboGerente_Leave);
             // 
             // label1
@@ -192,21 +193,21 @@
             // pessoasToolStripMenuItem
             // 
             this.pessoasToolStripMenuItem.Name = "pessoasToolStripMenuItem";
-            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pessoasToolStripMenuItem.Text = "&Pessoas";
             this.pessoasToolStripMenuItem.Click += new System.EventHandler(this.pessoasToolStripMenuItem_Click);
             // 
             // cidadeToolStripMenuItem
             // 
             this.cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
-            this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cidadeToolStripMenuItem.Text = "&Cidade";
             this.cidadeToolStripMenuItem.Click += new System.EventHandler(this.cidadeToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sairToolStripMenuItem.Text = "&Sair";
             // 
             // comboUF
@@ -273,7 +274,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormProjeto";
             this.Text = "Cadastro de Projeto";
-            this.Load += new System.EventHandler(this.FormProjeto_Load);
+            this.Activated += new System.EventHandler(this.FormProjeto_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

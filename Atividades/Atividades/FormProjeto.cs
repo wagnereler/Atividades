@@ -54,6 +54,7 @@ namespace Atividades
                     SQLiteConnection conn = new SQLiteConnection(connectBase);
                     if (conn.State == ConnectionState.Closed)
                         conn.Open();
+
                     SQLiteCommand cmd = new SQLiteCommand("SELECT nomePessoa FROM tbPessoas WHERE Gerente = 1", conn);
                     //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
                     SQLiteDataAdapter daComboGerente = new SQLiteDataAdapter(cmd);
@@ -65,7 +66,7 @@ namespace Atividades
                         comboGerente.Items.Add(drComboGerente["nomePessoa"]);
 
                     }
-                    
+                    conn.Close();
 
                 }
                 
@@ -76,6 +77,34 @@ namespace Atividades
             }
             
 
+        }
+        public  class carregarProjetos
+        {
+            
+            public void carregarCodigoGerente()
+            {
+                
+                try
+                {
+
+                    {
+                        FormProjeto projeto = new FormProjeto();
+                        SQLiteConnection conn = new SQLiteConnection(connectBase);
+                        if (conn.State == ConnectionState.Closed)
+                            conn.Open();
+                        SQLiteCommand cmd = new SQLiteCommand("SELECT codPessoa FROM tbPessoas WHERE nomePessoa = '" + projeto.comboGerente.Text.Trim() + "'", conn);
+                        SQLiteDataReader ler = cmd.ExecuteReader();
+                        ler.Read();
+                        projeto.textCodGerente.Text = ler["codPessoa"].ToString();
+                        conn.Close();
+
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Gerente não selecionado \n ");
+                }
+            }
         }
         public void carregarCodigoGerente()
         {
@@ -89,7 +118,7 @@ namespace Atividades
                     SQLiteDataReader ler = cmd.ExecuteReader();
                     ler.Read();
                     textCodGerente.Text = ler["codPessoa"].ToString();
-
+                    conn.Close();
 
                 }
             }
@@ -110,7 +139,7 @@ namespace Atividades
                     SQLiteDataReader ler =  cmd.ExecuteReader();
                     ler.Read();
                     textCodCidade.Text = ler["codCidade"].ToString();
-                    
+                    conn.Close();
                 }
             }
             catch (Exception)
@@ -137,6 +166,7 @@ namespace Atividades
                         comboUF.Items.Add(drComboUF["codUf"]);
 
                     }
+                    conn.Close();
 
                 }
             }
@@ -155,7 +185,7 @@ namespace Atividades
                     SQLiteConnection conn = new SQLiteConnection(connectBase);
                     if (conn.State == ConnectionState.Closed)
                         conn.Open();
-                    SQLiteCommand cmd = new SQLiteCommand("SELECT nomeCidade FROM tbCidades WHERE codUf = '" + comboUF.Text + "'", conn);
+                    SQLiteCommand cmd = new SQLiteCommand("SELECT nomeCidade FROM tbCidades WHERE codUf = '" + comboUF.Text.Trim() + "'", conn);
                     //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
                     SQLiteDataAdapter daComboCidade = new SQLiteDataAdapter(cmd);
                     DataTable dtComboCidade = new DataTable();
@@ -166,7 +196,7 @@ namespace Atividades
                         comboCidade.Items.Add(drComboCidade["nomeCidade"]);
 
                     }
-
+                    conn.Close();
                 }
             }
             catch (Exception ex)
@@ -186,19 +216,18 @@ namespace Atividades
         {
             FormPessoas Pessoas = new FormPessoas();
             Pessoas.ShowDialog();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        { 
             try
             {
                 Convert.ToInt32(textCodProjeto.Text);
                 {
-                    SQLiteConnection conn = new SQLiteConnection(connectBase);
-                    if (conn.State == System.Data.ConnectionState.Closed)
-                    {
-                        conn.Open();
-                    }
+                    
+                    
+
 
                     if (comboGerente.Text.ToUpper() != Convert.ToString(comboGerente.SelectedItem) || textNomeProjeto.Text.Length < 4 || 
                         textCodProjeto.Text == string.Empty || comboUF.Text != Convert.ToString(comboUF.SelectedItem) ||
@@ -211,7 +240,13 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
                     
                     else
                     {
-                        
+                        SQLiteConnection conn = new SQLiteConnection(connectBase);
+                        MessageBox.Show(Convert.ToString("Entrada do botão " + conn.State));
+                        if (conn.State == System.Data.ConnectionState.Closed)
+                        {
+                            conn.Open();
+                        }
+
                         SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbProjetos (codProjeto, nomeProjeto, codGerente, codUF, codCidade)
                         VALUES(@codProjeto, @nomeProjeto, @codGerente, @codUF, @codCidade)", conn);
 
@@ -226,17 +261,21 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
                         try
                         {
                             cmd.ExecuteNonQuery();
-                            conn.Close();
                             textCodProjeto.Text = string.Empty;
                             textNomeProjeto.Text = string.Empty;
                             textNomeProjeto.Text = string.Empty;
                             textCodCidade.Text = string.Empty;
                             textCodCidade.Text = string.Empty;
-
+                            comboCidade.Text = string.Empty;
+                            comboUF.Text = string.Empty;
+                            comboGerente.Text = string.Empty;
+                            
+                            conn.Close();
+                           
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Erro ao Inserir Dados" + ex.Message);
+                            MessageBox.Show("Erro ao Inserir Dados \n" + ex.Message);
                         }
                     }
                 }
@@ -265,12 +304,25 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
 
         private void comboGerente_Leave(object sender, EventArgs e)
         {
-            carregarCodigoGerente();
+            
         }
 
         private void comboCidade_Leave(object sender, EventArgs e)
         {
             carregarCodigoCidade();
+        }
+
+        private void comboGerente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            carregarCodigoGerente();
+        }
+
+        private void FormProjeto_Activated(object sender, EventArgs e)
+        {
+            comboGerente.Items.Clear();
+            comboUF.Items.Clear();
+            carregarComboGerente();
+            carregarUF();
         }
     }
     }

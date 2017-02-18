@@ -9,18 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 
+
 namespace Atividades
 {
-
     public partial class FormPessoas : Form
     {
+       
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
         private string owner;
+        
 
         public FormPessoas()
         {
             InitializeComponent();
+            
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
@@ -77,7 +80,7 @@ namespace Atividades
                     textNomePessoa.Clear();
                     radioGerente.Checked = false;
                     radioUsuarioPadrao.Checked = false;
-
+ 
                 }
                 catch (Exception ex)
                 {
@@ -91,4 +94,6 @@ namespace Atividades
 
         }
     }
+
+   
 }

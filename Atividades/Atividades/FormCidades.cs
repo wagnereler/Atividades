@@ -48,6 +48,7 @@ namespace Atividades
                         comboCadatroUF.Items.Add(drComboUF["codUf"]);
 
                     }
+                    conn.Close();
 
                 }
             }
