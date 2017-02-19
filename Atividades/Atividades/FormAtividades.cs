@@ -122,14 +122,14 @@ namespace Atividades
                     SQLiteCommand cmd = new SQLiteCommand("SELECT codPessoa FROM tbPessoas WHERE nomePessoa = '" + comboColaborador.Text.Trim() + "'", conn);
                     SQLiteDataReader ler = cmd.ExecuteReader();
                     ler.Read();
-                    textCodColaborador.Text = ler["codProjeto"].ToString();
+                    textCodColaborador.Text = ler["codPessoa"].ToString();
                     conn.Close();
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Gerente não selecionado \n ");
+                MessageBox.Show("Err0 " + ex.Message);
             }
         }
 
@@ -903,6 +903,16 @@ namespace Atividades
             comboProjeto.Items.Clear();
             carregarComboProjetos();
             carregarComboColaborador();
+        }
+
+        private void comboProjeto_SelectedIndexChanged_2(object sender, EventArgs e)
+        {
+            carregarCodigoProjeto();
+        }
+
+        private void comboColaborador_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            carregarCodigoColaborador();
         }
     }
 }

@@ -191,11 +191,13 @@
             // 
             // comboProjeto
             // 
+            this.comboProjeto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboProjeto.FormattingEnabled = true;
             this.comboProjeto.Location = new System.Drawing.Point(12, 40);
             this.comboProjeto.Name = "comboProjeto";
             this.comboProjeto.Size = new System.Drawing.Size(214, 21);
             this.comboProjeto.TabIndex = 2;
+            this.comboProjeto.SelectedIndexChanged += new System.EventHandler(this.comboProjeto_SelectedIndexChanged_2);
             // 
             // labProjeto
             // 
@@ -209,6 +211,7 @@
             // 
             // textCodigoProjeto
             // 
+            this.textCodigoProjeto.Enabled = false;
             this.textCodigoProjeto.Location = new System.Drawing.Point(245, 40);
             this.textCodigoProjeto.MaxLength = 8;
             this.textCodigoProjeto.Name = "textCodigoProjeto";
@@ -547,11 +550,13 @@
             // 
             // comboColaborador
             // 
+            this.comboColaborador.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboColaborador.FormattingEnabled = true;
             this.comboColaborador.Location = new System.Drawing.Point(442, 39);
             this.comboColaborador.Name = "comboColaborador";
             this.comboColaborador.Size = new System.Drawing.Size(138, 21);
             this.comboColaborador.TabIndex = 5;
+            this.comboColaborador.SelectedIndexChanged += new System.EventHandler(this.comboColaborador_SelectedIndexChanged_1);
             // 
             // butInserirAtividade
             // 
@@ -592,6 +597,7 @@
             // 
             // textCodColaborador
             // 
+            this.textCodColaborador.Enabled = false;
             this.textCodColaborador.Location = new System.Drawing.Point(595, 40);
             this.textCodColaborador.Name = "textCodColaborador";
             this.textCodColaborador.Size = new System.Drawing.Size(76, 20);
