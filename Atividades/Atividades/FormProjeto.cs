@@ -331,11 +331,5 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
             comboCidade.Items.Clear();
             carregarCidade();
         }
-
-        private void comboUF_TextUpdate(object sender, EventArgs e)
-        {
-            comboCidade.Items.Clear();
-            carregarCidade();
-        }
     }
     }

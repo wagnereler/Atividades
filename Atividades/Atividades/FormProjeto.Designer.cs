@@ -212,13 +212,13 @@
             // 
             // comboUF
             // 
+            this.comboUF.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboUF.FormattingEnabled = true;
             this.comboUF.Location = new System.Drawing.Point(14, 124);
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(72, 21);
             this.comboUF.TabIndex = 4;
             this.comboUF.SelectedIndexChanged += new System.EventHandler(this.comboUF_SelectedIndexChanged);
-            this.comboUF.TextUpdate += new System.EventHandler(this.comboUF_TextUpdate);
             // 
             // comboCidade
             // 
