@@ -193,21 +193,21 @@
             // pessoasToolStripMenuItem
             // 
             this.pessoasToolStripMenuItem.Name = "pessoasToolStripMenuItem";
-            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.pessoasToolStripMenuItem.Text = "&Pessoas";
             this.pessoasToolStripMenuItem.Click += new System.EventHandler(this.pessoasToolStripMenuItem_Click);
             // 
             // cidadeToolStripMenuItem
             // 
             this.cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
-            this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.cidadeToolStripMenuItem.Text = "&Cidade";
             this.cidadeToolStripMenuItem.Click += new System.EventHandler(this.cidadeToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.sairToolStripMenuItem.Text = "&Sair";
             // 
             // comboUF
@@ -217,6 +217,8 @@
             this.comboUF.Name = "comboUF";
             this.comboUF.Size = new System.Drawing.Size(72, 21);
             this.comboUF.TabIndex = 4;
+            this.comboUF.SelectedIndexChanged += new System.EventHandler(this.comboUF_SelectedIndexChanged);
+            this.comboUF.TextUpdate += new System.EventHandler(this.comboUF_TextUpdate);
             // 
             // comboCidade
             // 
@@ -225,8 +227,6 @@
             this.comboCidade.Name = "comboCidade";
             this.comboCidade.Size = new System.Drawing.Size(187, 21);
             this.comboCidade.TabIndex = 5;
-            this.comboCidade.Enter += new System.EventHandler(this.comboCidade_Enter);
-            this.comboCidade.Leave += new System.EventHandler(this.comboCidade_Leave);
             // 
             // textCodGerente
             // 

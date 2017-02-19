@@ -195,6 +195,9 @@ namespace Atividades
                     {
                         comboCidade.Items.Add(drComboCidade["nomeCidade"]);
 
+                        
+
+
                     }
                     conn.Close();
                 }
@@ -291,9 +294,7 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
 
         private void comboCidade_Enter(object sender, EventArgs e)
         {
-            comboCidade.Items.Clear();
-            comboCidade.Text = string.Empty;
-            carregarCidade();
+
         }
 
         private void cidadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -309,7 +310,7 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
 
         private void comboCidade_Leave(object sender, EventArgs e)
         {
-            carregarCodigoCidade();
+
         }
 
         private void comboGerente_SelectedIndexChanged(object sender, EventArgs e)
@@ -323,6 +324,18 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
             comboUF.Items.Clear();
             carregarComboGerente();
             carregarUF();
+        }
+
+        private void comboUF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboCidade.Items.Clear();
+            carregarCidade();
+        }
+
+        private void comboUF_TextUpdate(object sender, EventArgs e)
+        {
+            comboCidade.Items.Clear();
+            carregarCidade();
         }
     }
     }
