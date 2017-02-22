@@ -41,6 +41,7 @@
             // 
             // comboCadatroUF
             // 
+            this.comboCadatroUF.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboCadatroUF.FormattingEnabled = true;
             this.comboCadatroUF.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.comboCadatroUF.Location = new System.Drawing.Point(13, 50);

@@ -16,8 +16,10 @@ namespace Atividades
 {
     public partial class FormAtividades : Form
     {
+        private string b;
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
+        
 
         public FormAtividades()
         {
@@ -34,6 +36,36 @@ namespace Atividades
             comboColaborador.Items.Clear();
             carregarComboColaborador();
             carregarComboProjetos();
+
+        }
+
+
+
+        public string verificaRegistro(string b)
+        {
+            this.b = b;
+            try
+            {
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand("SELECT dataAtividade FROM tbAtividades WHERE dataAtividade='" + dateTimePicker1.Text.TrimStart() + "'", conn);
+                    //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    foreach (DataRow dr in dt.Rows)
+                    b = Convert.ToString(dr["dataAtividade"]);
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex);
+            }
+            return b;
         }
 
         public void carregarComboProjetos()
@@ -113,6 +145,9 @@ namespace Atividades
         }
         public void carregarCodigoColaborador()
         {
+
+
+
             try
             {
                 {
@@ -715,81 +750,174 @@ namespace Atividades
                     listaCampos += "O campo Observação deve ter no mínimo 5 caracteres.";
                 }
 
+                
+
 
                 //Se os campos obrigadóiro forem preenchido o formulário será gravado
                 if (listaCampos.Length == 0)
                 {
-                    SQLiteConnection conn = new SQLiteConnection(connectBase);
-                    if (conn.State == System.Data.ConnectionState.Closed)
+                    //Verifica Resgistro Duplicato
+                    
+
+                    if (verificaRegistro(b) == dateTimePicker1.Text.TrimStart())
                     {
-                        conn.Open();
-                    }
+                        DialogResult resultDuplicidadeData = MessageBox.Show(" Registro Duplicado.\n Deseja atualizar o registro?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                        if (resultDuplicidadeData == DialogResult.Yes)
+                        {
+                            SQLiteConnection conn = new SQLiteConnection(connectBase);
+                            if (conn.State == System.Data.ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            SQLiteCommand cmd = new SQLiteCommand("UPDATE tbAtividades SET codProjeto=@codProjeto, dataAtividade=@dataAtividade," +
+                            "entrada1=@entrada1, entrada2=@entrada2, entrada3=@entrada3, saida1=@saida1, saida2=@saida2, saida3=@saida3," +
+                            "codColaborador=@codColaborador, ObsAtividade=@ObsAtividade, totalMinutos=@totalMinutos, minutosExtras=@minutosExtras", conn);
 
-                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2," +
-                    "entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade, totalMinutos, minutosExtras)  VALUES(@codProjeto," +
-                    "@dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade, " +
-                    "@totalMinutos, @minutosExtras)", conn);
+                            cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
+                            cmd.Parameters.AddWithValue("dataAtividade", dateTimePicker1.Text.TrimStart());
+                            cmd.Parameters.AddWithValue("entrada1", maskEntrada1.Text.Trim());
+                            cmd.Parameters.AddWithValue("entrada2", maskSaida1.Text.Trim());
+                            cmd.Parameters.AddWithValue("entrada3", maskEntrada3.Text.Trim());
+                            cmd.Parameters.AddWithValue("saida1", maskSaida1.Text.Trim());
+                            cmd.Parameters.AddWithValue("saida2", maskSaida2.Text.Trim());
+                            cmd.Parameters.AddWithValue("saida3", maskSaida3.Text.Trim());
+                            cmd.Parameters.AddWithValue("codColaborador", textCodColaborador.Text.Trim());
+                            cmd.Parameters.AddWithValue("ObsAtividade", TextObservacao.Text.Trim());
+                            //verificar o que fazer para identificar o domingo, pois atualmente o código não irá gerar horas trabalhadas no domingo como extra
+
+                            if (DiaSemana == "Sunday")
+                            {
+                                cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
+                                cmd.Parameters.AddWithValue("minutosExtras", (totalMinutos * 2));
+                            }
+                            if (DiaSemana == "Saturday")
+                            {
+                                cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
+                                cmd.Parameters.AddWithValue("minutosExtras", totalMinutos);
+                            }
+                            else
+                            {
+                                if (totalMinutos > 480)
+                                {
+                                    cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
+                                    cmd.Parameters.AddWithValue("minutosExtras", (totalMinutos - 480));
+                                }
+                                else
+                                {
+                                    cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
+                                    cmd.Parameters.AddWithValue("minutosExtras", 0);
+                                }
+                            }
 
 
-                    cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
-                    cmd.Parameters.AddWithValue("dataAtividade", dateTimePicker1.Value);
-                    cmd.Parameters.AddWithValue("entrada1", maskEntrada1.Text.Trim());
-                    cmd.Parameters.AddWithValue("entrada2", maskSaida1.Text.Trim());
-                    cmd.Parameters.AddWithValue("entrada3", maskEntrada3.Text.Trim());
-                    cmd.Parameters.AddWithValue("saida1", maskSaida1.Text.Trim());
-                    cmd.Parameters.AddWithValue("saida2", maskSaida2.Text.Trim());
-                    cmd.Parameters.AddWithValue("saida3", maskSaida3.Text.Trim());
-                    cmd.Parameters.AddWithValue("codColaborador", textCodColaborador.Text.Trim());
-                    cmd.Parameters.AddWithValue("ObsAtividade", TextObservacao.Text.Trim());
-                    //verificar o que fazer para identificar o domingo, pois atualmente o código não irá gerar horas trabalhadas no domingo como extra
+                            try
+                            {
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Registro Salvo com Sucesso!");
+                                statusAtividades.Text = "Status: Registro Salvo com Sucesso!";
+                                maskEntrada1.Text = string.Empty;
+                                maskSaida1.Text = string.Empty;
+                                maskEntrada3.Text = string.Empty;
+                                maskSaida1.Text = string.Empty;
+                                maskEntrada2.Text = string.Empty;
+                                maskSaida2.Text = string.Empty;
+                                maskSaida3.Text = string.Empty;
+                                TextObservacao.Text = string.Empty;
+                                conn.Close();
 
-                    if (DiaSemana == "Sunday")
-                    {
-                        cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
-                        cmd.Parameters.AddWithValue("minutosExtras", (totalMinutos * 2));
-                    }
-                    if (DiaSemana == "Saturday")
-                    {
-                        cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
-                        cmd.Parameters.AddWithValue("minutosExtras", totalMinutos);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(Convert.ToString("Erro ao salvar arquivo???: " + ex.Message));
+                            }
+
+
+                        }
+
+                        else
+                        {
+                            //RETORNAR AO FORMULÁRIO
+                        }
                     }
                     else
                     {
-                        if (totalMinutos > 480)
+                        SQLiteConnection conn = new SQLiteConnection(connectBase);
+                        if (conn.State == System.Data.ConnectionState.Closed)
+                        {
+                            conn.Open();
+                        }
+
+
+                        SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2," +
+                        "entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade, totalMinutos, minutosExtras)  VALUES(@codProjeto," +
+                        "@dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade, " +
+                        "@totalMinutos, @minutosExtras)", conn);
+
+
+                        cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
+                        cmd.Parameters.AddWithValue("dataAtividade", dateTimePicker1.Text.TrimStart());
+                        cmd.Parameters.AddWithValue("entrada1", maskEntrada1.Text.Trim());
+                        cmd.Parameters.AddWithValue("entrada2", maskSaida1.Text.Trim());
+                        cmd.Parameters.AddWithValue("entrada3", maskEntrada3.Text.Trim());
+                        cmd.Parameters.AddWithValue("saida1", maskSaida1.Text.Trim());
+                        cmd.Parameters.AddWithValue("saida2", maskSaida2.Text.Trim());
+                        cmd.Parameters.AddWithValue("saida3", maskSaida3.Text.Trim());
+                        cmd.Parameters.AddWithValue("codColaborador", textCodColaborador.Text.Trim());
+                        cmd.Parameters.AddWithValue("ObsAtividade", TextObservacao.Text.Trim());
+                        //verificar o que fazer para identificar o domingo, pois atualmente o código não irá gerar horas trabalhadas no domingo como extra
+
+                        if (DiaSemana == "Sunday")
                         {
                             cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
-                            cmd.Parameters.AddWithValue("minutosExtras", (totalMinutos - 480));
+                            cmd.Parameters.AddWithValue("minutosExtras", (totalMinutos * 2));
+                        }
+                        if (DiaSemana == "Saturday")
+                        {
+                            cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
+                            cmd.Parameters.AddWithValue("minutosExtras", totalMinutos);
                         }
                         else
                         {
-                            cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
-                            cmd.Parameters.AddWithValue("minutosExtras", 0);
+                            if (totalMinutos > 480)
+                            {
+                                cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
+                                cmd.Parameters.AddWithValue("minutosExtras", (totalMinutos - 480));
+                            }
+                            else
+                            {
+                                cmd.Parameters.AddWithValue("totalMinutos", totalMinutos);
+                                cmd.Parameters.AddWithValue("minutosExtras", 0);
+                            }
                         }
+
+
+
+
+
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Registro Salvo com Sucesso!");
+                            statusAtividades.Text = "Status: Registro Salvo com Sucesso!";
+                            maskEntrada1.Text = string.Empty;
+                            maskSaida1.Text = string.Empty;
+                            maskEntrada3.Text = string.Empty;
+                            maskSaida1.Text = string.Empty;
+                            maskEntrada2.Text = string.Empty;
+                            maskSaida2.Text = string.Empty;
+                            maskSaida3.Text = string.Empty;
+                            TextObservacao.Text = string.Empty;
+                            conn.Close();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Convert.ToString("Erro ao salvar arquivo: " + ex.Message));
+                        }
+
                     }
 
 
-
-
-                    try
-                    {
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Registro Salvo com Sucesso!");
-                        statusAtividades.Text = "Status: Registro Salvo com Sucesso!";
-                        maskEntrada1.Text = string.Empty;
-                        maskSaida1.Text = string.Empty;
-                        maskEntrada3.Text = string.Empty;
-                        maskSaida1.Text = string.Empty;
-                        maskEntrada2.Text = string.Empty;
-                        maskSaida2.Text = string.Empty;
-                        maskSaida3.Text = string.Empty;
-                        TextObservacao.Text = string.Empty;
-                        conn.Close();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao salvar arquivo: " + ex.Message);
-                    }
 
                 }
                 else
@@ -913,6 +1041,12 @@ namespace Atividades
         private void comboColaborador_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             carregarCodigoColaborador();
+        }
+
+        private void cidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCidades Cidades = new FormCidades();
+            Cidades.ShowDialog();
         }
     }
 }

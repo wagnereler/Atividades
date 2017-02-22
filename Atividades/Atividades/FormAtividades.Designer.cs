@@ -91,6 +91,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -119,6 +120,7 @@
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.projetoToolStripMenuItem,
             this.colaboradorToolStripMenuItem,
+            this.cidadesToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -127,21 +129,21 @@
             // projetoToolStripMenuItem
             // 
             this.projetoToolStripMenuItem.Name = "projetoToolStripMenuItem";
-            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.projetoToolStripMenuItem.Text = "&Projeto";
             this.projetoToolStripMenuItem.Click += new System.EventHandler(this.projetoToolStripMenuItem_Click);
             // 
             // colaboradorToolStripMenuItem
             // 
             this.colaboradorToolStripMenuItem.Name = "colaboradorToolStripMenuItem";
-            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.colaboradorToolStripMenuItem.Text = "P&essoas";
             this.colaboradorToolStripMenuItem.Click += new System.EventHandler(this.colaboradorToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sairToolStripMenuItem.Text = "&Sair";
             // 
             // relatóriosToolStripMenuItem
@@ -564,7 +566,7 @@
             this.butInserirAtividade.Name = "butInserirAtividade";
             this.butInserirAtividade.Size = new System.Drawing.Size(75, 23);
             this.butInserirAtividade.TabIndex = 17;
-            this.butInserirAtividade.Text = "Gravar";
+            this.butInserirAtividade.Text = "Inserir";
             this.butInserirAtividade.UseVisualStyleBackColor = true;
             this.butInserirAtividade.Click += new System.EventHandler(this.butInserirAtividade_Click);
             // 
@@ -629,6 +631,13 @@
             // dataConnectBindingSource
             // 
             this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
+            // 
+            // cidadesToolStripMenuItem
+            // 
+            this.cidadesToolStripMenuItem.Name = "cidadesToolStripMenuItem";
+            this.cidadesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cidadesToolStripMenuItem.Text = "&Cidades";
+            this.cidadesToolStripMenuItem.Click += new System.EventHandler(this.cidadesToolStripMenuItem_Click);
             // 
             // FormAtividades
             // 
@@ -742,6 +751,7 @@
         private System.Windows.Forms.BindingSource dataConnectBindingSource1;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem cidadesToolStripMenuItem;
     }
 }
 
