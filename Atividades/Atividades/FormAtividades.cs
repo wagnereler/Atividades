@@ -821,7 +821,7 @@ namespace Atividades
                             try
                             {
                                 cmd.ExecuteNonQuery();
-                                MessageBox.Show("Registro Atualizado com Sucesso!", "Informativo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Registro Atualizado com Sucesso!", "Operação Realizada.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 maskEntrada1.Text = string.Empty;
                                 maskSaida1.Text = string.Empty;
                                 maskEntrada3.Text = string.Empty;
@@ -904,7 +904,7 @@ namespace Atividades
                         try
                         {
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Registro Salvo com Sucesso!", "Informativo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Registro Salvo com Sucesso!", "Operação Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             statusAtividades.Text = "Status: Registro Salvo com Sucesso!";
                             maskEntrada1.Text = string.Empty;
                             maskSaida1.Text = string.Empty;
