@@ -63,7 +63,7 @@ namespace Atividades
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro: " + ex);
+                MessageBox.Show("Erro: " + ex, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return b;
         }
@@ -140,7 +140,7 @@ namespace Atividades
             }
             catch (Exception)
             {
-                MessageBox.Show("Gerente não selecionado \n ");
+                MessageBox.Show("Selecione o gerente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
         public void carregarCodigoColaborador()
@@ -164,7 +164,7 @@ namespace Atividades
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Err0 " + ex.Message);
+                MessageBox.Show("Erro ao acessar dados " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -241,24 +241,21 @@ namespace Atividades
 
                     if (Convert.ToInt32(a) > 23)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskEntrada1.Focus();
                     }
                     if (Convert.ToInt32(b) > 59)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskEntrada1.Focus();
                     }
                     //calculando valor em minutos
                     int minutosEntrada1 = ((Convert.ToInt32(a) * 60) + Convert.ToInt32(b));
 
-
-
-
                 }
                 catch
                 {
-                    MessageBox.Show("Atenção! Só é permitido caracteres numéricos. Não utilize ':' ");
+                    MessageBox.Show("Só é permitido caracteres numéricos. Não utilize ':' ", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     maskEntrada1.Text = String.Empty;
                     maskEntrada1.Focus();
                 }
@@ -315,12 +312,12 @@ namespace Atividades
 
                     if (Convert.ToInt32(a) > 23)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskEntrada2.Focus();
                     }
                     if (Convert.ToInt32(b) > 59)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskEntrada2.Focus();
                     }
                     //calculando valor em minutos
@@ -331,7 +328,8 @@ namespace Atividades
                     int minutosEntrada2 = ((Convert.ToInt32(a) * 60) + Convert.ToInt32(b));
                     if (minutosEntrada2 <= minutosSaida1)
                     {
-                        MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro");
+                        MessageBox.Show("O valor informado deve ser maior que o valor do campo anteriro",
+                            "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskEntrada2.Focus();
                     }
 
@@ -339,7 +337,8 @@ namespace Atividades
                 }
                 catch
                 {
-                    MessageBox.Show("Atenção! Só é permitido caracteres numéricos. Não utilize ':' ");
+                    MessageBox.Show("Só é permitido caracteres numéricos. Não utilize ':'", "Atenção!", MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
                     maskEntrada2.Text = String.Empty;
                     maskEntrada2.Focus();
                 }
@@ -396,12 +395,12 @@ namespace Atividades
 
                     if (Convert.ToInt32(a) > 23)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskEntrada3.Focus();
                     }
                     if (Convert.ToInt32(b) > 59)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskEntrada3.Focus();
                     }
                     //calculando valor em minutos
@@ -412,14 +411,16 @@ namespace Atividades
                     int minutosEntrada3 = ((Convert.ToInt32(a) * 60) + Convert.ToInt32(b));
                     if (minutosEntrada3 <= minutosSaida2)
                     {
-                        MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro");
+                        MessageBox.Show("O valor informado deve ser maior que o valor do campo anteriro",
+                            "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskEntrada3.Focus();
                     }
 
                 }
                 catch
                 {
-                    MessageBox.Show("Atenção! Só é permitido caracteres numéricos. Não utilize ':' ");
+                    MessageBox.Show("Só é permitido caracteres numéricos. Não utilize ':' ",
+                        "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     maskEntrada3.Text = String.Empty;
                     maskEntrada3.Focus();
                 }
@@ -475,12 +476,12 @@ namespace Atividades
 
                     if (Convert.ToInt32(a) > 23)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskSaida1.Focus();
                     }
                     if (Convert.ToInt32(b) > 59)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskSaida1.Focus();
                     }
                     //calculando valor em minutos
@@ -491,14 +492,16 @@ namespace Atividades
                     int minutosSaida1 = ((Convert.ToInt32(a) * 60) + Convert.ToInt32(b));
                     if (minutosSaida1 <= minutosEntrada1)
                     {
-                        MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro");
+                        MessageBox.Show("O valor informado deve ser maior que o valor do campo anteriro",
+                            "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskSaida1.Focus();
                     }
 
                 }
                 catch
                 {
-                    MessageBox.Show("Atenção! Só é permitido caracteres numéricos. Não utilize ':' ");
+                    MessageBox.Show("Só é permitido caracteres numéricos. Não utilize ':' ",
+                        "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     maskSaida1.Text = String.Empty;
                     maskSaida1.Focus();
                 }
@@ -555,12 +558,12 @@ namespace Atividades
 
                     if (Convert.ToInt32(a) > 23)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskSaida2.Focus();
                     }
                     if (Convert.ToInt32(b) > 59)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskSaida2.Focus();
                     }
                     //calculando valor em minutos
@@ -571,14 +574,16 @@ namespace Atividades
                     int minutosSaida2 = ((Convert.ToInt32(a) * 60) + Convert.ToInt32(b));
                     if (minutosSaida2 <= minutosEntrada2)
                     {
-                        MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro");
+                        MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro",
+                            "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskSaida2.Focus();
                     }
 
                 }
                 catch
                 {
-                    MessageBox.Show("Atenção! Só é permitido caracteres numéricos. Não utilize ':' ");
+                    MessageBox.Show("Atenção! Só é permitido caracteres numéricos. Não utilize ':' ",
+                        "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     maskSaida2.Text = String.Empty;
                     maskSaida2.Focus();
                 }
@@ -635,12 +640,12 @@ namespace Atividades
 
                     if (Convert.ToInt32(a) > 23)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("Atenção! O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskSaida3.Focus();
                     }
                     if (Convert.ToInt32(b) > 59)
                     {
-                        MessageBox.Show("Atenção! O  formato da hora está incorreto.");
+                        MessageBox.Show("Atenção! O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskSaida3.Focus();
                     }
                     //calculando valor em minutos
@@ -651,14 +656,16 @@ namespace Atividades
                     int minutosSaida3 = ((Convert.ToInt32(a) * 60) + Convert.ToInt32(b));
                     if (minutosSaida3 <= minutosEntrada3)
                     {
-                        MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro");
+                        MessageBox.Show("Atenção! \n O valor informado deve ser maior que o valor do campo anteriro",
+                            "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         maskSaida3.Focus();
                     }
 
                 }
                 catch
                 {
-                    MessageBox.Show("Atenção! Só é permitido caracteres numéricos. Não utilize ':' ");
+                    MessageBox.Show("Atenção! Só é permitido caracteres numéricos. Não utilize ':' ",
+                        "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     maskSaida3.Text = String.Empty;
                     maskSaida3.Focus();
                 }
@@ -761,7 +768,8 @@ namespace Atividades
 
                     if (verificaRegistro(b) == dateTimePicker1.Text.TrimStart())
                     {
-                        DialogResult resultDuplicidadeData = MessageBox.Show(" Registro Duplicado.\n Deseja atualizar o registro?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                        DialogResult resultDuplicidadeData = MessageBox.Show(" Registro Duplicado.\n Deseja atualizar o registro?", 
+                            "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                         if (resultDuplicidadeData == DialogResult.Yes)
                         {
                             SQLiteConnection conn = new SQLiteConnection(connectBase);
@@ -813,7 +821,7 @@ namespace Atividades
                             try
                             {
                                 cmd.ExecuteNonQuery();
-                                MessageBox.Show("Registro Atualizado com Sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Registro Atualizado com Sucesso!", "Informativo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 maskEntrada1.Text = string.Empty;
                                 maskSaida1.Text = string.Empty;
                                 maskEntrada3.Text = string.Empty;
@@ -827,7 +835,7 @@ namespace Atividades
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show(Convert.ToString("Erro ao salvar arquivo???: " + ex.Message));
+                                MessageBox.Show("Erro ao salvar arquivo: " + ex.Message, "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
 
@@ -896,7 +904,7 @@ namespace Atividades
                         try
                         {
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Registro Salvo com Sucesso!");
+                            MessageBox.Show("Registro Salvo com Sucesso!", "Informativo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             statusAtividades.Text = "Status: Registro Salvo com Sucesso!";
                             maskEntrada1.Text = string.Empty;
                             maskSaida1.Text = string.Empty;
@@ -911,7 +919,8 @@ namespace Atividades
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(Convert.ToString("Erro ao salvar arquivo: " + ex.Message));
+                            MessageBox.Show("Erro ao salvar arquivo: " + ex.Message,
+                                "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -921,14 +930,16 @@ namespace Atividades
                 }
                 else
                 {
-                    MessageBox.Show("Atenção! Verifique os seguintes campos:\n\n" + listaCampos);
+                    MessageBox.Show("Verifique os seguintes campos:\n\n" + listaCampos,
+                        "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
 
                 }
             }
             catch
             {
-                MessageBox.Show("Atenção! Verifique se os campos ENTRADA e Saída forma preenchidos.");
+                MessageBox.Show("Verifique se os campos ENTRADA e Saída forma preenchidos.",
+                    "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
 
