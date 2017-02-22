@@ -50,7 +50,11 @@ namespace Atividades
                     SQLiteConnection conn = new SQLiteConnection(connectBase);
                     if (conn.State == ConnectionState.Closed)
                         conn.Open();
-                    SQLiteCommand cmd = new SQLiteCommand("SELECT dataAtividade FROM tbAtividades WHERE dataAtividade='" + dateTimePicker1.Text.TrimStart() + "'", conn);
+                    SQLiteCommand cmd = new SQLiteCommand(
+                        @"SELECT dataAtividade 
+                        FROM tbAtividades 
+                        WHERE dataAtividade='" + dateTimePicker1.Text.TrimStart() + @"'
+                        AND codProjeto =" + textCodigoProjeto.Text.Trim() + "'", conn);
                     //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
                     SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -855,10 +859,35 @@ namespace Atividades
                         }
 
 
-                        SQLiteCommand cmd = new SQLiteCommand("INSERT INTO tbAtividades(codProjeto, dataAtividade, entrada1, entrada2," +
-                        "entrada3, saida1, saida2, saida3, codColaborador, ObsAtividade, totalMinutos, minutosExtras)  VALUES(@codProjeto," +
-                        "@dataAtividade, @entrada1, @entrada2, @entrada3, @saida1, @saida2, @saida3, @codColaborador, @ObsAtividade, " +
-                        "@totalMinutos, @minutosExtras)", conn);
+                        SQLiteCommand cmd = new SQLiteCommand(
+                            @"INSERT INTO tbAtividades(
+                                codProjeto
+                                ,dataAtividade
+                                ,entrada1
+                                ,entrada2
+                                ,entrada3
+                                ,saida1
+                                ,saida2
+                                ,saida3
+                                ,codGerente
+                                ,codColaborador
+                                ,ObsAtividade
+                                ,totalMinutos
+                                ,minutosExtras) 
+                             VALUES(
+                                @codProjeto
+                                ,@dataAtividade
+                                ,@entrada1
+                                ,@entrada2
+                                ,@entrada3
+                                ,@saida1
+                                ,@saida2
+                                ,@saida3
+                                ,(SELECT codGerente FROM tbProjetos WHERE codProjeto = @codProjeto)
+                                ,@codColaborador
+                                ,@ObsAtividade 
+                                ,@totalMinutos
+                                ,@minutosExtras)", conn);
 
 
                         cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
@@ -869,6 +898,7 @@ namespace Atividades
                         cmd.Parameters.AddWithValue("saida1", maskSaida1.Text.Trim());
                         cmd.Parameters.AddWithValue("saida2", maskSaida2.Text.Trim());
                         cmd.Parameters.AddWithValue("saida3", maskSaida3.Text.Trim());
+                        cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
                         cmd.Parameters.AddWithValue("codColaborador", textCodColaborador.Text.Trim());
                         cmd.Parameters.AddWithValue("ObsAtividade", TextObservacao.Text.Trim());
                         //verificar o que fazer para identificar o domingo, pois atualmente o código não irá gerar horas trabalhadas no domingo como extra
@@ -920,7 +950,7 @@ namespace Atividades
                         catch (Exception ex)
                         {
                             MessageBox.Show("Erro ao salvar arquivo: " + ex.Message,
-                                "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -975,15 +1005,35 @@ namespace Atividades
 
         private void carregarGridAtividades()
         {
-            /*
+            
             SQLiteConnection conn = new SQLiteConnection(connectBase);
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
             SQLiteCommand cmd = new SQLiteCommand(
+                @"SELECT at.DataAtividade
+                       ,at.codAtividade
+                       ,at.entrada1
+                       ,at.entrada1
+                       ,at.saida1
+                       ,at.entrada2
+                       ,at.saida2
+                       ,at.entrada3
+                       ,at.saida3
+                       ,at.totalMinutos
+                       ,at.minutosExtras
+                       ,at.codGerente
+                       ,(SELECT NomePessoa FROM tbPessoas WHERE codPessoa = at.codGerente) NomeGerente
+                       ,at.codColaborador
+                       ,(SELECT NomePessoa FROM tbPessoas WHERE codPessoa = at.codColaborador) NomeUsuario
+                       ,at.codProjeto
+                       ,pro.nomeProjeto
+                       ,at.obsAtividade
 
-                "",
+                FROM tbAtividades at
+                     , tbProjetos pro
+     
+                WHERE pro.codProjeto = at.codProjeto",conn);
 
-                conn);*/
         }
 
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
