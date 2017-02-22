@@ -776,7 +776,7 @@ namespace Atividades
                             cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
                             cmd.Parameters.AddWithValue("dataAtividade", dateTimePicker1.Text.TrimStart());
                             cmd.Parameters.AddWithValue("entrada1", maskEntrada1.Text.Trim());
-                            cmd.Parameters.AddWithValue("entrada2", maskSaida1.Text.Trim());
+                            cmd.Parameters.AddWithValue("entrada2", maskEntrada2.Text.Trim());
                             cmd.Parameters.AddWithValue("entrada3", maskEntrada3.Text.Trim());
                             cmd.Parameters.AddWithValue("saida1", maskSaida1.Text.Trim());
                             cmd.Parameters.AddWithValue("saida2", maskSaida2.Text.Trim());
@@ -813,8 +813,7 @@ namespace Atividades
                             try
                             {
                                 cmd.ExecuteNonQuery();
-                                MessageBox.Show("Registro Salvo com Sucesso!");
-                                statusAtividades.Text = "Status: Registro Salvo com Sucesso!";
+                                MessageBox.Show("Registro Atualizado com Sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 maskEntrada1.Text = string.Empty;
                                 maskSaida1.Text = string.Empty;
                                 maskEntrada3.Text = string.Empty;
@@ -857,7 +856,7 @@ namespace Atividades
                         cmd.Parameters.AddWithValue("codProjeto", textCodigoProjeto.Text.Trim());
                         cmd.Parameters.AddWithValue("dataAtividade", dateTimePicker1.Text.TrimStart());
                         cmd.Parameters.AddWithValue("entrada1", maskEntrada1.Text.Trim());
-                        cmd.Parameters.AddWithValue("entrada2", maskSaida1.Text.Trim());
+                        cmd.Parameters.AddWithValue("entrada2", maskEntrada2.Text.Trim());
                         cmd.Parameters.AddWithValue("entrada3", maskEntrada3.Text.Trim());
                         cmd.Parameters.AddWithValue("saida1", maskSaida1.Text.Trim());
                         cmd.Parameters.AddWithValue("saida2", maskSaida2.Text.Trim());
