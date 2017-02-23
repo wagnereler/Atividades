@@ -119,6 +119,12 @@
     <Compile Include="FormCidades.Designer.cs">
       <DependentUpon>FormCidades.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDeslocamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDeslocamento.Designer.cs">
+      <DependentUpon>FormDeslocamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProjeto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCidades.resx">
       <DependentUpon>FormCidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDeslocamento.resx">
+      <DependentUpon>FormDeslocamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPessoas.resx">
       <DependentUpon>FormPessoas.cs</DependentUpon>

@@ -34,9 +34,12 @@
             this.Inserir = new System.Windows.Forms.Button();
             this.Atualizar = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridCidades = new System.Windows.Forms.DataGridView();
+            this.codCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codUf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCidades)).BeginInit();
             this.SuspendLayout();
             // 
             // comboCadatroUF
@@ -96,14 +99,6 @@
             this.Excluir.Text = "Excluir";
             this.Excluir.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 129);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(377, 120);
-            this.dataGridView1.TabIndex = 6;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -113,13 +108,52 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Cidade:";
             // 
+            // dataGridCidades
+            // 
+            this.dataGridCidades.AllowUserToAddRows = false;
+            this.dataGridCidades.AllowUserToDeleteRows = false;
+            this.dataGridCidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codCidade,
+            this.codUf,
+            this.nomeCidade});
+            this.dataGridCidades.Location = new System.Drawing.Point(16, 128);
+            this.dataGridCidades.Name = "dataGridCidades";
+            this.dataGridCidades.ReadOnly = true;
+            this.dataGridCidades.Size = new System.Drawing.Size(374, 121);
+            this.dataGridCidades.TabIndex = 8;
+            // 
+            // codCidade
+            // 
+            this.codCidade.DataPropertyName = "codCidade";
+            this.codCidade.HeaderText = "Cod Cidade";
+            this.codCidade.Name = "codCidade";
+            this.codCidade.ReadOnly = true;
+            this.codCidade.Width = 80;
+            // 
+            // codUf
+            // 
+            this.codUf.DataPropertyName = "codUf";
+            this.codUf.HeaderText = "UF";
+            this.codUf.Name = "codUf";
+            this.codUf.ReadOnly = true;
+            this.codUf.Width = 70;
+            // 
+            // nomeCidade
+            // 
+            this.nomeCidade.DataPropertyName = "nomeCidade";
+            this.nomeCidade.HeaderText = "Cidade";
+            this.nomeCidade.Name = "nomeCidade";
+            this.nomeCidade.ReadOnly = true;
+            this.nomeCidade.Width = 163;
+            // 
             // FormCidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 261);
+            this.Controls.Add(this.dataGridCidades);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.Atualizar);
             this.Controls.Add(this.Inserir);
@@ -129,7 +163,7 @@
             this.Name = "FormCidades";
             this.Text = "FormCidades";
             this.Load += new System.EventHandler(this.FormCidades_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCidades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,7 +177,10 @@
         private System.Windows.Forms.Button Inserir;
         private System.Windows.Forms.Button Atualizar;
         private System.Windows.Forms.Button Excluir;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridCidades;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codCidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codUf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeCidade;
     }
 }

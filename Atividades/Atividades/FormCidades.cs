@@ -28,7 +28,49 @@ namespace Atividades
         private void FormCidades_Load(object sender, EventArgs e)
         {
             carregarUF();
+            carregarGridCidades();
+
         }
+
+        public class gridCidades
+        {
+            public int codCidade { get; set; }
+            public string codUf { get; set; }
+            public string nomeCidade { get; set; }
+        }
+
+
+        private void carregarGridCidades()
+        {
+
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand(
+                @"SELECT codCidade
+                       ,codUf
+                       ,nomeCidade   
+                FROM tbCidades", conn);
+
+            SQLiteDataReader dr = cmd.ExecuteReader();
+            List<gridCidades> listGridCidades = new List<gridCidades>();
+            while (dr.Read())
+            {
+                listGridCidades.Add(new gridCidades
+                {
+                    codCidade = Convert.ToInt32(dr["codCidade"]),
+                    codUf = Convert.ToString(dr["codUf"]),
+                    nomeCidade = Convert.ToString(dr["nomeCidade"])
+                });
+            }
+            dataGridCidades.DataSource = listGridCidades;
+
+        }
+
+
+
+
+
         public void carregarUF()
         {
             try
@@ -89,6 +131,7 @@ namespace Atividades
                         cmd.ExecuteNonQuery();
                         conn.Close();
                         textCadastroCidade.Text = string.Empty;
+                        carregarGridCidades();
 
 
                     }
