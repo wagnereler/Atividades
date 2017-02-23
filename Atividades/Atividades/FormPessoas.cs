@@ -26,6 +26,44 @@ namespace Atividades
             
         }
 
+        public class gridPessoas
+        {
+            public string NomePessoa { get; set; }
+            public bool Gerente { get; set; }
+            public bool colaborador { get; set; }
+        }
+
+
+        private void carregarGridPessoass()
+        {
+
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand(
+                @"SELECT NomePessoa
+                       ,Gerente
+                       ,colaborador   
+                FROM tbPessoas", conn);
+
+            SQLiteDataReader dr = cmd.ExecuteReader();
+            List<gridPessoas> listGridPessoas = new List<gridPessoas>();
+            while (dr.Read())
+            {
+                listGridPessoas.Add(new gridPessoas
+                {
+                    NomePessoa = Convert.ToString(dr["NomePessoa"]),
+                    Gerente = Convert.ToBoolean(dr["Gerente"]),
+                    colaborador = Convert.ToBoolean(dr["colaborador"])
+                });
+            }
+            dataGridPessoas.DataSource = listGridPessoas;
+
+        }
+
+
+
+
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
 
@@ -80,7 +118,9 @@ namespace Atividades
                     textNomePessoa.Clear();
                     radioGerente.Checked = false;
                     radioUsuarioPadrao.Checked = false;
- 
+                    carregarGridPessoass();
+
+
                 }
                 catch (Exception ex)
                 {
@@ -91,7 +131,7 @@ namespace Atividades
 
         private void FormPessoas_Load(object sender, EventArgs e)
         {
-
+            carregarGridPessoass();
         }
     }
 
