@@ -835,6 +835,7 @@ namespace Atividades
                                 maskSaida3.Text = string.Empty;
                                 TextObservacao.Text = string.Empty;
                                 conn.Close();
+                                carregarGridAtividades();
 
                             }
                             catch (Exception ex)
@@ -945,6 +946,7 @@ namespace Atividades
                             maskSaida3.Text = string.Empty;
                             TextObservacao.Text = string.Empty;
                             conn.Close();
+                            carregarGridAtividades();
 
                         }
                         catch (Exception ex)
