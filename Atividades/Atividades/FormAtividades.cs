@@ -51,10 +51,9 @@ namespace Atividades
                     if (conn.State == ConnectionState.Closed)
                         conn.Open();
                     SQLiteCommand cmd = new SQLiteCommand(
-                        @"SELECT dataAtividade 
-                        FROM tbAtividades 
-                        WHERE dataAtividade='" + dateTimePicker1.Text.TrimStart() + @"'
-                        AND codProjeto =" + textCodigoProjeto.Text.Trim() + "'", conn);
+                    "SELECT dataAtividade FROM tbAtividades WHERE dataAtividade = '" + dateTimePicker1.Text.TrimStart() +"'" + 
+                    "AND codProjeto = '" + textCodigoProjeto.Text.Trim() + "'" + 
+                    "AND codColaborador = '" + textCodColaborador.Text.Trim() + "'" , conn);
                     //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
                     SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
                     DataTable dt = new DataTable();

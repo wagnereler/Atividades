@@ -65,17 +65,6 @@
             this.labEntrada3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.labColaborador = new System.Windows.Forms.Label();
-            this.comboColaborador = new System.Windows.Forms.ComboBox();
-            this.butInserirAtividade = new System.Windows.Forms.Button();
-            this.butExcluirAtividade = new System.Windows.Forms.Button();
-            this.TextObservacao = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textCodColaborador = new System.Windows.Forms.TextBox();
-            this.butAtualizar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Entrada1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +82,20 @@
             this.CodProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.obsAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labColaborador = new System.Windows.Forms.Label();
+            this.comboColaborador = new System.Windows.Forms.ComboBox();
+            this.butInserirAtividade = new System.Windows.Forms.Button();
+            this.butExcluirAtividade = new System.Windows.Forms.Button();
+            this.TextObservacao = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textCodColaborador = new System.Windows.Forms.TextBox();
+            this.butAtualizar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.baixasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.baixarFolgasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transladosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -107,6 +110,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastroToolStripMenuItem,
+            this.baixasToolStripMenuItem,
             this.relatóriosToolStripMenuItem,
             this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -119,6 +123,7 @@
             // cadastroToolStripMenuItem
             // 
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.transladosToolStripMenuItem,
             this.projetoToolStripMenuItem,
             this.colaboradorToolStripMenuItem,
             this.cidadesToolStripMenuItem,
@@ -130,28 +135,28 @@
             // projetoToolStripMenuItem
             // 
             this.projetoToolStripMenuItem.Name = "projetoToolStripMenuItem";
-            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.projetoToolStripMenuItem.Text = "&Projeto";
             this.projetoToolStripMenuItem.Click += new System.EventHandler(this.projetoToolStripMenuItem_Click);
             // 
             // colaboradorToolStripMenuItem
             // 
             this.colaboradorToolStripMenuItem.Name = "colaboradorToolStripMenuItem";
-            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.colaboradorToolStripMenuItem.Text = "P&essoas";
             this.colaboradorToolStripMenuItem.Click += new System.EventHandler(this.colaboradorToolStripMenuItem_Click);
             // 
             // cidadesToolStripMenuItem
             // 
             this.cidadesToolStripMenuItem.Name = "cidadesToolStripMenuItem";
-            this.cidadesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.cidadesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cidadesToolStripMenuItem.Text = "&Cidades";
             this.cidadesToolStripMenuItem.Click += new System.EventHandler(this.cidadesToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sairToolStripMenuItem.Text = "&Sair";
             // 
             // relatóriosToolStripMenuItem
@@ -179,7 +184,7 @@
             // sobreToolStripMenuItem
             // 
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sobreToolStripMenuItem.Text = "&Sobre";
             // 
             // statusStrip1
@@ -454,97 +459,6 @@
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // labColaborador
-            // 
-            this.labColaborador.AutoSize = true;
-            this.labColaborador.Location = new System.Drawing.Point(454, 24);
-            this.labColaborador.Name = "labColaborador";
-            this.labColaborador.Size = new System.Drawing.Size(126, 13);
-            this.labColaborador.TabIndex = 16;
-            this.labColaborador.Text = "Selecione o Colaborador:";
-            // 
-            // comboColaborador
-            // 
-            this.comboColaborador.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboColaborador.FormattingEnabled = true;
-            this.comboColaborador.Location = new System.Drawing.Point(442, 39);
-            this.comboColaborador.Name = "comboColaborador";
-            this.comboColaborador.Size = new System.Drawing.Size(138, 21);
-            this.comboColaborador.TabIndex = 5;
-            this.comboColaborador.SelectedIndexChanged += new System.EventHandler(this.comboColaborador_SelectedIndexChanged_1);
-            // 
-            // butInserirAtividade
-            // 
-            this.butInserirAtividade.Location = new System.Drawing.Point(595, 73);
-            this.butInserirAtividade.Name = "butInserirAtividade";
-            this.butInserirAtividade.Size = new System.Drawing.Size(75, 23);
-            this.butInserirAtividade.TabIndex = 17;
-            this.butInserirAtividade.Text = "Inserir";
-            this.butInserirAtividade.UseVisualStyleBackColor = true;
-            this.butInserirAtividade.Click += new System.EventHandler(this.butInserirAtividade_Click);
-            // 
-            // butExcluirAtividade
-            // 
-            this.butExcluirAtividade.Location = new System.Drawing.Point(596, 109);
-            this.butExcluirAtividade.Name = "butExcluirAtividade";
-            this.butExcluirAtividade.Size = new System.Drawing.Size(75, 23);
-            this.butExcluirAtividade.TabIndex = 18;
-            this.butExcluirAtividade.Text = "Excluir";
-            this.butExcluirAtividade.UseVisualStyleBackColor = true;
-            // 
-            // TextObservacao
-            // 
-            this.TextObservacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextObservacao.Location = new System.Drawing.Point(342, 80);
-            this.TextObservacao.Name = "TextObservacao";
-            this.TextObservacao.Size = new System.Drawing.Size(238, 61);
-            this.TextObservacao.TabIndex = 19;
-            this.TextObservacao.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(592, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Cod. Colaborador:";
-            // 
-            // textCodColaborador
-            // 
-            this.textCodColaborador.Enabled = false;
-            this.textCodColaborador.Location = new System.Drawing.Point(595, 40);
-            this.textCodColaborador.Name = "textCodColaborador";
-            this.textCodColaborador.Size = new System.Drawing.Size(76, 20);
-            this.textCodColaborador.TabIndex = 6;
-            // 
-            // butAtualizar
-            // 
-            this.butAtualizar.Location = new System.Drawing.Point(595, 325);
-            this.butAtualizar.Name = "butAtualizar";
-            this.butAtualizar.Size = new System.Drawing.Size(75, 23);
-            this.butAtualizar.TabIndex = 22;
-            this.butAtualizar.Text = "Atualizar";
-            this.butAtualizar.UseVisualStyleBackColor = true;
-            this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(346, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Observação:";
-            // 
-            // dataConnectBindingSource1
-            // 
-            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
-            // 
-            // dataConnectBindingSource
-            // 
-            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
-            // 
             // DataAtividade
             // 
             this.DataAtividade.DataPropertyName = "DataAtividade";
@@ -664,6 +578,117 @@
             this.obsAtividade.Name = "obsAtividade";
             this.obsAtividade.ReadOnly = true;
             // 
+            // labColaborador
+            // 
+            this.labColaborador.AutoSize = true;
+            this.labColaborador.Location = new System.Drawing.Point(454, 24);
+            this.labColaborador.Name = "labColaborador";
+            this.labColaborador.Size = new System.Drawing.Size(126, 13);
+            this.labColaborador.TabIndex = 16;
+            this.labColaborador.Text = "Selecione o Colaborador:";
+            // 
+            // comboColaborador
+            // 
+            this.comboColaborador.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboColaborador.FormattingEnabled = true;
+            this.comboColaborador.Location = new System.Drawing.Point(442, 39);
+            this.comboColaborador.Name = "comboColaborador";
+            this.comboColaborador.Size = new System.Drawing.Size(138, 21);
+            this.comboColaborador.TabIndex = 5;
+            this.comboColaborador.SelectedIndexChanged += new System.EventHandler(this.comboColaborador_SelectedIndexChanged_1);
+            // 
+            // butInserirAtividade
+            // 
+            this.butInserirAtividade.Location = new System.Drawing.Point(595, 73);
+            this.butInserirAtividade.Name = "butInserirAtividade";
+            this.butInserirAtividade.Size = new System.Drawing.Size(75, 23);
+            this.butInserirAtividade.TabIndex = 17;
+            this.butInserirAtividade.Text = "Inserir";
+            this.butInserirAtividade.UseVisualStyleBackColor = true;
+            this.butInserirAtividade.Click += new System.EventHandler(this.butInserirAtividade_Click);
+            // 
+            // butExcluirAtividade
+            // 
+            this.butExcluirAtividade.Location = new System.Drawing.Point(596, 109);
+            this.butExcluirAtividade.Name = "butExcluirAtividade";
+            this.butExcluirAtividade.Size = new System.Drawing.Size(75, 23);
+            this.butExcluirAtividade.TabIndex = 18;
+            this.butExcluirAtividade.Text = "Excluir";
+            this.butExcluirAtividade.UseVisualStyleBackColor = true;
+            // 
+            // TextObservacao
+            // 
+            this.TextObservacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextObservacao.Location = new System.Drawing.Point(342, 80);
+            this.TextObservacao.Name = "TextObservacao";
+            this.TextObservacao.Size = new System.Drawing.Size(238, 61);
+            this.TextObservacao.TabIndex = 19;
+            this.TextObservacao.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(592, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Cod. Colaborador:";
+            // 
+            // textCodColaborador
+            // 
+            this.textCodColaborador.Enabled = false;
+            this.textCodColaborador.Location = new System.Drawing.Point(595, 40);
+            this.textCodColaborador.Name = "textCodColaborador";
+            this.textCodColaborador.Size = new System.Drawing.Size(76, 20);
+            this.textCodColaborador.TabIndex = 6;
+            // 
+            // butAtualizar
+            // 
+            this.butAtualizar.Location = new System.Drawing.Point(595, 325);
+            this.butAtualizar.Name = "butAtualizar";
+            this.butAtualizar.Size = new System.Drawing.Size(75, 23);
+            this.butAtualizar.TabIndex = 22;
+            this.butAtualizar.Text = "Atualizar";
+            this.butAtualizar.UseVisualStyleBackColor = true;
+            this.butAtualizar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(346, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Observação:";
+            // 
+            // dataConnectBindingSource1
+            // 
+            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
+            // 
+            // dataConnectBindingSource
+            // 
+            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
+            // 
+            // baixasToolStripMenuItem
+            // 
+            this.baixasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.baixarFolgasToolStripMenuItem});
+            this.baixasToolStripMenuItem.Name = "baixasToolStripMenuItem";
+            this.baixasToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.baixasToolStripMenuItem.Text = "&Baixas";
+            // 
+            // baixarFolgasToolStripMenuItem
+            // 
+            this.baixarFolgasToolStripMenuItem.Name = "baixarFolgasToolStripMenuItem";
+            this.baixarFolgasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.baixarFolgasToolStripMenuItem.Text = "Baixar &Folgas";
+            // 
+            // transladosToolStripMenuItem
+            // 
+            this.transladosToolStripMenuItem.Name = "transladosToolStripMenuItem";
+            this.transladosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.transladosToolStripMenuItem.Text = "&Translados";
+            // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -778,6 +803,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CodProjeto;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeProjeto;
         private System.Windows.Forms.DataGridViewTextBoxColumn obsAtividade;
+        private System.Windows.Forms.ToolStripMenuItem transladosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baixasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baixarFolgasToolStripMenuItem;
     }
 }
 
