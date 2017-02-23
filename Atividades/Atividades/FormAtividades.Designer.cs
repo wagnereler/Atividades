@@ -64,7 +64,21 @@
             this.labSaida3 = new System.Windows.Forms.Label();
             this.labEntrada3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridAtividades = new System.Windows.Forms.DataGridView();
+            this.labColaborador = new System.Windows.Forms.Label();
+            this.comboColaborador = new System.Windows.Forms.ComboBox();
+            this.butInserirAtividade = new System.Windows.Forms.Button();
+            this.butExcluirAtividade = new System.Windows.Forms.Button();
+            this.TextObservacao = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textCodColaborador = new System.Windows.Forms.TextBox();
+            this.butAtualizar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.baixasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.baixarFolgasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transladosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Entrada1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,26 +96,12 @@
             this.CodProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.obsAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labColaborador = new System.Windows.Forms.Label();
-            this.comboColaborador = new System.Windows.Forms.ComboBox();
-            this.butInserirAtividade = new System.Windows.Forms.Button();
-            this.butExcluirAtividade = new System.Windows.Forms.Button();
-            this.TextObservacao = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textCodColaborador = new System.Windows.Forms.TextBox();
-            this.butAtualizar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.baixasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.baixarFolgasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transladosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAtividades)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -135,28 +135,28 @@
             // projetoToolStripMenuItem
             // 
             this.projetoToolStripMenuItem.Name = "projetoToolStripMenuItem";
-            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.projetoToolStripMenuItem.Text = "&Projeto";
             this.projetoToolStripMenuItem.Click += new System.EventHandler(this.projetoToolStripMenuItem_Click);
             // 
             // colaboradorToolStripMenuItem
             // 
             this.colaboradorToolStripMenuItem.Name = "colaboradorToolStripMenuItem";
-            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.colaboradorToolStripMenuItem.Text = "P&essoas";
             this.colaboradorToolStripMenuItem.Click += new System.EventHandler(this.colaboradorToolStripMenuItem_Click);
             // 
             // cidadesToolStripMenuItem
             // 
             this.cidadesToolStripMenuItem.Name = "cidadesToolStripMenuItem";
-            this.cidadesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cidadesToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.cidadesToolStripMenuItem.Text = "&Cidades";
             this.cidadesToolStripMenuItem.Click += new System.EventHandler(this.cidadesToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.sairToolStripMenuItem.Text = "&Sair";
             // 
             // relatóriosToolStripMenuItem
@@ -184,7 +184,7 @@
             // sobreToolStripMenuItem
             // 
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.sobreToolStripMenuItem.Text = "&Sobre";
             // 
             // statusStrip1
@@ -429,12 +429,12 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(97, 20);
             this.dateTimePicker1.TabIndex = 4;
             // 
-            // dataGridView1
+            // dataGridAtividades
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridAtividades.AllowUserToAddRows = false;
+            this.dataGridAtividades.AllowUserToDeleteRows = false;
+            this.dataGridAtividades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridAtividades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DataAtividade,
             this.CodAtividade,
             this.Entrada1,
@@ -452,131 +452,12 @@
             this.CodProjeto,
             this.NomeProjeto,
             this.obsAtividade});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 167);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(659, 137);
-            this.dataGridView1.TabIndex = 14;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // DataAtividade
-            // 
-            this.DataAtividade.DataPropertyName = "DataAtividade";
-            this.DataAtividade.HeaderText = "Data";
-            this.DataAtividade.Name = "DataAtividade";
-            this.DataAtividade.ReadOnly = true;
-            // 
-            // CodAtividade
-            // 
-            this.CodAtividade.DataPropertyName = "CodAtividade";
-            this.CodAtividade.HeaderText = "Cod Atividade";
-            this.CodAtividade.Name = "CodAtividade";
-            this.CodAtividade.ReadOnly = true;
-            // 
-            // Entrada1
-            // 
-            this.Entrada1.DataPropertyName = "Entrada1";
-            this.Entrada1.HeaderText = "Entrada1";
-            this.Entrada1.Name = "Entrada1";
-            this.Entrada1.ReadOnly = true;
-            // 
-            // Saida1
-            // 
-            this.Saida1.DataPropertyName = "Saida1";
-            this.Saida1.HeaderText = "Saida1";
-            this.Saida1.Name = "Saida1";
-            this.Saida1.ReadOnly = true;
-            // 
-            // Entrada2
-            // 
-            this.Entrada2.DataPropertyName = "Entrada2";
-            this.Entrada2.HeaderText = "Entrada2";
-            this.Entrada2.Name = "Entrada2";
-            this.Entrada2.ReadOnly = true;
-            // 
-            // Saida2
-            // 
-            this.Saida2.DataPropertyName = "Saida2";
-            this.Saida2.HeaderText = "Saida2";
-            this.Saida2.Name = "Saida2";
-            this.Saida2.ReadOnly = true;
-            // 
-            // Entrada3
-            // 
-            this.Entrada3.DataPropertyName = "Entrada3";
-            this.Entrada3.HeaderText = "Entrada3";
-            this.Entrada3.Name = "Entrada3";
-            this.Entrada3.ReadOnly = true;
-            // 
-            // Saida3
-            // 
-            this.Saida3.DataPropertyName = "Saida3";
-            this.Saida3.HeaderText = "Saida3";
-            this.Saida3.Name = "Saida3";
-            this.Saida3.ReadOnly = true;
-            // 
-            // totalMinutos
-            // 
-            this.totalMinutos.DataPropertyName = "totalMinutos";
-            this.totalMinutos.HeaderText = "HorasTrabalhadas";
-            this.totalMinutos.Name = "totalMinutos";
-            this.totalMinutos.ReadOnly = true;
-            // 
-            // minutosExtras
-            // 
-            this.minutosExtras.DataPropertyName = "minutosExtras";
-            this.minutosExtras.HeaderText = "HorasExtras";
-            this.minutosExtras.Name = "minutosExtras";
-            this.minutosExtras.ReadOnly = true;
-            // 
-            // CodGerente
-            // 
-            this.CodGerente.DataPropertyName = "CodGerente";
-            this.CodGerente.HeaderText = "CodGerente";
-            this.CodGerente.Name = "CodGerente";
-            this.CodGerente.ReadOnly = true;
-            // 
-            // NomeGerente
-            // 
-            this.NomeGerente.DataPropertyName = "NomeGerente";
-            this.NomeGerente.HeaderText = "NomeGerente";
-            this.NomeGerente.Name = "NomeGerente";
-            this.NomeGerente.ReadOnly = true;
-            // 
-            // CodUsuario
-            // 
-            this.CodUsuario.DataPropertyName = "CodUsuario";
-            this.CodUsuario.HeaderText = "CodUsuario";
-            this.CodUsuario.Name = "CodUsuario";
-            this.CodUsuario.ReadOnly = true;
-            // 
-            // NomeUsuario
-            // 
-            this.NomeUsuario.DataPropertyName = "NomeUsuario";
-            this.NomeUsuario.HeaderText = "NomeUsuario";
-            this.NomeUsuario.Name = "NomeUsuario";
-            this.NomeUsuario.ReadOnly = true;
-            // 
-            // CodProjeto
-            // 
-            this.CodProjeto.DataPropertyName = "CodProjeto";
-            this.CodProjeto.HeaderText = "CodProjeto";
-            this.CodProjeto.Name = "CodProjeto";
-            this.CodProjeto.ReadOnly = true;
-            // 
-            // NomeProjeto
-            // 
-            this.NomeProjeto.DataPropertyName = "NomeProjeto";
-            this.NomeProjeto.HeaderText = "NomeProjeto";
-            this.NomeProjeto.Name = "NomeProjeto";
-            this.NomeProjeto.ReadOnly = true;
-            // 
-            // obsAtividade
-            // 
-            this.obsAtividade.DataPropertyName = "obsAtividade";
-            this.obsAtividade.HeaderText = "Observação";
-            this.obsAtividade.Name = "obsAtividade";
-            this.obsAtividade.ReadOnly = true;
+            this.dataGridAtividades.Location = new System.Drawing.Point(12, 167);
+            this.dataGridAtividades.Name = "dataGridAtividades";
+            this.dataGridAtividades.ReadOnly = true;
+            this.dataGridAtividades.Size = new System.Drawing.Size(659, 137);
+            this.dataGridAtividades.TabIndex = 14;
+            this.dataGridAtividades.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // labColaborador
             // 
@@ -661,14 +542,6 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Observação:";
             // 
-            // dataConnectBindingSource1
-            // 
-            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
-            // 
-            // dataConnectBindingSource
-            // 
-            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
-            // 
             // baixasToolStripMenuItem
             // 
             this.baixasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -680,14 +553,141 @@
             // baixarFolgasToolStripMenuItem
             // 
             this.baixarFolgasToolStripMenuItem.Name = "baixarFolgasToolStripMenuItem";
-            this.baixarFolgasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.baixarFolgasToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.baixarFolgasToolStripMenuItem.Text = "Baixar &Folgas";
             // 
             // transladosToolStripMenuItem
             // 
             this.transladosToolStripMenuItem.Name = "transladosToolStripMenuItem";
-            this.transladosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.transladosToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.transladosToolStripMenuItem.Text = "&Translados";
+            // 
+            // dataConnectBindingSource1
+            // 
+            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
+            // 
+            // dataConnectBindingSource
+            // 
+            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
+            // 
+            // DataAtividade
+            // 
+            this.DataAtividade.DataPropertyName = "DataAtividade";
+            this.DataAtividade.HeaderText = "Data";
+            this.DataAtividade.Name = "DataAtividade";
+            this.DataAtividade.ReadOnly = true;
+            // 
+            // CodAtividade
+            // 
+            this.CodAtividade.DataPropertyName = "CodAtividade";
+            this.CodAtividade.HeaderText = "Cod Atividade";
+            this.CodAtividade.Name = "CodAtividade";
+            this.CodAtividade.ReadOnly = true;
+            // 
+            // Entrada1
+            // 
+            this.Entrada1.DataPropertyName = "Entrada1";
+            this.Entrada1.HeaderText = "Entrada1";
+            this.Entrada1.Name = "Entrada1";
+            this.Entrada1.ReadOnly = true;
+            // 
+            // Saida1
+            // 
+            this.Saida1.DataPropertyName = "Saida1";
+            this.Saida1.HeaderText = "Saida1";
+            this.Saida1.Name = "Saida1";
+            this.Saida1.ReadOnly = true;
+            // 
+            // Entrada2
+            // 
+            this.Entrada2.DataPropertyName = "Entrada2";
+            this.Entrada2.HeaderText = "Entrada2";
+            this.Entrada2.Name = "Entrada2";
+            this.Entrada2.ReadOnly = true;
+            // 
+            // Saida2
+            // 
+            this.Saida2.DataPropertyName = "Saida2";
+            this.Saida2.HeaderText = "Saida2";
+            this.Saida2.Name = "Saida2";
+            this.Saida2.ReadOnly = true;
+            // 
+            // Entrada3
+            // 
+            this.Entrada3.DataPropertyName = "Entrada3";
+            this.Entrada3.HeaderText = "Entrada3";
+            this.Entrada3.Name = "Entrada3";
+            this.Entrada3.ReadOnly = true;
+            // 
+            // Saida3
+            // 
+            this.Saida3.DataPropertyName = "Saida3";
+            this.Saida3.HeaderText = "Saida3";
+            this.Saida3.Name = "Saida3";
+            this.Saida3.ReadOnly = true;
+            // 
+            // totalMinutos
+            // 
+            this.totalMinutos.DataPropertyName = "totalMinutos";
+            this.totalMinutos.HeaderText = "Horas Trabalhadas";
+            this.totalMinutos.Name = "totalMinutos";
+            this.totalMinutos.ReadOnly = true;
+            // 
+            // minutosExtras
+            // 
+            this.minutosExtras.DataPropertyName = "minutosExtras";
+            this.minutosExtras.HeaderText = "Horas Extras";
+            this.minutosExtras.Name = "minutosExtras";
+            this.minutosExtras.ReadOnly = true;
+            // 
+            // CodGerente
+            // 
+            this.CodGerente.DataPropertyName = "CodGerente";
+            this.CodGerente.HeaderText = "Cod Gerente";
+            this.CodGerente.Name = "CodGerente";
+            this.CodGerente.ReadOnly = true;
+            // 
+            // NomeGerente
+            // 
+            this.NomeGerente.DataPropertyName = "NomeGerente";
+            this.NomeGerente.HeaderText = "Nome Gerente";
+            this.NomeGerente.Name = "NomeGerente";
+            this.NomeGerente.ReadOnly = true;
+            // 
+            // CodUsuario
+            // 
+            this.CodUsuario.DataPropertyName = "CodUsuario";
+            this.CodUsuario.HeaderText = "Cod Usuario";
+            this.CodUsuario.Name = "CodUsuario";
+            this.CodUsuario.ReadOnly = true;
+            // 
+            // NomeUsuario
+            // 
+            this.NomeUsuario.DataPropertyName = "NomeUsuario";
+            this.NomeUsuario.HeaderText = "Nome Usuario";
+            this.NomeUsuario.Name = "NomeUsuario";
+            this.NomeUsuario.ReadOnly = true;
+            // 
+            // CodProjeto
+            // 
+            this.CodProjeto.DataPropertyName = "CodProjeto";
+            this.CodProjeto.HeaderText = "Cod Projeto";
+            this.CodProjeto.Name = "CodProjeto";
+            this.CodProjeto.ReadOnly = true;
+            // 
+            // NomeProjeto
+            // 
+            this.NomeProjeto.DataPropertyName = "NomeProjeto";
+            this.NomeProjeto.HeaderText = "Nome Projeto";
+            this.NomeProjeto.Name = "NomeProjeto";
+            this.NomeProjeto.ReadOnly = true;
+            // 
+            // obsAtividade
+            // 
+            this.obsAtividade.DataPropertyName = "obsAtividade";
+            this.obsAtividade.HeaderText = "Observação";
+            this.obsAtividade.Name = "obsAtividade";
+            this.obsAtividade.ReadOnly = true;
             // 
             // FormAtividades
             // 
@@ -703,7 +703,7 @@
             this.Controls.Add(this.butInserirAtividade);
             this.Controls.Add(this.labColaborador);
             this.Controls.Add(this.comboColaborador);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridAtividades);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -729,7 +729,7 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAtividades)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataConnectBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -764,7 +764,7 @@
         private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridAtividades;
         private System.Windows.Forms.Label labColaborador;
         private System.Windows.Forms.ComboBox comboColaborador;
         private System.Windows.Forms.ToolStripMenuItem relatórioDeAtividadesToolStripMenuItem;
@@ -786,6 +786,9 @@
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem cidadesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transladosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baixasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baixarFolgasToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataAtividade;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodAtividade;
         private System.Windows.Forms.DataGridViewTextBoxColumn Entrada1;
@@ -803,9 +806,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CodProjeto;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeProjeto;
         private System.Windows.Forms.DataGridViewTextBoxColumn obsAtividade;
-        private System.Windows.Forms.ToolStripMenuItem transladosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem baixasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem baixarFolgasToolStripMenuItem;
     }
 }
 

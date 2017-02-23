@@ -36,6 +36,7 @@ namespace Atividades
             comboColaborador.Items.Clear();
             carregarComboColaborador();
             carregarComboProjetos();
+            carregarGridAtividades();
 
         }
 
@@ -1001,6 +1002,28 @@ namespace Atividades
         {
 
         }
+        // Classe que cumunicarpa com a gride
+        public class gridAtividade
+        {
+            public string DataAtividade { get; set; }
+            public int codAtividade { get; set; }
+            public string entrada1 { get; set; }
+            public string saida1 { get; set; }
+            public string entrada2 { get; set; }
+            public string saida2 { get; set; }
+            public string entrada3 { get; set; }
+            public string saida3 { get; set; }
+            public int totalMinutos { get; set; }
+            public int minutosExtras { get; set; }
+            public int codGerente { get; set; }
+            public string NomeGerente { get; set; }
+            public int codColaborador { get; set; }
+            public string NomeUsuario { get; set; }
+            public int codProjeto { get; set; }
+            public string nomeProjeto { get; set; }
+            public string obsAtividade { get; set; }
+
+        }
 
         private void carregarGridAtividades()
         {
@@ -1032,6 +1055,33 @@ namespace Atividades
                      , tbProjetos pro
      
                 WHERE pro.codProjeto = at.codProjeto",conn);
+            SQLiteDataReader dr = cmd.ExecuteReader();
+            List<gridAtividade> listGridAtividade = new List<gridAtividade>();
+            while (dr.Read())
+            {
+                listGridAtividade.Add(new gridAtividade {
+                    DataAtividade = Convert.ToString(dr["DataAtividade"]),
+                    codAtividade = Convert.ToInt32(dr["codAtividade"]),
+                    entrada1 = Convert.ToString(dr["entrada1"]),
+                    saida1 = Convert.ToString(dr["saida1"]),
+                    entrada2 = Convert.ToString(dr["entrada2"]),
+                    saida2 = Convert.ToString(dr["saida2"]),
+                    entrada3 = Convert.ToString(dr["entrada3"]),
+                    saida3 = Convert.ToString(dr["saida3"]),
+                    totalMinutos = Convert.ToInt32(dr["totalMinutos"]),
+                    minutosExtras = Convert.ToInt32(dr["minutosExtras"]),
+                    codGerente = Convert.ToInt32(dr["codGerente"]),
+                    NomeGerente = Convert.ToString(dr["NomeGerente"]),
+                    codColaborador = Convert.ToInt32(dr["codColaborador"]),
+                    NomeUsuario = Convert.ToString(dr["NomeUsuario"]),
+                    codProjeto = Convert.ToInt32(dr["codProjeto"]),
+                    nomeProjeto = Convert.ToString(dr["nomeProjeto"]),
+                    obsAtividade = Convert.ToString(dr["obsAtividade"])
+                    
+
+                });
+            }
+            dataGridAtividades.DataSource = listGridAtividade;
 
         }
 
