@@ -44,7 +44,59 @@ namespace Atividades
 
         }
 
-        
+
+        // Classe que cumunicarpa com a gride
+        public class gridProjetos
+        {
+            public int codProjeto { get; set; }
+            public string nomeProjeto { get; set; }
+            public int codGerente { get; set; }
+            public string nomeGerente { get; set; }
+            public string codUf { get; set; }
+            public int codCidade { get; set; }
+            public string nomeCidade { get; set; }
+            
+
+        }
+
+        private void carregarGridProjetos()
+        {
+
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand(
+                @"SELECT at.codProjeto
+                       ,at.nomeProjeto
+                       ,at.codGerente
+                       ,(SELECT NomePessoa FROM tbPessoas WHERE codPessoa = at.codGerente) nomeGerente
+                       ,at.codUF
+                       ,at.codCidade
+                       ,(SELECT NomeCidade FROM tbCidades WHERE codCidade = at.codCidade) nomeCidade
+                       
+                FROM tbProjetos at", conn);
+
+            SQLiteDataReader dr = cmd.ExecuteReader();
+            List<gridProjetos> listGridAtividade = new List<gridProjetos>();
+            while (dr.Read())
+            {
+                listGridAtividade.Add(new gridProjetos
+                {
+                    codProjeto = Convert.ToInt32(dr["codProjeto"]),
+                    nomeProjeto = Convert.ToString(dr["nomeProjeto"]),
+                    codGerente = Convert.ToInt32(dr["codGerente"]),
+                    nomeGerente = Convert.ToString(dr["nomeCidade"]),
+                    codUf = Convert.ToString(dr["saida1"]),
+                    codCidade = Convert.ToInt32(dr["entrada2"]),
+                    nomeCidade = Convert.ToString(dr["saida2"])
+                    
+                });
+            }
+
+            dataGridProjetos.DataSource = listGridAtividade;
+
+        }
+
 
         public void carregarComboGerente()
         {
@@ -274,6 +326,7 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
                             comboGerente.Text = string.Empty;
                             
                             conn.Close();
+                            carregarGridProjetos();
                            
                         }
                         catch (Exception ex)
@@ -330,6 +383,11 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
         {
             comboCidade.Items.Clear();
             carregarCidade();
+        }
+
+        private void FormProjeto_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
     }
