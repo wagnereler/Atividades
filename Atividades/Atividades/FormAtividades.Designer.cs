@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transladosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colaboradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,6 +95,7 @@
             this.obsAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deslocamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -123,7 +123,7 @@
             // cadastroToolStripMenuItem
             // 
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.transladosToolStripMenuItem,
+            this.deslocamentosToolStripMenuItem,
             this.projetoToolStripMenuItem,
             this.colaboradorToolStripMenuItem,
             this.cidadesToolStripMenuItem,
@@ -132,37 +132,31 @@
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.cadastroToolStripMenuItem.Text = "&Cadastro";
             // 
-            // transladosToolStripMenuItem
-            // 
-            this.transladosToolStripMenuItem.Name = "transladosToolStripMenuItem";
-            this.transladosToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.transladosToolStripMenuItem.Text = "&Translados";
-            // 
             // projetoToolStripMenuItem
             // 
             this.projetoToolStripMenuItem.Name = "projetoToolStripMenuItem";
-            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.projetoToolStripMenuItem.Text = "&Projeto";
+            this.projetoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.projetoToolStripMenuItem.Text = "&Projetos";
             this.projetoToolStripMenuItem.Click += new System.EventHandler(this.projetoToolStripMenuItem_Click);
             // 
             // colaboradorToolStripMenuItem
             // 
             this.colaboradorToolStripMenuItem.Name = "colaboradorToolStripMenuItem";
-            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.colaboradorToolStripMenuItem.Text = "P&essoas";
             this.colaboradorToolStripMenuItem.Click += new System.EventHandler(this.colaboradorToolStripMenuItem_Click);
             // 
             // cidadesToolStripMenuItem
             // 
             this.cidadesToolStripMenuItem.Name = "cidadesToolStripMenuItem";
-            this.cidadesToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.cidadesToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.cidadesToolStripMenuItem.Text = "&Cidades";
             this.cidadesToolStripMenuItem.Click += new System.EventHandler(this.cidadesToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.sairToolStripMenuItem.Text = "&Sair";
             // 
             // baixasToolStripMenuItem
@@ -176,7 +170,7 @@
             // baixarFolgasToolStripMenuItem
             // 
             this.baixarFolgasToolStripMenuItem.Name = "baixarFolgasToolStripMenuItem";
-            this.baixarFolgasToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.baixarFolgasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.baixarFolgasToolStripMenuItem.Text = "Baixar &Folgas";
             // 
             // relatóriosToolStripMenuItem
@@ -688,6 +682,12 @@
             // 
             this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
             // 
+            // deslocamentosToolStripMenuItem
+            // 
+            this.deslocamentosToolStripMenuItem.Name = "deslocamentosToolStripMenuItem";
+            this.deslocamentosToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.deslocamentosToolStripMenuItem.Text = "&Deslocamentos";
+            // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -786,7 +786,6 @@
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem cidadesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem transladosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem baixasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem baixarFolgasToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridAtividades;
@@ -807,6 +806,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codProjeto;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeProjeto;
         private System.Windows.Forms.DataGridViewTextBoxColumn obsAtividade;
+        private System.Windows.Forms.ToolStripMenuItem deslocamentosToolStripMenuItem;
     }
 }
 

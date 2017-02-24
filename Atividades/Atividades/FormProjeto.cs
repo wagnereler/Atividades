@@ -56,7 +56,6 @@ namespace Atividades
             public int codCidade { get; set; }
             public string nomeCidade { get; set; }
             
-
         }
 
         private void carregarGridProjetos()
@@ -77,23 +76,23 @@ namespace Atividades
                 FROM tbProjetos at", conn);
 
             SQLiteDataReader dr = cmd.ExecuteReader();
-            List<gridProjetos> listGridAtividade = new List<gridProjetos>();
+            List<gridProjetos> listGridProjetos = new List<gridProjetos>();
             while (dr.Read())
             {
-                listGridAtividade.Add(new gridProjetos
+                listGridProjetos.Add(new gridProjetos
                 {
                     codProjeto = Convert.ToInt32(dr["codProjeto"]),
                     nomeProjeto = Convert.ToString(dr["nomeProjeto"]),
                     codGerente = Convert.ToInt32(dr["codGerente"]),
-                    nomeGerente = Convert.ToString(dr["nomeCidade"]),
-                    codUf = Convert.ToString(dr["saida1"]),
-                    codCidade = Convert.ToInt32(dr["entrada2"]),
-                    nomeCidade = Convert.ToString(dr["saida2"])
+                    nomeGerente = Convert.ToString(dr["nomeGerente"]),
+                    codUf = Convert.ToString(dr["codUf"]),
+                    codCidade = Convert.ToInt32(dr["codCidade"]),
+                    nomeCidade = Convert.ToString(dr["nomeCidade"])
                     
                 });
             }
 
-            dataGridProjetos.DataSource = listGridAtividade;
+            dataGridProjetos.DataSource = listGridProjetos;
 
         }
 
@@ -387,7 +386,7 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
 
         private void FormProjeto_Load_1(object sender, EventArgs e)
         {
-
+            carregarGridProjetos();
         }
     }
     }
