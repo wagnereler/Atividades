@@ -33,14 +33,14 @@
             this.butInserirPessoa = new System.Windows.Forms.Button();
             this.butExcluirPessoa = new System.Windows.Forms.Button();
             this.dataGridPessoas = new System.Windows.Forms.DataGridView();
+            this.NomePessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gerente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.butAtualizaPessoa = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioGerente = new System.Windows.Forms.RadioButton();
             this.radioUsuarioPadrao = new System.Windows.Forms.RadioButton();
-            this.NomePessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gerente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPessoas)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +95,30 @@
             this.dataGridPessoas.Size = new System.Drawing.Size(380, 126);
             this.dataGridPessoas.TabIndex = 6;
             // 
+            // NomePessoa
+            // 
+            this.NomePessoa.DataPropertyName = "NomePessoa";
+            this.NomePessoa.HeaderText = "Nome Pessoa";
+            this.NomePessoa.Name = "NomePessoa";
+            this.NomePessoa.ReadOnly = true;
+            this.NomePessoa.Width = 140;
+            // 
+            // Gerente
+            // 
+            this.Gerente.DataPropertyName = "Gerente";
+            this.Gerente.HeaderText = "É Gerente?";
+            this.Gerente.Name = "Gerente";
+            this.Gerente.ReadOnly = true;
+            this.Gerente.Width = 75;
+            // 
+            // colaborador
+            // 
+            this.colaborador.DataPropertyName = "colaborador";
+            this.colaborador.HeaderText = "É Colaborador?";
+            this.colaborador.Name = "colaborador";
+            this.colaborador.ReadOnly = true;
+            this.colaborador.Width = 105;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 239);
@@ -145,30 +169,6 @@
             this.radioUsuarioPadrao.UseVisualStyleBackColor = true;
             this.radioUsuarioPadrao.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // NomePessoa
-            // 
-            this.NomePessoa.DataPropertyName = "NomePessoa";
-            this.NomePessoa.HeaderText = "Nome Pessoa";
-            this.NomePessoa.Name = "NomePessoa";
-            this.NomePessoa.ReadOnly = true;
-            this.NomePessoa.Width = 140;
-            // 
-            // Gerente
-            // 
-            this.Gerente.DataPropertyName = "Gerente";
-            this.Gerente.HeaderText = "É Gerente?";
-            this.Gerente.Name = "Gerente";
-            this.Gerente.ReadOnly = true;
-            this.Gerente.Width = 75;
-            // 
-            // colaborador
-            // 
-            this.colaborador.DataPropertyName = "colaborador";
-            this.colaborador.HeaderText = "É Colaborador?";
-            this.colaborador.Name = "colaborador";
-            this.colaborador.ReadOnly = true;
-            this.colaborador.Width = 105;
-            // 
             // FormPessoas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,6 +185,7 @@
             this.Controls.Add(this.labNomePessoa);
             this.HelpButton = true;
             this.Name = "FormPessoas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro de Pessoas";
             this.Load += new System.EventHandler(this.FormPessoas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPessoas)).EndInit();

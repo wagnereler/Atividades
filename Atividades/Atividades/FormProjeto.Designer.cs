@@ -38,6 +38,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridProjetos = new System.Windows.Forms.DataGridView();
+            this.codProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codGerente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeGerente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codUf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.butAtualizar = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -49,12 +55,6 @@
             this.comboCidade = new System.Windows.Forms.ComboBox();
             this.textCodGerente = new System.Windows.Forms.TextBox();
             this.textCodCidade = new System.Windows.Forms.TextBox();
-            this.codProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codGerente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeGerente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codUf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProjetos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -159,6 +159,48 @@
             this.dataGridProjetos.Size = new System.Drawing.Size(377, 109);
             this.dataGridProjetos.TabIndex = 14;
             // 
+            // codProjeto
+            // 
+            this.codProjeto.DataPropertyName = "codProjeto";
+            this.codProjeto.HeaderText = "Cod Projeto";
+            this.codProjeto.Name = "codProjeto";
+            this.codProjeto.ReadOnly = true;
+            // 
+            // nomeProjeto
+            // 
+            this.nomeProjeto.DataPropertyName = "nomeProjeto";
+            this.nomeProjeto.HeaderText = "Projeto";
+            this.nomeProjeto.Name = "nomeProjeto";
+            this.nomeProjeto.ReadOnly = true;
+            // 
+            // codGerente
+            // 
+            this.codGerente.DataPropertyName = "codGerente";
+            this.codGerente.HeaderText = "cod Gerente";
+            this.codGerente.Name = "codGerente";
+            this.codGerente.ReadOnly = true;
+            // 
+            // nomeGerente
+            // 
+            this.nomeGerente.DataPropertyName = "nomeGerente";
+            this.nomeGerente.HeaderText = "Gerente";
+            this.nomeGerente.Name = "nomeGerente";
+            this.nomeGerente.ReadOnly = true;
+            // 
+            // codUf
+            // 
+            this.codUf.DataPropertyName = "codUf";
+            this.codUf.HeaderText = "UF";
+            this.codUf.Name = "codUf";
+            this.codUf.ReadOnly = true;
+            // 
+            // codCidade
+            // 
+            this.codCidade.DataPropertyName = "codCidade";
+            this.codCidade.HeaderText = "Cidade";
+            this.codCidade.Name = "codCidade";
+            this.codCidade.ReadOnly = true;
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(304, 58);
@@ -234,6 +276,7 @@
             this.comboCidade.Name = "comboCidade";
             this.comboCidade.Size = new System.Drawing.Size(187, 21);
             this.comboCidade.TabIndex = 5;
+            this.comboCidade.SelectedIndexChanged += new System.EventHandler(this.comboCidade_SelectedIndexChanged);
             // 
             // textCodGerente
             // 
@@ -254,48 +297,6 @@
             this.textCodCidade.Size = new System.Drawing.Size(42, 20);
             this.textCodCidade.TabIndex = 0;
             this.textCodCidade.Visible = false;
-            // 
-            // codProjeto
-            // 
-            this.codProjeto.DataPropertyName = "codProjeto";
-            this.codProjeto.HeaderText = "Cod Projeto";
-            this.codProjeto.Name = "codProjeto";
-            this.codProjeto.ReadOnly = true;
-            // 
-            // nomeProjeto
-            // 
-            this.nomeProjeto.DataPropertyName = "nomeProjeto";
-            this.nomeProjeto.HeaderText = "Projeto";
-            this.nomeProjeto.Name = "nomeProjeto";
-            this.nomeProjeto.ReadOnly = true;
-            // 
-            // codGerente
-            // 
-            this.codGerente.DataPropertyName = "codGerente";
-            this.codGerente.HeaderText = "cod Gerente";
-            this.codGerente.Name = "codGerente";
-            this.codGerente.ReadOnly = true;
-            // 
-            // nomeGerente
-            // 
-            this.nomeGerente.DataPropertyName = "nomeGerente";
-            this.nomeGerente.HeaderText = "Gerente";
-            this.nomeGerente.Name = "nomeGerente";
-            this.nomeGerente.ReadOnly = true;
-            // 
-            // codUf
-            // 
-            this.codUf.DataPropertyName = "codUf";
-            this.codUf.HeaderText = "UF";
-            this.codUf.Name = "codUf";
-            this.codUf.ReadOnly = true;
-            // 
-            // codCidade
-            // 
-            this.codCidade.DataPropertyName = "codCidade";
-            this.codCidade.HeaderText = "Cidade";
-            this.codCidade.Name = "codCidade";
-            this.codCidade.ReadOnly = true;
             // 
             // FormProjeto
             // 
@@ -321,6 +322,7 @@
             this.Controls.Add(this.comboGerente);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormProjeto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro de Projeto";
             this.Activated += new System.EventHandler(this.FormProjeto_Activated);
             this.Load += new System.EventHandler(this.FormProjeto_Load_1);

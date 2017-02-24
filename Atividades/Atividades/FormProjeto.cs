@@ -301,8 +301,12 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
                             conn.Open();
                         }
 
-                        SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbProjetos (codProjeto, nomeProjeto, codGerente, codUF, codCidade)
-                        VALUES(@codProjeto, @nomeProjeto, @codGerente, @codUF, @codCidade)", conn);
+                        SQLiteCommand cmd = new SQLiteCommand(
+                            
+                            @"INSERT INTO tbProjetos 
+                            (codProjeto, nomeProjeto, codGerente, codUF, codCidade)
+                            VALUES(@codProjeto, @nomeProjeto, @codGerente, @codUF, @codCidade)"
+                        , conn);
 
                         //captrua os valores para os parametros do sql
                         cmd.Parameters.AddWithValue("codProjeto", textCodProjeto.Text.Trim());
@@ -387,6 +391,11 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
         private void FormProjeto_Load_1(object sender, EventArgs e)
         {
             carregarGridProjetos();
+        }
+
+        private void comboCidade_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            carregarCodigoCidade();
         }
     }
     }
