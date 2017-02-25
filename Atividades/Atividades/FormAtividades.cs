@@ -976,13 +976,6 @@ namespace Atividades
 
 
 
-
-
-
-
-
-
-
         }
 
         private void maskEntrada1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
