@@ -83,7 +83,7 @@
             // 
             // Atualizar
             // 
-            this.Atualizar.Location = new System.Drawing.Point(157, 99);
+            this.Atualizar.Location = new System.Drawing.Point(162, 99);
             this.Atualizar.Name = "Atualizar";
             this.Atualizar.Size = new System.Drawing.Size(75, 23);
             this.Atualizar.TabIndex = 4;
@@ -163,7 +163,7 @@
             this.Name = "FormCidades";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Cadastro Cidades";
+            this.Text = "Cadastro de Cidades";
             this.Load += new System.EventHandler(this.FormCidades_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCidades)).EndInit();
             this.ResumeLayout(false);
