@@ -15,6 +15,37 @@ namespace Atividades
     {
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
+        public string b;
+
+
+
+        public string verificaRegistroProjetos(string b)
+        {
+            this.b = b;
+            try
+            {
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand(
+                    "SELECT nomeProjeto FROM tbProjetos WHERE nomeProjeto = '" + textNomeProjeto.Text.TrimStart().ToUpper() + "'" , conn);
+
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    foreach (DataRow dr in dt.Rows)
+                        b = Convert.ToString(dr["nomeProjeto"]);
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return b;
+        }
 
         public FormProjeto()
         {
@@ -237,7 +268,6 @@ namespace Atividades
                     if (conn.State == ConnectionState.Closed)
                         conn.Open();
                     SQLiteCommand cmd = new SQLiteCommand("SELECT nomeCidade FROM tbCidades WHERE codUf = '" + comboUF.Text.Trim() + "'", conn);
-                    //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
                     SQLiteDataAdapter daComboCidade = new SQLiteDataAdapter(cmd);
                     DataTable dtComboCidade = new DataTable();
                     daComboCidade.Fill(dtComboCidade);
@@ -283,60 +313,74 @@ namespace Atividades
                     
 
 
-                    if (comboGerente.Text.ToUpper() != Convert.ToString(comboGerente.SelectedItem) || textNomeProjeto.Text.Length < 4 || 
-                        textCodProjeto.Text == string.Empty || comboUF.Text != Convert.ToString(comboUF.SelectedItem) ||
-                        comboCidade.Text.ToUpper() != Convert.ToString(comboCidade.SelectedItem))
+                    if (textCodGerente.Text.Trim().Length < 1)
                     {
-                        MessageBox.Show(@"Prencher todos os campos! \n 
-Os campos UF, CIDADE e GERENTE DE PROJETO demve ser selecionados! \n
-O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
+                        MessageBox.Show("Selecione um gerente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    if(textCodProjeto.Text.Trim().Length < 1)
+                    {
+                        MessageBox.Show("Informe o código do projeto", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    if (comboCidade.Text.Trim().Length < 1)
+                    {
+                        MessageBox.Show("Selecione uma cidade", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     
                     else
+                    if (verificaRegistroProjetos(b) == textNomeProjeto.Text.ToUpper())
                     {
-                        SQLiteConnection conn = new SQLiteConnection(connectBase);
-                        MessageBox.Show(Convert.ToString("Entrada do botão " + conn.State));
-                        if (conn.State == System.Data.ConnectionState.Closed)
-                        {
-                            conn.Open();
-                        }
+                        MessageBox.Show("Registro Duplicado.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
 
-                        SQLiteCommand cmd = new SQLiteCommand(
-                            
-                            @"INSERT INTO tbProjetos 
+                    {
+                        {
+                            SQLiteConnection conn = new SQLiteConnection(connectBase);
+                            MessageBox.Show(Convert.ToString("Entrada do botão " + conn.State));
+                            if (conn.State == System.Data.ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+
+                            SQLiteCommand cmd = new SQLiteCommand(
+
+                                @"INSERT INTO tbProjetos 
                             (codProjeto, nomeProjeto, codGerente, codUF, codCidade)
                             VALUES(@codProjeto, @nomeProjeto, @codGerente, @codUF, @codCidade)"
-                        , conn);
+                            , conn);
 
-                        //captrua os valores para os parametros do sql
-                        cmd.Parameters.AddWithValue("codProjeto", textCodProjeto.Text.Trim());
-                        cmd.Parameters.AddWithValue("nomeProjeto", textNomeProjeto.Text.ToUpper().Trim());
-                        cmd.Parameters.AddWithValue("codGerente", textCodGerente.Text.Trim());
-                        cmd.Parameters.AddWithValue("codUF", comboUF.Text.Trim());
-                        cmd.Parameters.AddWithValue("codCidade", textCodCidade.Text.Trim());
+                            //captrua os valores para os parametros do sql
+                            cmd.Parameters.AddWithValue("codProjeto", textCodProjeto.Text.Trim());
+                            cmd.Parameters.AddWithValue("nomeProjeto", textNomeProjeto.Text.ToUpper().Trim());
+                            cmd.Parameters.AddWithValue("codGerente", textCodGerente.Text.Trim());
+                            cmd.Parameters.AddWithValue("codUF", comboUF.Text.Trim());
+                            cmd.Parameters.AddWithValue("codCidade", textCodCidade.Text.Trim());
 
 
-                        try
-                        {
-                            cmd.ExecuteNonQuery();
-                            textCodProjeto.Text = string.Empty;
-                            textNomeProjeto.Text = string.Empty;
-                            textNomeProjeto.Text = string.Empty;
-                            textCodCidade.Text = string.Empty;
-                            textCodCidade.Text = string.Empty;
-                            comboCidade.Text = string.Empty;
-                            comboUF.Text = string.Empty;
-                            comboGerente.Text = string.Empty;
-                            
-                            conn.Close();
-                            carregarGridProjetos();
-                           
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Erro ao Inserir Dados \n" + ex.Message);
+                            try
+                            {
+                                cmd.ExecuteNonQuery();
+                                textCodProjeto.Text = string.Empty;
+                                textNomeProjeto.Text = string.Empty;
+                                textNomeProjeto.Text = string.Empty;
+                                textCodCidade.Text = string.Empty;
+                                textCodCidade.Text = string.Empty;
+                                comboCidade.Text = string.Empty;
+                                comboUF.Text = string.Empty;
+                                comboGerente.Text = string.Empty;
+
+                                conn.Close();
+                                carregarGridProjetos();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Erro ao Inserir Dados \n" + ex.Message);
+                            }
                         }
                     }
+
+                    
                 }
             }
             catch
@@ -385,6 +429,7 @@ O campo NOME DO PROJETO deve ter no mínimo 4 caracteres!", "Atenção!");
         private void comboUF_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboCidade.Items.Clear();
+            comboCidade.Text = String.Empty;
             carregarCidade();
         }
 

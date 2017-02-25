@@ -73,7 +73,7 @@
             // 
             // Inserir
             // 
-            this.Inserir.Location = new System.Drawing.Point(13, 99);
+            this.Inserir.Location = new System.Drawing.Point(315, 99);
             this.Inserir.Name = "Inserir";
             this.Inserir.Size = new System.Drawing.Size(75, 23);
             this.Inserir.TabIndex = 3;
@@ -92,7 +92,7 @@
             // 
             // Excluir
             // 
-            this.Excluir.Location = new System.Drawing.Point(315, 99);
+            this.Excluir.Location = new System.Drawing.Point(16, 99);
             this.Excluir.Name = "Excluir";
             this.Excluir.Size = new System.Drawing.Size(75, 23);
             this.Excluir.TabIndex = 5;
@@ -126,7 +126,7 @@
             // codCidade
             // 
             this.codCidade.DataPropertyName = "codCidade";
-            this.codCidade.HeaderText = "Cod Cidade";
+            this.codCidade.HeaderText = "Cod.";
             this.codCidade.Name = "codCidade";
             this.codCidade.ReadOnly = true;
             this.codCidade.Width = 80;
@@ -145,7 +145,7 @@
             this.nomeCidade.HeaderText = "Cidade";
             this.nomeCidade.Name = "nomeCidade";
             this.nomeCidade.ReadOnly = true;
-            this.nomeCidade.Width = 163;
+            this.nomeCidade.Width = 170;
             // 
             // FormCidades
             // 
@@ -161,7 +161,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboCadatroUF);
             this.Name = "FormCidades";
-            this.Text = "FormCidades";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Cadastro Cidades";
             this.Load += new System.EventHandler(this.FormCidades_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCidades)).EndInit();
             this.ResumeLayout(false);

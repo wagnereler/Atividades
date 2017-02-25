@@ -15,10 +15,45 @@ namespace Atividades
     {
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
+        string b;
+
         public FormCidades()
+
+        
         {
             InitializeComponent();
         }
+
+        public string verificaRegistroCidades(string b)
+        {
+            this.b = b;
+            try
+            {
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand(
+                    "SELECT nomeCidade FROM tbCidades WHERE nomeCidade = '" + textCadastroCidade.Text.Trim().ToUpper() + 
+                    "' AND codUF ='" + comboCadatroUF.Text.Trim() + "'"  , conn);
+
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    foreach (DataRow dr in dt.Rows)
+                        b = Convert.ToString(dr["nomeCidade"]);
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return b;
+        }
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -115,30 +150,42 @@ namespace Atividades
                 {
                     MessageBox.Show("Selecione uma UF");
                 }
+                if (textCadastroCidade.Text.Trim().Length > 4)
+                {
+                    MessageBox.Show("O nome da cidade deve ter no mínimo 3 caractres", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
                 
                 else
                 {
-                    SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbCidades (codUf, nomeCidade)
+                    if (textCadastroCidade.Text.Trim().ToUpper() == verificaRegistroCidades(b))
+                    {
+                        MessageBox.Show("Registro Duplicado", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        SQLiteCommand cmd = new SQLiteCommand(@"INSERT INTO tbCidades (codUf, nomeCidade)
                     VALUES(@codUf, @nomeCidade)", conn);
 
-                    //captrua os valores para os parametros do sql
-                    cmd.Parameters.AddWithValue("codUf", comboCadatroUF.Text.Trim());
-                    cmd.Parameters.AddWithValue("nomeCidade", textCadastroCidade.Text.ToUpper().Trim());
-              
-
-                    try
-                    {
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
-                        textCadastroCidade.Text = string.Empty;
-                        carregarGridCidades();
+                        //captrua os valores para os parametros do sql
+                        cmd.Parameters.AddWithValue("codUf", comboCadatroUF.Text.Trim());
+                        cmd.Parameters.AddWithValue("nomeCidade", textCadastroCidade.Text.ToUpper().Trim());
 
 
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            textCadastroCidade.Text = string.Empty;
+                            carregarGridCidades();
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Erro ao Inserir Dados" + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao Inserir Dados" + ex.Message);
-                    }
+                    
                 }
             }
         }
