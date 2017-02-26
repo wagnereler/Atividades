@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deslocamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colaboradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,7 +96,6 @@
             this.obsAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.deslocamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -131,6 +131,13 @@
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.cadastroToolStripMenuItem.Text = "&Cadastro";
+            // 
+            // deslocamentosToolStripMenuItem
+            // 
+            this.deslocamentosToolStripMenuItem.Name = "deslocamentosToolStripMenuItem";
+            this.deslocamentosToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.deslocamentosToolStripMenuItem.Text = "&Deslocamentos";
+            this.deslocamentosToolStripMenuItem.Click += new System.EventHandler(this.deslocamentosToolStripMenuItem_Click);
             // 
             // projetoToolStripMenuItem
             // 
@@ -170,7 +177,7 @@
             // baixarFolgasToolStripMenuItem
             // 
             this.baixarFolgasToolStripMenuItem.Name = "baixarFolgasToolStripMenuItem";
-            this.baixarFolgasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.baixarFolgasToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.baixarFolgasToolStripMenuItem.Text = "Baixar &Folgas";
             // 
             // relatóriosToolStripMenuItem
@@ -474,7 +481,7 @@
             // 
             // butExcluirAtividade
             // 
-            this.butExcluirAtividade.Location = new System.Drawing.Point(596, 102);
+            this.butExcluirAtividade.Location = new System.Drawing.Point(595, 131);
             this.butExcluirAtividade.Name = "butExcluirAtividade";
             this.butExcluirAtividade.Size = new System.Drawing.Size(75, 23);
             this.butExcluirAtividade.TabIndex = 18;
@@ -509,7 +516,7 @@
             // 
             // butAtualizar
             // 
-            this.butAtualizar.Location = new System.Drawing.Point(596, 131);
+            this.butAtualizar.Location = new System.Drawing.Point(595, 102);
             this.butAtualizar.Name = "butAtualizar";
             this.butAtualizar.Size = new System.Drawing.Size(75, 23);
             this.butAtualizar.TabIndex = 22;
@@ -681,12 +688,6 @@
             // dataConnectBindingSource
             // 
             this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
-            // 
-            // deslocamentosToolStripMenuItem
-            // 
-            this.deslocamentosToolStripMenuItem.Name = "deslocamentosToolStripMenuItem";
-            this.deslocamentosToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.deslocamentosToolStripMenuItem.Text = "&Deslocamentos";
             // 
             // FormAtividades
             // 

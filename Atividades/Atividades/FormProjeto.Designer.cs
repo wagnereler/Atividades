@@ -133,7 +133,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(304, 111);
+            this.button1.Location = new System.Drawing.Point(304, 57);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -203,7 +203,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(304, 58);
+            this.button2.Location = new System.Drawing.Point(304, 111);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 15;
@@ -212,7 +212,7 @@
             // 
             // butAtualizar
             // 
-            this.butAtualizar.Location = new System.Drawing.Point(304, 85);
+            this.butAtualizar.Location = new System.Drawing.Point(304, 84);
             this.butAtualizar.Name = "butAtualizar";
             this.butAtualizar.Size = new System.Drawing.Size(75, 23);
             this.butAtualizar.TabIndex = 16;

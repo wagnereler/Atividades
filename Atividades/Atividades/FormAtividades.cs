@@ -19,7 +19,7 @@ namespace Atividades
         private string b;
         private static string connectBase = "Data Source=Banco.db";
         private static string bancoName = "Banco.db";
-        
+
 
         public FormAtividades()
         {
@@ -52,15 +52,15 @@ namespace Atividades
                     if (conn.State == ConnectionState.Closed)
                         conn.Open();
                     SQLiteCommand cmd = new SQLiteCommand(
-                    "SELECT dataAtividade FROM tbAtividades WHERE dataAtividade = '" + dateTimePicker1.Text.TrimStart() +"'" + 
-                    "AND codProjeto = '" + textCodigoProjeto.Text.Trim() + "'" + 
-                    "AND codColaborador = '" + textCodColaborador.Text.Trim() + "'" , conn);
+                    "SELECT dataAtividade FROM tbAtividades WHERE dataAtividade = '" + dateTimePicker1.Text.TrimStart() + "'" +
+                    "AND codProjeto = '" + textCodigoProjeto.Text.Trim() + "'" +
+                    "AND codColaborador = '" + textCodColaborador.Text.Trim() + "'", conn);
                     //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
                     SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     foreach (DataRow dr in dt.Rows)
-                    b = Convert.ToString(dr["dataAtividade"]);
+                        b = Convert.ToString(dr["dataAtividade"]);
                     conn.Close();
 
                 }
@@ -761,18 +761,18 @@ namespace Atividades
                     listaCampos += "O campo Observação deve ter no mínimo 5 caracteres.";
                 }
 
-                
+
 
 
                 //Se os campos obrigadóiro forem preenchido o formulário será gravado
                 if (listaCampos.Length == 0)
                 {
                     //Verifica Resgistro Duplicato
-                    
+
 
                     if (verificaRegistro(b) == dateTimePicker1.Text.TrimStart())
                     {
-                        DialogResult resultDuplicidadeData = MessageBox.Show(" Registro Duplicado.\n Deseja atualizar o registro?", 
+                        DialogResult resultDuplicidadeData = MessageBox.Show(" Registro Duplicado.\n Deseja atualizar o registro?",
                             "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                         if (resultDuplicidadeData == DialogResult.Yes)
                         {
@@ -1008,8 +1008,8 @@ namespace Atividades
             public string saida2 { get; set; }
             public string entrada3 { get; set; }
             public string saida3 { get; set; }
-            public int totalMinutos { get; set; }
-            public int minutosExtras { get; set; }
+            public string totalMinutos { get; set; }
+            public string minutosExtras { get; set; }
             public int codGerente { get; set; }
             public string NomeGerente { get; set; }
             public int codColaborador { get; set; }
@@ -1022,7 +1022,7 @@ namespace Atividades
 
         private void carregarGridAtividades()
         {
-            
+
             SQLiteConnection conn = new SQLiteConnection(connectBase);
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
@@ -1049,11 +1049,28 @@ namespace Atividades
                 FROM tbAtividades at
                      , tbProjetos pro
      
-                WHERE pro.codProjeto = at.codProjeto",conn);
+                WHERE pro.codProjeto = at.codProjeto", conn);
             SQLiteDataReader dr = cmd.ExecuteReader();
             List<gridAtividade> listGridAtividade = new List<gridAtividade>();
             while (dr.Read())
             {
+                // processa horas trabalhadas e extras
+
+                int minutes;
+                int hours;
+                int days;
+                int hoursT = Convert.ToInt32(dr["totalMinutos"]);
+                int hoursE = Convert.ToInt32(dr["minutosExtras"]);
+                string[,] hoursaEf;
+                //converte minutos trabalhados em horas
+                hours = hoursT % 60;
+                minutes = hoursT % 60 % 60;
+                days = hours % 8;
+
+                //Registro a informação em um arrey
+                int[] HorasTrabalhadasProcessadas = {days, hours, minutes};
+
+
                 listGridAtividade.Add(new gridAtividade {
                     DataAtividade = Convert.ToString(dr["DataAtividade"]),
                     codAtividade = Convert.ToInt32(dr["codAtividade"]),
@@ -1063,8 +1080,8 @@ namespace Atividades
                     saida2 = Convert.ToString(dr["saida2"]),
                     entrada3 = Convert.ToString(dr["entrada3"]),
                     saida3 = Convert.ToString(dr["saida3"]),
-                    totalMinutos = Convert.ToInt32(dr["totalMinutos"]),
-                    minutosExtras = Convert.ToInt32(dr["minutosExtras"]),
+                    totalMinutos = HorasTrabalhadasProcessadas[0] + " Dias, " + HorasTrabalhadasProcessadas[1] + " Horas " + HorasTrabalhadasProcessadas[2] + " Dias",
+                    minutosExtras = Convert.ToString(dr["minutosExtras"]),
                     codGerente = Convert.ToInt32(dr["codGerente"]),
                     NomeGerente = Convert.ToString(dr["NomeGerente"]),
                     codColaborador = Convert.ToInt32(dr["codColaborador"]),
@@ -1151,6 +1168,12 @@ namespace Atividades
         {
             FormCidades Cidades = new FormCidades();
             Cidades.ShowDialog();
+        }
+
+        private void deslocamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDeslocamento deslocamento = new FormDeslocamento();
+            deslocamento.ShowDialog();
         }
     }
 }
