@@ -150,7 +150,7 @@ namespace Atividades
                 {
                     MessageBox.Show("Selecione uma UF");
                 }
-                if (textCadastroCidade.Text.Trim().Length > 4)
+                if (textCadastroCidade.Text.Trim().Length < 4)
                 {
                     MessageBox.Show("O nome da cidade deve ter no mínimo 3 caractres", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -177,6 +177,7 @@ namespace Atividades
                             conn.Close();
                             textCadastroCidade.Text = string.Empty;
                             carregarGridCidades();
+                            MessageBox.Show("Dados gravados com sucesso", "Operação Realizada", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
 
                         }

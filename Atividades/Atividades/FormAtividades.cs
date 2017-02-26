@@ -1056,19 +1056,43 @@ namespace Atividades
             {
                 // processa horas trabalhadas e extras
 
-                int minutes;
-                int hours;
-                int days;
+                string minutes;
+                string hours;
+                string days;
                 int hoursT = Convert.ToInt32(dr["totalMinutos"]);
                 int hoursE = Convert.ToInt32(dr["minutosExtras"]);
                 string[,] hoursaEf;
                 //converte minutos trabalhados em horas
-                hours = hoursT % 60;
-                minutes = hoursT % 60 % 60;
-                days = hours % 8;
+                hours = Convert.ToString(hoursT /60);
+                minutes = Convert.ToString(hoursT  %60);
 
+                //Verifica formação de horas
+                if (hours.Length == 1)
+                {
+                    hours = "0" + hours;
+                }
+                if (Convert.ToInt32(minutes) < 10)
+                {
+                    minutes = "0" + minutes;
+                }
                 //Registro a informação em um arrey
-                int[] HorasTrabalhadasProcessadas = {days, hours, minutes};
+                string[] HorasTrabalhadasProcessadas = {hours, minutes};
+
+                //converte minutos trabalhados em horas
+                hours = Convert.ToString(hoursE / 60);
+                minutes = Convert.ToString(hoursE % 60);
+
+                //Verifica formação de horas
+                if (hours.Length == 1)
+                {
+                    hours = "0" + hours;
+                }
+                if (Convert.ToInt32(minutes) < 10)
+                {
+                    minutes = "0" + minutes;
+                }
+                //Registro a informação em um arrey
+                string[] HorasExtrasProcessadas = { hours, minutes };
 
 
                 listGridAtividade.Add(new gridAtividade {
@@ -1080,8 +1104,8 @@ namespace Atividades
                     saida2 = Convert.ToString(dr["saida2"]),
                     entrada3 = Convert.ToString(dr["entrada3"]),
                     saida3 = Convert.ToString(dr["saida3"]),
-                    totalMinutos = HorasTrabalhadasProcessadas[0] + " Dias, " + HorasTrabalhadasProcessadas[1] + " Horas " + HorasTrabalhadasProcessadas[2] + " Dias",
-                    minutosExtras = Convert.ToString(dr["minutosExtras"]),
+                    totalMinutos = HorasTrabalhadasProcessadas[0] + ":" + HorasTrabalhadasProcessadas[1],
+                    minutosExtras = HorasExtrasProcessadas[0] + ":" + HorasExtrasProcessadas[1],
                     codGerente = Convert.ToInt32(dr["codGerente"]),
                     NomeGerente = Convert.ToString(dr["NomeGerente"]),
                     codColaborador = Convert.ToInt32(dr["codColaborador"]),
