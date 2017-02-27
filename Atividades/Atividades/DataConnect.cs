@@ -36,7 +36,7 @@ CREATE TABLE [tbUF](
                 sql.AppendLine(@"
 CREATE TABLE [tbPessoas](
     [codPessoa] INTEGER PRIMARY KEY AUTOINCREMENT, 
-    [NomePessoa] VARCHAR(99), 
+    [NomePessoa] VARCHAR(100), 
     [Gerente] BOOL, 
     [colaborador] BOOL);");
 

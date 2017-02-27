@@ -77,6 +77,8 @@
             this.butAtualizar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridAtividades = new System.Windows.Forms.DataGridView();
+            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entrada1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,8 +96,6 @@
             this.codProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.obsAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -562,6 +562,14 @@
             this.dataGridAtividades.Size = new System.Drawing.Size(658, 174);
             this.dataGridAtividades.TabIndex = 24;
             // 
+            // dataConnectBindingSource1
+            // 
+            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
+            // 
+            // dataConnectBindingSource
+            // 
+            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
+            // 
             // DataAtividade
             // 
             this.DataAtividade.DataPropertyName = "DataAtividade";
@@ -681,14 +689,6 @@
             this.obsAtividade.Name = "obsAtividade";
             this.obsAtividade.ReadOnly = true;
             // 
-            // dataConnectBindingSource1
-            // 
-            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
-            // 
-            // dataConnectBindingSource
-            // 
-            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
-            // 
             // FormAtividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -790,6 +790,7 @@
         private System.Windows.Forms.ToolStripMenuItem baixasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem baixarFolgasToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridAtividades;
+        private System.Windows.Forms.ToolStripMenuItem deslocamentosToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataAtividade;
         private System.Windows.Forms.DataGridViewTextBoxColumn codAtividade;
         private System.Windows.Forms.DataGridViewTextBoxColumn entrada1;
@@ -807,7 +808,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codProjeto;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeProjeto;
         private System.Windows.Forms.DataGridViewTextBoxColumn obsAtividade;
-        private System.Windows.Forms.ToolStripMenuItem deslocamentosToolStripMenuItem;
     }
 }
 

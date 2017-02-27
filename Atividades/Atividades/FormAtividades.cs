@@ -1078,13 +1078,17 @@ namespace Atividades
                 //Registro a informação em um arrey
                 string[] HorasTrabalhadasProcessadas = {hours, minutes};
 
-                //SE Tiver horas extras calcula-se
-                if (Convert.ToInt32(hoursE) > 0)
+
+                //converte minutos trabalhados em horas
+                //verifica se existe hora extra
+                if (hoursE == 0)
                 {
-                    //converte minutos trabalhados em horas
+                    hours = "00";
+                    minutes = "00";
+                } else
+                {
                     hours = Convert.ToString(hoursE / 60);
                     minutes = Convert.ToString(hoursE % 60);
-
                     //Verifica formação de horas
                     if (hours.Length == 1)
                     {
@@ -1094,14 +1098,12 @@ namespace Atividades
                     {
                         minutes = "0" + minutes;
                     }
-                    //Registro a informação em um arrey
-                    string[] HorasExtrasProcessadas = { hours, minutes };
                 }
-                else
-                {
 
-                    string[] HorasExtrasProcessadas = { "0", "0" };
-                }
+                //Registro a informação em um arrey
+                string[] HorasExtrasProcessadas = { hours, minutes };
+
+
 
 
                 listGridAtividade.Add(new gridAtividade {
@@ -1114,7 +1116,7 @@ namespace Atividades
                     entrada3 = Convert.ToString(dr["entrada3"]),
                     saida3 = Convert.ToString(dr["saida3"]),
                     totalMinutos = HorasTrabalhadasProcessadas[0] + ":" + HorasTrabalhadasProcessadas[1],
-                    minutosExtras = HorasExtrasProcessadas[0] + ":" + HorasExtrasProcessadas[1],
+                    minutosExtras = HorasExtrasProcessadas[0] + ":" + HorasExtrasProcessadas[1],/*
                     codGerente = Convert.ToInt32(dr["codGerente"]),
                     NomeGerente = Convert.ToString(dr["NomeGerente"]),
                     codColaborador = Convert.ToInt32(dr["codColaborador"]),
@@ -1122,7 +1124,7 @@ namespace Atividades
                     codProjeto = Convert.ToInt32(dr["codProjeto"]),
                     nomeProjeto = Convert.ToString(dr["nomeProjeto"]),
                     obsAtividade = Convert.ToString(dr["obsAtividade"])
-                    
+                    */
 
                 });
             }
