@@ -27,49 +27,67 @@ namespace Atividades
                 StringBuilder sql = new StringBuilder();
 
                 //SE NÃO EXISTIR CRIA A TABELA UF
-                sql.AppendLine(@"CREATE TABLE [tbUF](
-                                [codUf] VARCHAR(2) PRIMARY KEY,
-                                [nomeEstado] VARCHAR(60));
-                                            ");
+                sql.AppendLine(@"
+CREATE TABLE [tbUF](
+    [codUf] VARCHAR(2) PRIMARY KEY, 
+    [nomeEstado] VARCHAR(60));");
 
                 //SE NÃO EXISTIR CRIA A TABELA PESSOAS
-                sql.AppendLine(@"CREATE TABLE [tbPessoas](
-                                [codPessoa] INTEGER PRIMARY KEY AUTOINCREMENT, 
-                                [NomePessoa] VARCHAR(99), 
-                                [Gerente] BOOL, 
-                                [colaborador] BOOL);");
+                sql.AppendLine(@"
+CREATE TABLE [tbPessoas](
+    [codPessoa] INTEGER PRIMARY KEY AUTOINCREMENT, 
+    [NomePessoa] VARCHAR(99), 
+    [Gerente] BOOL, 
+    [colaborador] BOOL);");
 
                 //SE NÃO EXISTIR CRIA A TABELA CIDADES
-                sql.AppendLine(@"CREATE TABLE [tbCidades](
-                                [codCidade] INTEGER PRIMARY KEY AUTOINCREMENT, 
-                                [codUf] VARCHAR(2) NOT NULL REFERENCES tbUF([codUf]) ON DELETE SET NULL ON UPDATE SET NULL, 
-                                [nomeCidade] VARCHAR(60) NOT NULL);");
+                sql.AppendLine(@"
+CREATE TABLE [tbCidades](
+    [codCidade] INTEGER PRIMARY KEY AUTOINCREMENT, 
+    [codUf] VARCHAR(2) NOT NULL REFERENCES tbUF([codUf]) ON DELETE SET NULL ON UPDATE SET NULL, 
+    [nomeCidade] VARCHAR(60) NOT NULL);");
 
 
                 //SE NÃO EXISTIR CRIA A TABELA PROJEITOS
-                sql.AppendLine(@"CREATE TABLE [tbProjetos](
-                                [codProjeto] INT PRIMARY KEY, 
-                                [nomeProjeto] VARCHAR(60), 
-                                [codGerente] INT REFERENCES tbPessoas([codPessoa]) ON DELETE SET NULL ON UPDATE SET NULL, 
-                                [codUf] VARCHAR(2) REFERENCES tbUF([codUf]) ON DELETE SET NULL ON UPDATE SET NULL, 
-                                [codCidade] INT REFERENCES tbCidades([codCidade]) ON DELETE SET NULL ON UPDATE SET NULL);");
+                sql.AppendLine(@"
+CREATE TABLE [tbProjetos](
+    [codProjeto] INT PRIMARY KEY, 
+    [nomeProjeto] VARCHAR(60), 
+    [codGerente] INT REFERENCES tbPessoas([codPessoa]) ON DELETE SET NULL ON UPDATE SET NULL, 
+    [codUf] VARCHAR(2), 
+    [codCidade] INT REFERENCES tbCidades([codCidade]) ON DELETE SET NULL ON UPDATE SET NULL);");
 
                 //SE NÃO EXISTIR CRIA A TABELA ATIVIDADES
-                sql.AppendLine(@"CREATE TABLE [tbAtividades](
-                                [codAtividade] INTEGER PRIMARY KEY AUTOINCREMENT, 
-                                [codProjeto] INT REFERENCES tbProjetos([codProjeto]) ON DELETE SET NULL ON UPDATE SET NULL, 
-                                [dataAtividade] VARCHAR(10), 
-                                [entrada1] VARCHAR(5), 
-                                [entrada2] VARCHAR(5), 
-                                [entrada3] VARCHAR(5), 
-                                [saida1] VARCHAR(5), 
-                                [saida2] VARCHAR(5), 
-                                [saida3] VARCHAR(5), 
-                                [codColaborador] INT, 
-                                [codGerente] INT, 
-                                [obsAtividade] VARCHAR(1000), 
-                                [totalMinutos] INT, 
-                                [minutosExtras] INT);");
+                sql.AppendLine(@"
+CREATE TABLE [tbAtividades](
+    [codAtividade] INTEGER PRIMARY KEY AUTOINCREMENT, 
+    [codProjeto] INT REFERENCES tbProjetos([codProjeto]) ON DELETE SET NULL ON UPDATE SET NULL, 
+    [dataAtividade] VARCHAR(10), 
+    [entrada1] VARCHAR(5), 
+    [entrada2] VARCHAR(5), 
+    [entrada3] VARCHAR(5), 
+    [saida1] VARCHAR(5), 
+    [saida2] VARCHAR(5), 
+    [saida3] VARCHAR(5), 
+    [codColaborador] INT REFERENCES tbPessoas([codPessoa]) ON DELETE SET NULL ON UPDATE SET NULL, 
+    [codGerente] INT REFERENCES tbPessoas([codPessoa]) ON DELETE SET NULL ON UPDATE SET NULL, 
+    [obsAtividade] VARCHAR(1000), 
+    [totalMinutos] INT, 
+    [minutosExtras] INT);");
+
+
+                //SE NÃO EXISTIR CRIA A TABELA DESLOCAMENTO
+                sql.AppendLine(@"
+CREATE TABLE [tbDeslocamento](
+    [codDeslocamento] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 
+    [codColaborador] INT REFERENCES tbPessoas([codPessoa]) ON DELETE SET NULL ON UPDATE SET NULL, 
+    [codUfOrigem] VARCHAR(2), 
+    [codCidadeOrigem] INT, 
+    [obsOrigem] VARCHAR(100), 
+    [codUfDestino] VARCHAR(2), 
+    [codCidadeDestino] INT, 
+    [obsDestino] VARCHAR(100), 
+    [codProjeto] INT);");
 
 
 

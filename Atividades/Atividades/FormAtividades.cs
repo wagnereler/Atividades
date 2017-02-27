@@ -1078,21 +1078,30 @@ namespace Atividades
                 //Registro a informação em um arrey
                 string[] HorasTrabalhadasProcessadas = {hours, minutes};
 
-                //converte minutos trabalhados em horas
-                hours = Convert.ToString(hoursE / 60);
-                minutes = Convert.ToString(hoursE % 60);
+                //SE Tiver horas extras calcula-se
+                if (Convert.ToInt32(hoursE) > 0)
+                {
+                    //converte minutos trabalhados em horas
+                    hours = Convert.ToString(hoursE / 60);
+                    minutes = Convert.ToString(hoursE % 60);
 
-                //Verifica formação de horas
-                if (hours.Length == 1)
-                {
-                    hours = "0" + hours;
+                    //Verifica formação de horas
+                    if (hours.Length == 1)
+                    {
+                        hours = "0" + hours;
+                    }
+                    if (Convert.ToInt32(minutes) < 10)
+                    {
+                        minutes = "0" + minutes;
+                    }
+                    //Registro a informação em um arrey
+                    string[] HorasExtrasProcessadas = { hours, minutes };
                 }
-                if (Convert.ToInt32(minutes) < 10)
+                else
                 {
-                    minutes = "0" + minutes;
+
+                    string[] HorasExtrasProcessadas = { "0", "0" };
                 }
-                //Registro a informação em um arrey
-                string[] HorasExtrasProcessadas = { hours, minutes };
 
 
                 listGridAtividade.Add(new gridAtividade {
