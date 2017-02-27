@@ -1116,7 +1116,7 @@ namespace Atividades
                     entrada3 = Convert.ToString(dr["entrada3"]),
                     saida3 = Convert.ToString(dr["saida3"]),
                     totalMinutos = HorasTrabalhadasProcessadas[0] + ":" + HorasTrabalhadasProcessadas[1],
-                    minutosExtras = HorasExtrasProcessadas[0] + ":" + HorasExtrasProcessadas[1],/*
+                    minutosExtras = HorasExtrasProcessadas[0] + ":" + HorasExtrasProcessadas[1],
                     codGerente = Convert.ToInt32(dr["codGerente"]),
                     NomeGerente = Convert.ToString(dr["NomeGerente"]),
                     codColaborador = Convert.ToInt32(dr["codColaborador"]),
@@ -1124,7 +1124,7 @@ namespace Atividades
                     codProjeto = Convert.ToInt32(dr["codProjeto"]),
                     nomeProjeto = Convert.ToString(dr["nomeProjeto"]),
                     obsAtividade = Convert.ToString(dr["obsAtividade"])
-                    */
+                    
 
                 });
             }
