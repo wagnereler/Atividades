@@ -78,11 +78,13 @@
             // 
             // comboUfOrigem
             // 
+            this.comboUfOrigem.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboUfOrigem.FormattingEnabled = true;
             this.comboUfOrigem.Location = new System.Drawing.Point(59, 21);
             this.comboUfOrigem.Name = "comboUfOrigem";
             this.comboUfOrigem.Size = new System.Drawing.Size(59, 21);
             this.comboUfOrigem.TabIndex = 3;
+            this.comboUfOrigem.SelectedIndexChanged += new System.EventHandler(this.comboUfOrigem_SelectedIndexChanged);
             // 
             // comboCidadeOrigem
             // 
@@ -152,11 +154,13 @@
             // 
             // comboUfDestino
             // 
+            this.comboUfDestino.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboUfDestino.FormattingEnabled = true;
             this.comboUfDestino.Location = new System.Drawing.Point(59, 78);
             this.comboUfDestino.Name = "comboUfDestino";
             this.comboUfDestino.Size = new System.Drawing.Size(59, 21);
             this.comboUfDestino.TabIndex = 10;
+            this.comboUfDestino.SelectedIndexChanged += new System.EventHandler(this.comboUfDestino_SelectedIndexChanged);
             // 
             // textObsTermino
             // 
