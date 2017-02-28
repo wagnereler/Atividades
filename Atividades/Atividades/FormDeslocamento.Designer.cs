@@ -93,6 +93,7 @@
             this.comboCidadeOrigem.Name = "comboCidadeOrigem";
             this.comboCidadeOrigem.Size = new System.Drawing.Size(171, 21);
             this.comboCidadeOrigem.TabIndex = 4;
+            this.comboCidadeOrigem.SelectedIndexChanged += new System.EventHandler(this.comboCidadeOrigem_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -151,6 +152,7 @@
             this.comboCidadeDestino.Name = "comboCidadeDestino";
             this.comboCidadeDestino.Size = new System.Drawing.Size(171, 21);
             this.comboCidadeDestino.TabIndex = 11;
+            this.comboCidadeDestino.SelectedIndexChanged += new System.EventHandler(this.comboCidadeDestino_SelectedIndexChanged);
             // 
             // comboUfDestino
             // 

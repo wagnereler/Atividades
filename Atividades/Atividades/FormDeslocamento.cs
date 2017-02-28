@@ -133,9 +133,31 @@ namespace Atividades
                     conn.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Cidade não selecionada \n ");
+                MessageBox.Show("Erro: " + ex.Message);
+            }
+        }
+
+        public void carregarCodigoCidadeDestino()
+        {
+            try
+            {
+                {
+                    //consulta código da cidade origem
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmdOrigem = new SQLiteCommand("SELECT codCidade FROM tbCidades WHERE nomeCidade = '" + comboCidadeDestino.Text.Trim() + "'", conn);
+                    SQLiteDataReader lerOrigem = cmdOrigem.ExecuteReader();
+                    lerOrigem.Read();
+                    codCidadeDestino = lerOrigem["codCidade"].ToString();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
             }
         }
 
@@ -159,6 +181,16 @@ namespace Atividades
             comboCidadeDestino.Items.Clear();
             comboCidadeDestino.Text = String.Empty;
             carregarCidadeDestino();
+        }
+
+        private void comboCidadeOrigem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            carregarCodigoCidadeOrigem();
+        }
+
+        private void comboCidadeDestino_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            carregarCodigoCidadeDestino();
         }
     }
 }
