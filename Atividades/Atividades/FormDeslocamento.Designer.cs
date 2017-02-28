@@ -33,7 +33,6 @@
             this.comboUfOrigem = new System.Windows.Forms.ComboBox();
             this.comboCidadeOrigem = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textHoraInicio = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textHoraTermino = new System.Windows.Forms.TextBox();
@@ -56,6 +55,7 @@
             this.comboUsuario = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textHoraInicio = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,7 @@
             // textObsInicio
             // 
             this.textObsInicio.Location = new System.Drawing.Point(151, 48);
+            this.textObsInicio.MaxLength = 100;
             this.textObsInicio.Name = "textObsInicio";
             this.textObsInicio.Size = new System.Drawing.Size(146, 20);
             this.textObsInicio.TabIndex = 2;
@@ -104,13 +105,6 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Origem";
             // 
-            // textHoraInicio
-            // 
-            this.textHoraInicio.Location = new System.Drawing.Point(59, 48);
-            this.textHoraInicio.Name = "textHoraInicio";
-            this.textHoraInicio.Size = new System.Drawing.Size(59, 20);
-            this.textHoraInicio.TabIndex = 6;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -132,6 +126,7 @@
             // textHoraTermino
             // 
             this.textHoraTermino.Location = new System.Drawing.Point(59, 108);
+            this.textHoraTermino.MaxLength = 4;
             this.textHoraTermino.Name = "textHoraTermino";
             this.textHoraTermino.Size = new System.Drawing.Size(59, 20);
             this.textHoraTermino.TabIndex = 13;
@@ -167,6 +162,7 @@
             // textObsTermino
             // 
             this.textObsTermino.Location = new System.Drawing.Point(151, 108);
+            this.textObsTermino.MaxLength = 100;
             this.textObsTermino.Name = "textObsTermino";
             this.textObsTermino.Size = new System.Drawing.Size(146, 20);
             this.textObsTermino.TabIndex = 9;
@@ -297,11 +293,20 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(90, 20);
             this.dateTimePicker1.TabIndex = 24;
             // 
+            // textHoraInicio
+            // 
+            this.textHoraInicio.Location = new System.Drawing.Point(59, 49);
+            this.textHoraInicio.MaxLength = 4;
+            this.textHoraInicio.Name = "textHoraInicio";
+            this.textHoraInicio.Size = new System.Drawing.Size(59, 20);
+            this.textHoraInicio.TabIndex = 26;
+            // 
             // FormDeslocamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 261);
+            this.Controls.Add(this.textHoraInicio);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboUsuario);
@@ -319,7 +324,6 @@
             this.Controls.Add(this.textObsTermino);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textHoraInicio);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboCidadeOrigem);
             this.Controls.Add(this.comboUfOrigem);
@@ -344,7 +348,6 @@
         private System.Windows.Forms.ComboBox comboUfOrigem;
         private System.Windows.Forms.ComboBox comboCidadeOrigem;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textHoraInicio;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textHoraTermino;
@@ -367,5 +370,6 @@
         private System.Windows.Forms.ComboBox comboUsuario;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textHoraInicio;
     }
 }

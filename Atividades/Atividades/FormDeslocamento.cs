@@ -183,6 +183,148 @@ namespace Atividades
             }
         }
 
+        //Formata campo hora início para o formato adequado
+        private void validaHoraOrigem(object sender, EventArgs e)
+        {
+            string Entrada = textHoraInicio.Text.Trim();
+            int z = Entrada.Length;
+            if (z != 0)
+            {
+                try
+                {
+                    Convert.ToInt32(Entrada);
+                    if (z == 1)
+                    {
+                        textHoraInicio.Text = "0" + Entrada + ":00";
+                    }
+                    if (z == 2)
+                    {
+
+                        if (Entrada.Substring(0, 1) != "0" & Entrada.Substring(0, 1) != "1" & Entrada.Substring(0, 1) != "2")
+                        {
+                            textHoraInicio.Text = "0" + Entrada.Substring(0, 1) + ":" + Entrada.Substring(1, 1) + "0";
+                        }
+                        else
+                        {
+                            textHoraInicio.Text = Entrada + ":00";
+                        }
+
+                    }
+                    if (z == 3)
+                    {
+                        if (Entrada.Substring(0, 1) != "0" & Entrada.Substring(0, 1) != "1" & Entrada.Substring(0, 1) != "2")
+                        {
+                            textHoraInicio.Text = "0" + Entrada.Substring(0, 1) + ":" + Entrada.Substring(1, 2);
+                        }
+                        else
+                        {
+                            textHoraInicio.Text = Entrada.Substring(0, 2) + ":" + Entrada.Substring(2, 1) + "0";
+                        }
+
+                    }
+                    if (z == 4)
+                    {
+                        textHoraInicio.Text = Entrada.Substring(0, 2) + ":" + Entrada.Substring(2, 2);
+                    }
+
+                    string a = textHoraInicio.Text.Substring(0, 2);
+                    string b = textHoraInicio.Text.Substring(3, 2);
+
+                    if (Convert.ToInt32(a) > 23)
+                    {
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        textHoraInicio.Focus();
+                    }
+                    if (Convert.ToInt32(b) > 59)
+                    {
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        textHoraInicio.Focus();
+                    }
+                    //calculando valor em minutos
+                    int minutosEntrada1 = ((Convert.ToInt32(a) * 60) + Convert.ToInt32(b));
+
+                }
+                catch
+                {
+                    MessageBox.Show("Só é permitido caracteres numéricos. Não utilize ':' ", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    textHoraInicio.Text = String.Empty;
+                    textHoraInicio.Focus();
+                }
+            }
+
+        }
+        //Formata campo hora termino para o formato adequado
+        private void validaHoraDestino(object sender, EventArgs e)
+        {
+            string Entrada = textHoraTermino.Text.Trim();
+            int z = Entrada.Length;
+            if (z != 0)
+            {
+                try
+                {
+                    Convert.ToInt32(Entrada);
+                    if (z == 1)
+                    {
+                        textHoraTermino.Text = "0" + Entrada + ":00";
+                    }
+                    if (z == 2)
+                    {
+
+                        if (Entrada.Substring(0, 1) != "0" & Entrada.Substring(0, 1) != "1" & Entrada.Substring(0, 1) != "2")
+                        {
+                            textHoraTermino.Text = "0" + Entrada.Substring(0, 1) + ":" + Entrada.Substring(1, 1) + "0";
+                        }
+                        else
+                        {
+                            textHoraTermino.Text = Entrada + ":00";
+                        }
+
+                    }
+                    if (z == 3)
+                    {
+                        if (Entrada.Substring(0, 1) != "0" & Entrada.Substring(0, 1) != "1" & Entrada.Substring(0, 1) != "2")
+                        {
+                            textHoraTermino.Text = "0" + Entrada.Substring(0, 1) + ":" + Entrada.Substring(1, 2);
+                        }
+                        else
+                        {
+                            textHoraTermino.Text = Entrada.Substring(0, 2) + ":" + Entrada.Substring(2, 1) + "0";
+                        }
+
+                    }
+                    if (z == 4)
+                    {
+                        textHoraTermino.Text = Entrada.Substring(0, 2) + ":" + Entrada.Substring(2, 2);
+                    }
+
+                    string a = textHoraTermino.Text.Substring(0, 2);
+                    string b = textHoraTermino.Text.Substring(3, 2);
+
+                    if (Convert.ToInt32(a) > 23)
+                    {
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        textHoraTermino.Focus();
+                    }
+                    if (Convert.ToInt32(b) > 59)
+                    {
+                        MessageBox.Show("O  formato da hora está incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        textHoraTermino.Focus();
+                    }
+                    //calculando valor em minutos
+                    int minutosEntrada1 = ((Convert.ToInt32(a) * 60) + Convert.ToInt32(b));
+
+                }
+                catch
+                {
+                    MessageBox.Show("Só é permitido caracteres numéricos. Não utilize ':' ", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    textHoraTermino.Text = String.Empty;
+                    textHoraTermino.Focus();
+                }
+            }
+
+        }
+
+
         private void buttonInsert_Click(object sender, EventArgs e)
         {
             

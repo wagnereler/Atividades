@@ -77,8 +77,6 @@
             this.butAtualizar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridAtividades = new System.Windows.Forms.DataGridView();
-            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entrada1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,6 +94,8 @@
             this.codProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeProjeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.obsAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataConnectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataConnectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -562,14 +562,6 @@
             this.dataGridAtividades.Size = new System.Drawing.Size(658, 174);
             this.dataGridAtividades.TabIndex = 24;
             // 
-            // dataConnectBindingSource1
-            // 
-            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
-            // 
-            // dataConnectBindingSource
-            // 
-            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
-            // 
             // DataAtividade
             // 
             this.DataAtividade.DataPropertyName = "DataAtividade";
@@ -688,6 +680,14 @@
             this.obsAtividade.HeaderText = "Observações";
             this.obsAtividade.Name = "obsAtividade";
             this.obsAtividade.ReadOnly = true;
+            // 
+            // dataConnectBindingSource1
+            // 
+            this.dataConnectBindingSource1.DataSource = typeof(Atividades.DataConnect);
+            // 
+            // dataConnectBindingSource
+            // 
+            this.dataConnectBindingSource.DataSource = typeof(Atividades.DataConnect);
             // 
             // FormAtividades
             // 
