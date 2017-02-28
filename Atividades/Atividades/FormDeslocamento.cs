@@ -17,6 +17,7 @@ namespace Atividades
         private static string bancoName = "Banco.db";
         public string codCidadeOrigem;
         public string codCidadeDestino;
+        public string codProjetoVinculado;
 
 
         public FormDeslocamento()
@@ -160,6 +161,27 @@ namespace Atividades
                 MessageBox.Show("Erro: " + ex.Message);
             }
         }
+        public void carregarCodigoProjeto()
+        {
+            try
+            {
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand("SELECT codProjeto FROM tbProjetos WHERE nomeProjeto = '" + comboProjetoVinculado.Text.Trim() + "'", conn);
+                    SQLiteDataReader ler = cmd.ExecuteReader();
+                    ler.Read();
+                    codProjetoVinculado = ler["codProjeto"].ToString();
+                    conn.Close();
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Selecione o gerente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
 
         private void buttonInsert_Click(object sender, EventArgs e)
         {
@@ -191,6 +213,11 @@ namespace Atividades
         private void comboCidadeDestino_SelectedIndexChanged(object sender, EventArgs e)
         {
             carregarCodigoCidadeDestino();
+        }
+
+        private void comboProjetoVinculado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            carregarCodigoProjeto();
         }
     }
 }

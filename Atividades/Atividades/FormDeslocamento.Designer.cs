@@ -195,6 +195,7 @@
             this.comboProjetoVinculado.Name = "comboProjetoVinculado";
             this.comboProjetoVinculado.Size = new System.Drawing.Size(188, 21);
             this.comboProjetoVinculado.TabIndex = 16;
+            this.comboProjetoVinculado.SelectedIndexChanged += new System.EventHandler(this.comboProjetoVinculado_SelectedIndexChanged);
             // 
             // label7
             // 
