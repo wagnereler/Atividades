@@ -18,6 +18,7 @@ namespace Atividades
         public string codCidadeOrigem;
         public string codCidadeDestino;
         public string codProjetoVinculado;
+        public string totalMinutosDeslocamento;
 
 
         public FormDeslocamento()
@@ -327,12 +328,57 @@ namespace Atividades
 
         private void buttonInsert_Click(object sender, EventArgs e)
         {
+            if (codCidadeOrigem == null)
+            {
+                MessageBox.Show("Informe a cidade de destino", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            if (codCidadeDestino == null)
+            {
+                MessageBox.Show("Informe a cidade de destino", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            if (codCidadeDestino == codCidadeOrigem)
+            {
+                MessageBox.Show("As cidades de origem e destino não devem ser a mesma", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            if (textHoraInicio.Text.Length < 5)
+            {
+                MessageBox.Show("Informe em INÍCIO a hora inicial de deslocamento", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                textHoraInicio.Focus();
+            }
+            if (textHoraTermino.Text.Length < 5)
+            {
+                MessageBox.Show("Informe em TÉRMINO a hora final de deslocamento", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                textHoraTermino.Focus();
+            }
+            else
+            {
+                try
+                {
+
+                    //Converte em mintos o valor do primeiro campo
+                    int valor1a = (Convert.ToInt32(textHoraInicio.Text.Substring(0, 2)) * 60);
+                    int valor1b = (Convert.ToInt32(textHoraInicio.Text.Substring(3, 2)));
+                    //Converte em mintos o valor do primeiro campo
+                    int valor2a = (Convert.ToInt32(textHoraTermino.Text.Substring(0, 2)) * 60);
+                    int valor2b = (Convert.ToInt32(textHoraTermino.Text.Substring(3, 2)));
+
+                    //calcula a quantidade em mintuso e grava em uma variável
+                    totalMinutosDeslocamento += (valor2a + valor2b) - (valor1a + valor1b);
+                }
+                catch (Exception ex)
+                {
+                   
+                    MessageBox.Show("Nos campos INÍCIO e TÉRMINO só é permitido caracteres numéricos", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+            }
             
         }
 
         private void comboUfOrigem_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Carrega combo cidade origem
+            codCidadeOrigem = null;
             comboCidadeOrigem.Items.Clear();
             comboCidadeOrigem.Text = String.Empty;
             carregarCidadeOrigem();
@@ -342,6 +388,7 @@ namespace Atividades
         private void comboUfDestino_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Carrega combo cidade destino
+            codCidadeDestino = null;
             comboCidadeDestino.Items.Clear();
             comboCidadeDestino.Text = String.Empty;
             carregarCidadeDestino();

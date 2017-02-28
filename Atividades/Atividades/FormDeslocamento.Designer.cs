@@ -130,6 +130,7 @@
             this.textHoraTermino.Name = "textHoraTermino";
             this.textHoraTermino.Size = new System.Drawing.Size(59, 20);
             this.textHoraTermino.TabIndex = 13;
+            this.textHoraTermino.Leave += new System.EventHandler(this.validaHoraDestino);
             // 
             // label5
             // 
@@ -300,6 +301,7 @@
             this.textHoraInicio.Name = "textHoraInicio";
             this.textHoraInicio.Size = new System.Drawing.Size(59, 20);
             this.textHoraInicio.TabIndex = 26;
+            this.textHoraInicio.Leave += new System.EventHandler(this.validaHoraOrigem);
             // 
             // FormDeslocamento
             // 
