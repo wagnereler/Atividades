@@ -55,6 +55,7 @@
             this.buttonAtualizar = new System.Windows.Forms.Button();
             this.comboUsuario = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(148, 52);
+            this.label1.Location = new System.Drawing.Point(123, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 1;
@@ -70,9 +71,9 @@
             // 
             // textObsInicio
             // 
-            this.textObsInicio.Location = new System.Drawing.Point(183, 48);
+            this.textObsInicio.Location = new System.Drawing.Point(151, 48);
             this.textObsInicio.Name = "textObsInicio";
-            this.textObsInicio.Size = new System.Drawing.Size(126, 20);
+            this.textObsInicio.Size = new System.Drawing.Size(146, 20);
             this.textObsInicio.TabIndex = 2;
             // 
             // comboUfOrigem
@@ -86,9 +87,9 @@
             // comboCidadeOrigem
             // 
             this.comboCidadeOrigem.FormattingEnabled = true;
-            this.comboCidadeOrigem.Location = new System.Drawing.Point(145, 21);
+            this.comboCidadeOrigem.Location = new System.Drawing.Point(126, 21);
             this.comboCidadeOrigem.Name = "comboCidadeOrigem";
-            this.comboCidadeOrigem.Size = new System.Drawing.Size(164, 21);
+            this.comboCidadeOrigem.Size = new System.Drawing.Size(171, 21);
             this.comboCidadeOrigem.TabIndex = 4;
             // 
             // label2
@@ -104,7 +105,7 @@
             // 
             this.textHoraInicio.Location = new System.Drawing.Point(59, 48);
             this.textHoraInicio.Name = "textHoraInicio";
-            this.textHoraInicio.Size = new System.Drawing.Size(79, 20);
+            this.textHoraInicio.Size = new System.Drawing.Size(59, 20);
             this.textHoraInicio.TabIndex = 6;
             // 
             // label3
@@ -129,13 +130,13 @@
             // 
             this.textHoraTermino.Location = new System.Drawing.Point(59, 108);
             this.textHoraTermino.Name = "textHoraTermino";
-            this.textHoraTermino.Size = new System.Drawing.Size(79, 20);
+            this.textHoraTermino.Size = new System.Drawing.Size(59, 20);
             this.textHoraTermino.TabIndex = 13;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(148, 111);
+            this.label5.Location = new System.Drawing.Point(122, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 13);
             this.label5.TabIndex = 12;
@@ -144,9 +145,9 @@
             // comboCidadeDestino
             // 
             this.comboCidadeDestino.FormattingEnabled = true;
-            this.comboCidadeDestino.Location = new System.Drawing.Point(145, 78);
+            this.comboCidadeDestino.Location = new System.Drawing.Point(126, 78);
             this.comboCidadeDestino.Name = "comboCidadeDestino";
-            this.comboCidadeDestino.Size = new System.Drawing.Size(164, 21);
+            this.comboCidadeDestino.Size = new System.Drawing.Size(171, 21);
             this.comboCidadeDestino.TabIndex = 11;
             // 
             // comboUfDestino
@@ -154,14 +155,14 @@
             this.comboUfDestino.FormattingEnabled = true;
             this.comboUfDestino.Location = new System.Drawing.Point(59, 78);
             this.comboUfDestino.Name = "comboUfDestino";
-            this.comboUfDestino.Size = new System.Drawing.Size(62, 21);
+            this.comboUfDestino.Size = new System.Drawing.Size(59, 21);
             this.comboUfDestino.TabIndex = 10;
             // 
             // textObsTermino
             // 
-            this.textObsTermino.Location = new System.Drawing.Point(183, 108);
+            this.textObsTermino.Location = new System.Drawing.Point(151, 108);
             this.textObsTermino.Name = "textObsTermino";
-            this.textObsTermino.Size = new System.Drawing.Size(126, 20);
+            this.textObsTermino.Size = new System.Drawing.Size(146, 20);
             this.textObsTermino.TabIndex = 9;
             // 
             // label6
@@ -186,7 +187,7 @@
             this.comboProjetoVinculado.FormattingEnabled = true;
             this.comboProjetoVinculado.Location = new System.Drawing.Point(109, 134);
             this.comboProjetoVinculado.Name = "comboProjetoVinculado";
-            this.comboProjetoVinculado.Size = new System.Drawing.Size(200, 21);
+            this.comboProjetoVinculado.Size = new System.Drawing.Size(188, 21);
             this.comboProjetoVinculado.TabIndex = 16;
             // 
             // label7
@@ -247,16 +248,17 @@
             // 
             // buttonInsert
             // 
-            this.buttonInsert.Location = new System.Drawing.Point(318, 71);
+            this.buttonInsert.Location = new System.Drawing.Point(318, 86);
             this.buttonInsert.Name = "buttonInsert";
             this.buttonInsert.Size = new System.Drawing.Size(75, 23);
             this.buttonInsert.TabIndex = 20;
             this.buttonInsert.Text = "Inserir";
             this.buttonInsert.UseVisualStyleBackColor = true;
+            this.buttonInsert.Click += new System.EventHandler(this.buttonInsert_Click);
             // 
             // buttonAtualizar
             // 
-            this.buttonAtualizar.Location = new System.Drawing.Point(318, 104);
+            this.buttonAtualizar.Location = new System.Drawing.Point(318, 110);
             this.buttonAtualizar.Name = "buttonAtualizar";
             this.buttonAtualizar.Size = new System.Drawing.Size(75, 23);
             this.buttonAtualizar.TabIndex = 21;
@@ -266,25 +268,34 @@
             // comboUsuario
             // 
             this.comboUsuario.FormattingEnabled = true;
-            this.comboUsuario.Location = new System.Drawing.Point(315, 44);
+            this.comboUsuario.Location = new System.Drawing.Point(318, 59);
             this.comboUsuario.Name = "comboUsuario";
-            this.comboUsuario.Size = new System.Drawing.Size(78, 21);
+            this.comboUsuario.Size = new System.Drawing.Size(75, 21);
             this.comboUsuario.TabIndex = 22;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(315, 29);
+            this.label8.Location = new System.Drawing.Point(315, 43);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 23;
             this.label8.Text = "Usuário";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(303, 21);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(90, 20);
+            this.dateTimePicker1.TabIndex = 24;
             // 
             // FormDeslocamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 261);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboUsuario);
             this.Controls.Add(this.buttonAtualizar);
@@ -311,6 +322,7 @@
             this.MaximizeBox = false;
             this.Name = "FormDeslocamento";
             this.Text = "Informe Deslocamentos";
+            this.Load += new System.EventHandler(this.FormDeslocamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -347,5 +359,6 @@
         private System.Windows.Forms.Button buttonAtualizar;
         private System.Windows.Forms.ComboBox comboUsuario;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

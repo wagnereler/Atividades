@@ -87,7 +87,8 @@ CREATE TABLE [tbDeslocamento](
     [codUfDestino] VARCHAR(2), 
     [codCidadeDestino] INT, 
     [obsDestino] VARCHAR(100), 
-    [codProjeto] INT);");
+    [codProjeto] INT, 
+    [dataDeslocamento] VARCHAR(10));");
 
 
 

@@ -727,7 +727,7 @@ namespace Atividades
                     totalMinutos += (valor2a + valor2b) - (valor1a + valor1b);
                 }
 
-                //Segundo perído
+                //Segundo terceiro
                 if (maskEntrada3.Text != string.Empty)
                 {
                     //Converte em mintos o valor do primeiro campo
