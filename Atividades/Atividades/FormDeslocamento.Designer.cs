@@ -52,7 +52,7 @@
             this.buttonExcluir = new System.Windows.Forms.Button();
             this.buttonInsert = new System.Windows.Forms.Button();
             this.buttonAtualizar = new System.Windows.Forms.Button();
-            this.comboUsuario = new System.Windows.Forms.ComboBox();
+            this.comboColaborador = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textHoraInicio = new System.Windows.Forms.TextBox();
@@ -269,13 +269,14 @@
             this.buttonAtualizar.Text = "Atualizar";
             this.buttonAtualizar.UseVisualStyleBackColor = true;
             // 
-            // comboUsuario
+            // comboColaborador
             // 
-            this.comboUsuario.FormattingEnabled = true;
-            this.comboUsuario.Location = new System.Drawing.Point(318, 59);
-            this.comboUsuario.Name = "comboUsuario";
-            this.comboUsuario.Size = new System.Drawing.Size(75, 21);
-            this.comboUsuario.TabIndex = 22;
+            this.comboColaborador.FormattingEnabled = true;
+            this.comboColaborador.Location = new System.Drawing.Point(318, 59);
+            this.comboColaborador.Name = "comboColaborador";
+            this.comboColaborador.Size = new System.Drawing.Size(75, 21);
+            this.comboColaborador.TabIndex = 22;
+            this.comboColaborador.SelectedIndexChanged += new System.EventHandler(this.comboColaborador_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -311,7 +312,7 @@
             this.Controls.Add(this.textHoraInicio);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboUsuario);
+            this.Controls.Add(this.comboColaborador);
             this.Controls.Add(this.buttonAtualizar);
             this.Controls.Add(this.buttonInsert);
             this.Controls.Add(this.buttonExcluir);
@@ -334,6 +335,7 @@
             this.Controls.Add(this.menuStrip);
             this.MaximizeBox = false;
             this.Name = "FormDeslocamento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Informe Deslocamentos";
             this.Load += new System.EventHandler(this.FormDeslocamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -369,7 +371,7 @@
         private System.Windows.Forms.Button buttonExcluir;
         private System.Windows.Forms.Button buttonInsert;
         private System.Windows.Forms.Button buttonAtualizar;
-        private System.Windows.Forms.ComboBox comboUsuario;
+        private System.Windows.Forms.ComboBox comboColaborador;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textHoraInicio;

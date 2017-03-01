@@ -18,7 +18,8 @@ namespace Atividades
         public string codCidadeOrigem;
         public string codCidadeDestino;
         public string codProjetoVinculado;
-        public string totalMinutosDeslocamento;
+        public int totalMinutosDeslocamento;
+        public string codColaborador;
 
 
         public FormDeslocamento()
@@ -28,10 +29,54 @@ namespace Atividades
 
         private void FormDeslocamento_Load(object sender, EventArgs e)
         {
+            carregarComboColaborador();
             carregarUf();
         }
 
-        
+        public void carregarComboColaborador()
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand("SELECT nomePessoa FROM tbPessoas WHERE colaborador = 1", conn);
+            //SQLiteDataReader drComboProjeto = cmd.ExecuteReader();
+            SQLiteDataAdapter daCombo = new SQLiteDataAdapter(cmd);
+            DataTable dtCombo = new DataTable();
+            daCombo.Fill(dtCombo);
+            foreach (DataRow drCombo in dtCombo.Rows)
+
+            {
+                comboColaborador.Items.Add(drCombo["nomePessoa"]);
+
+            }
+            conn.Close();
+
+        }
+        public void carregarCodigoColaborador()
+        {
+
+
+
+            try
+            {
+                {
+                    SQLiteConnection conn = new SQLiteConnection(connectBase);
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+                    SQLiteCommand cmd = new SQLiteCommand("SELECT codPessoa FROM tbPessoas WHERE nomePessoa = '" + comboColaborador.Text.Trim() + "'", conn);
+                    SQLiteDataReader ler = cmd.ExecuteReader();
+                    ler.Read();
+                    codColaborador = ler["codPessoa"].ToString();
+                    conn.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao acessar dados " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void carregarUf()
         {
             try
@@ -363,7 +408,26 @@ namespace Atividades
                     int valor2b = (Convert.ToInt32(textHoraTermino.Text.Substring(3, 2)));
 
                     //calcula a quantidade em mintuso e grava em uma variável
-                    totalMinutosDeslocamento += (valor2a + valor2b) - (valor1a + valor1b);
+                    //SE o valor final for no nesmo dia calcula-se (valor final) - (valor inicial)
+                    if ((valor1a + valor1b) < (valor2a + valor2b))
+                    {
+                        totalMinutosDeslocamento = (valor2a + valor2b) - (valor1a + valor1b);
+                        MessageBox.Show(Convert.ToString(totalMinutosDeslocamento));
+                    }
+                    if ((valor1a + valor1b) == (valor2a + valor2b))
+                    {
+                        totalMinutosDeslocamento = 1440;
+                        MessageBox.Show("Este deslocamento será registrado com 24h. \n Deseja prosseguir com a operação?",
+                            "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    //Mas se o valor final for no dia segui calcula-se  (1440 - (valor inicial)) + valor final
+                    else
+                    {
+                        totalMinutosDeslocamento = (1440 - (valor1a + valor1b)) + (valor2a + valor2b);
+                        MessageBox.Show(Convert.ToString(totalMinutosDeslocamento));
+
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -407,6 +471,11 @@ namespace Atividades
         private void comboProjetoVinculado_SelectedIndexChanged(object sender, EventArgs e)
         {
             carregarCodigoProjeto();
+        }
+
+        private void comboColaborador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            carregarCodigoColaborador();
         }
     }
 }
