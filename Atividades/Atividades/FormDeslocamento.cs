@@ -79,16 +79,18 @@ namespace Atividades
             {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Registro Salvo com Sucesso!", "Operação Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                maskEntrada1.Text = string.Empty;
-                maskSaida1.Text = string.Empty;
-                maskEntrada3.Text = string.Empty;
-                maskSaida1.Text = string.Empty;
-                maskEntrada2.Text = string.Empty;
-                maskSaida2.Text = string.Empty;
-                maskSaida3.Text = string.Empty;
-                TextObservacao.Text = string.Empty;
+                comboProjetoVinculado.Text = String.Empty;
+                comboCidadeDestino.Text = String.Empty;
+                comboCidadeOrigem.Text = String.Empty;
+                comboColaborador.Text = String.Empty;
+                comboUfDestino.Text = String.Empty;
+                comboUfOrigem.Text = String.Empty;
+                textHoraInicio.Text = String.Empty;
+                textHoraTermino.Text = String.Empty;
+                textObsInicio.Text = String.Empty;
+                textObsTermino.Text = String.Empty;
                 conn.Close();
-                carregarGridAtividades();
+                
 
             }
             catch (Exception ex)
