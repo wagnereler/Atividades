@@ -33,6 +33,77 @@ namespace Atividades
             carregarUf();
         }
 
+        public void registraDados()
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+
+
+            SQLiteCommand cmd = new SQLiteCommand(
+                @"INSERT INTO tbDeslocamento(
+                                codDeslocamento
+                                ,codColaborador
+                                ,codUfOrigem
+                                ,codCidadeOrigem
+                                ,obsOrigem
+                                ,codUfDestino
+                                ,codCidadeDestino
+                                ,obsDestino
+                                ,codProjeto
+                                ,dataDeslocamento
+                             VALUES(
+                                @codDeslocamento
+                                ,SELECT codPessoa FROM tbPessoa WHERE nomePessoa = @nomePessoa
+                                ,@codUfOrigem
+                                ,SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeOrigem
+                                ,@obsOrigem
+                                ,@codUfDestino
+                                ,SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeDestino
+                                ,@obsDestino
+                                ,SELECT codProjeto FROM tbProjeto WHERE nomeProjeto = @nomeProjeto
+                                ,@dataDeslocamento)", conn);
+
+            cmd.Parameters.AddWithValue("nomePessoa", comboColaborador.Text.Trim());
+            cmd.Parameters.AddWithValue("codUfOrigem", comboUfOrigem.Text.Trim());
+            cmd.Parameters.AddWithValue("nomeCidadeOrigem", comboCidadeOrigem.Text.Trim());
+            cmd.Parameters.AddWithValue("obsOrigem", textObsInicio.Text.Trim());
+            cmd.Parameters.AddWithValue("codUfDestino", comboUfDestino.Text.Trim());
+            cmd.Parameters.AddWithValue("nomeCidadeDestino", comboCidadeDestino.Text.Trim());
+            cmd.Parameters.AddWithValue("obsDestino", textObsTermino.Text.Trim());
+            cmd.Parameters.AddWithValue("nomeProjeto", comboProjetoVinculado.Text.Trim());
+            cmd.Parameters.AddWithValue("dataDeslocamento", dateTimePicker1.Text.TrimStart());
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Registro Salvo com Sucesso!", "Operação Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                maskEntrada1.Text = string.Empty;
+                maskSaida1.Text = string.Empty;
+                maskEntrada3.Text = string.Empty;
+                maskSaida1.Text = string.Empty;
+                maskEntrada2.Text = string.Empty;
+                maskSaida2.Text = string.Empty;
+                maskSaida3.Text = string.Empty;
+                TextObservacao.Text = string.Empty;
+                conn.Close();
+                carregarGridAtividades();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao salvar arquivo: " + ex.Message,
+                    "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
+
+    }
+}
+
         public void carregarComboColaborador()
         {
             SQLiteConnection conn = new SQLiteConnection(connectBase);
