@@ -33,6 +33,64 @@ namespace Atividades
             carregarUf();
         }
 
+
+        public void atualizaDados()
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+
+
+            SQLiteCommand cmd = new SQLiteCommand(
+                @" UPDATE tbDeslocamento SET(
+                                codDeslocamento = @codDeslocamento
+                                ,codColaborador = SELECT codPessoa FROM tbPessoa WHERE nomePessoa = @nomePessoa
+                                ,codUfOrigem = @codUfOrigem
+                                ,codCidadeOrigem = SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeOrigem
+                                ,obsOrigem = @obsOrigem
+                                ,codUfDestino = @codUfDestino
+                                ,codCidadeDestino = SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeDestino
+                                ,obsDestino = @obsDestino
+                                ,codProjeto = SELECT codProjeto FROM tbProjeto WHERE nomeProjeto = @nomeProjeto
+                                ,dataDeslocamento = @dataDeslocamento", conn);
+
+            cmd.Parameters.AddWithValue("nomePessoa", comboColaborador.Text.Trim());
+            cmd.Parameters.AddWithValue("codUfOrigem", comboUfOrigem.Text.Trim());
+            cmd.Parameters.AddWithValue("nomeCidadeOrigem", comboCidadeOrigem.Text.Trim());
+            cmd.Parameters.AddWithValue("obsOrigem", textObsInicio.Text.Trim());
+            cmd.Parameters.AddWithValue("codUfDestino", comboUfDestino.Text.Trim());
+            cmd.Parameters.AddWithValue("nomeCidadeDestino", comboCidadeDestino.Text.Trim());
+            cmd.Parameters.AddWithValue("obsDestino", textObsTermino.Text.Trim());
+            cmd.Parameters.AddWithValue("nomeProjeto", comboProjetoVinculado.Text.Trim());
+            cmd.Parameters.AddWithValue("dataDeslocamento", dateTimePicker1.Text.TrimStart());
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Registro Salvo com Sucesso!", "Operação Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                comboProjetoVinculado.Text = String.Empty;
+                comboCidadeDestino.Text = String.Empty;
+                comboCidadeOrigem.Text = String.Empty;
+                comboColaborador.Text = String.Empty;
+                comboUfDestino.Text = String.Empty;
+                comboUfOrigem.Text = String.Empty;
+                textHoraInicio.Text = String.Empty;
+                textHoraTermino.Text = String.Empty;
+                textObsInicio.Text = String.Empty;
+                textObsTermino.Text = String.Empty;
+                conn.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao salvar arquivo: " + ex.Message,
+                    "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
         public void registraDados()
         {
             SQLiteConnection conn = new SQLiteConnection(connectBase);
