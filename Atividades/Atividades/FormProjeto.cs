@@ -160,7 +160,7 @@ namespace Atividades
             
 
         }
-        public  class carregarProjetos
+        public  class carregarDadosProjetos
         {
             
             public void carregarCodigoGerente()

@@ -29,6 +29,7 @@ namespace Atividades
 
         private void FormDeslocamento_Load(object sender, EventArgs e)
         {
+            carregarComboProjetos();
             carregarComboColaborador();
             carregarUf();
         }
@@ -42,10 +43,34 @@ namespace Atividades
                 conn.Open();
             }
 
+            //Converte em mintos o valor do primeiro campo
+            int valor1a = (Convert.ToInt32(textHoraInicio.Text.Substring(0, 2)) * 60);
+            int valor1b = (Convert.ToInt32(textHoraInicio.Text.Substring(3, 2)));
+            //Converte em mintos o valor do primeiro campo
+            int valor2a = (Convert.ToInt32(textHoraTermino.Text.Substring(0, 2)) * 60);
+            int valor2b = (Convert.ToInt32(textHoraTermino.Text.Substring(3, 2)));
+
+            //calcula a quantidade em mintuso e grava em uma variável
+            //SE o valor final for no nesmo dia calcula-se (valor final) - (valor inicial)
+            if ((valor1a + valor1b) < (valor2a + valor2b))
+            {
+                totalMinutosDeslocamento = (valor2a + valor2b) - (valor1a + valor1b);
+
+            }
+            if ((valor1a + valor1b) == (valor2a + valor2b))
+            {
+                totalMinutosDeslocamento = 1440;
+                MessageBox.Show("Este deslocamento será registrado com 24h. \n Deseja prosseguir com a operação?",
+                    "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+            //Mas se o valor final for no dia segui calcula-se  (1440 - (valor inicial)) + valor final
+            else
+            {
+                totalMinutosDeslocamento = (1440 - (valor1a + valor1b)) + (valor2a + valor2b);
+            }
 
             SQLiteCommand cmd = new SQLiteCommand(
                 @" UPDATE tbDeslocamento SET(
-                                codDeslocamento = @codDeslocamento
                                 ,codColaborador = SELECT codPessoa FROM tbPessoa WHERE nomePessoa = @nomePessoa
                                 ,codUfOrigem = @codUfOrigem
                                 ,codCidadeOrigem = SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeOrigem
@@ -99,11 +124,35 @@ namespace Atividades
                 conn.Open();
             }
 
+            //Converte em mintos o valor do primeiro campo
+            int valor1a = (Convert.ToInt32(textHoraInicio.Text.Substring(0, 2)) * 60);
+            int valor1b = (Convert.ToInt32(textHoraInicio.Text.Substring(3, 2)));
+            //Converte em mintos o valor do primeiro campo
+            int valor2a = (Convert.ToInt32(textHoraTermino.Text.Substring(0, 2)) * 60);
+            int valor2b = (Convert.ToInt32(textHoraTermino.Text.Substring(3, 2)));
+
+            //calcula a quantidade em mintuso e grava em uma variável
+            //SE o valor final for no nesmo dia calcula-se (valor final) - (valor inicial)
+            if ((valor1a + valor1b) < (valor2a + valor2b))
+            {
+                totalMinutosDeslocamento = (valor2a + valor2b) - (valor1a + valor1b);
+            }
+            if ((valor1a + valor1b) == (valor2a + valor2b))
+            {
+                totalMinutosDeslocamento = 1440;
+                MessageBox.Show("Este deslocamento será registrado com 24h. \n Deseja prosseguir com a operação?",
+                    "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+            //Mas se o valor final for no dia segui calcula-se  (1440 - (valor inicial)) + valor final
+            else
+            {
+                totalMinutosDeslocamento = (1440 - (valor1a + valor1b)) + (valor2a + valor2b);
+            }
+
 
             SQLiteCommand cmd = new SQLiteCommand(
                 @"INSERT INTO tbDeslocamento(
-                                codDeslocamento
-                                ,codColaborador
+                                codColaborador
                                 ,codUfOrigem
                                 ,codCidadeOrigem
                                 ,obsOrigem
@@ -111,18 +160,17 @@ namespace Atividades
                                 ,codCidadeDestino
                                 ,obsDestino
                                 ,codProjeto
-                                ,dataDeslocamento
+                                ,dataDeslocamento)
                              VALUES(
-                                @codDeslocamento
-                                ,SELECT codPessoa FROM tbPessoa WHERE nomePessoa = @nomePessoa
+                                (SELECT codPessoa FROM tbPessoas WHERE nomePessoa = @nomePessoa)
                                 ,@codUfOrigem
-                                ,SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeOrigem
+                                ,(SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeOrigem)
                                 ,@obsOrigem
                                 ,@codUfDestino
-                                ,SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeDestino
+                                ,(SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeDestino)
                                 ,@obsDestino
-                                ,SELECT codProjeto FROM tbProjeto WHERE nomeProjeto = @nomeProjeto
-                                ,@dataDeslocamento)", conn);
+                                ,(SELECT codProjeto FROM tbProjetos WHERE nomeProjeto = @nomeProjeto)
+                                ,@dataDeslocamento);", conn);
 
             cmd.Parameters.AddWithValue("nomePessoa", comboColaborador.Text.Trim());
             cmd.Parameters.AddWithValue("codUfOrigem", comboUfOrigem.Text.Trim());
@@ -338,7 +386,25 @@ namespace Atividades
                 MessageBox.Show("Erro: " + ex.Message);
             }
         }
-        public void carregarCodigoProjeto()
+        public void carregarComboProjetos()
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectBase);
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand("SELECT NomeProjeto FROM tbProjetos", conn);
+            SQLiteDataAdapter daComboProjeto = new SQLiteDataAdapter(cmd);
+            DataTable dtComboProjetos = new DataTable();
+            daComboProjeto.Fill(dtComboProjetos);
+            foreach (DataRow drComboProjeto in dtComboProjetos.Rows)
+
+            {
+                comboProjetoVinculado.Items.Add(drComboProjeto["NomeProjeto"]);
+
+            }
+            conn.Close();
+
+        }
+          public void carregarCodigoProjeto()
         {
             try
             {
@@ -358,7 +424,9 @@ namespace Atividades
             {
                 MessageBox.Show("Selecione o gerente!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
+
         }
+
 
         //Formata campo hora início para o formato adequado
         private void validaHoraOrigem(object sender, EventArgs e)
@@ -543,7 +611,6 @@ namespace Atividades
                     if ((valor1a + valor1b) < (valor2a + valor2b))
                     {
                         totalMinutosDeslocamento = (valor2a + valor2b) - (valor1a + valor1b);
-                        MessageBox.Show(Convert.ToString(totalMinutosDeslocamento));
                     }
                     if ((valor1a + valor1b) == (valor2a + valor2b))
                     {
@@ -555,9 +622,9 @@ namespace Atividades
                     else
                     {
                         totalMinutosDeslocamento = (1440 - (valor1a + valor1b)) + (valor2a + valor2b);
-                        MessageBox.Show(Convert.ToString(totalMinutosDeslocamento));
-
                     }
+
+                    registraDados();
                     
                 }
                 catch (Exception ex)
