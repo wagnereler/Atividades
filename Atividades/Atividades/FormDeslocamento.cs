@@ -11,6 +11,8 @@ using System.Data.SQLite;
 
 namespace Atividades
 {
+
+
     public partial class FormDeslocamento : Form
     {
         private static string connectBase = "Data Source=Banco.db";
@@ -19,7 +21,9 @@ namespace Atividades
         public string codCidadeDestino;
         public string codProjetoVinculado;
         public int totalMinutosDeslocamento;
+        public int totalMinutosExtras;
         public string codColaborador;
+
 
 
         public FormDeslocamento()
@@ -34,6 +38,43 @@ namespace Atividades
             carregarUf();
         }
 
+        public int calculaMinutosExtras()
+        {
+            string diaSemana = Convert.ToString(dateTimePicker1.Value.DayOfWeek);
+
+            if (diaSemana == "Saturday")
+            {
+                totalMinutosExtras = totalMinutosDeslocamento;
+            }
+            else if (diaSemana == "Sunday")
+            {
+                totalMinutosExtras = (totalMinutosDeslocamento * 2);
+            }
+            else
+            {
+                //Converte em mintos o valor do primeiro campo
+                int valor1a = (Convert.ToInt32(textHoraInicio.Text.Substring(0, 2)) * 60);
+                int valor1b = (Convert.ToInt32(textHoraInicio.Text.Substring(3, 2)));
+                int minInicio = (valor1a + valor1b);
+
+                //Converte em mintos o valor do primeiro campo
+                int valor2a = (Convert.ToInt32(textHoraTermino.Text.Substring(0, 2)) * 60);
+                int valor2b = (Convert.ToInt32(textHoraTermino.Text.Substring(3, 2)));
+                int minFinal = (valor2a + valor2b);
+
+                if (minInicio < 480)
+                {
+                    totalMinutosExtras += (minInicio - 480);
+                }
+                if (minFinal > 1020)
+                {
+                    totalMinutosExtras += (1020 - minFinal);
+                }
+            }
+
+            return totalMinutosExtras;
+
+        }
 
         public void atualizaDados()
         {
@@ -67,6 +108,7 @@ namespace Atividades
             else
             {
                 totalMinutosDeslocamento = (1440 - (valor1a + valor1b)) + (valor2a + valor2b);
+
             }
 
             SQLiteCommand cmd = new SQLiteCommand(
