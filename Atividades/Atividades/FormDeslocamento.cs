@@ -33,6 +33,8 @@ namespace Atividades
 
         private void FormDeslocamento_Load(object sender, EventArgs e)
         {
+            totalMinutosDeslocamento = 0;
+            totalMinutosExtras = 0;
             carregarComboProjetos();
             carregarComboColaborador();
             carregarUf();
@@ -193,26 +195,36 @@ namespace Atividades
 
 
             SQLiteCommand cmd = new SQLiteCommand(
-                @"INSERT INTO tbDeslocamento(
-                                codColaborador
-                                ,codUfOrigem
-                                ,codCidadeOrigem
-                                ,obsOrigem
-                                ,codUfDestino
-                                ,codCidadeDestino
-                                ,obsDestino
-                                ,codProjeto
-                                ,dataDeslocamento)
-                             VALUES(
-                                (SELECT codPessoa FROM tbPessoas WHERE nomePessoa = @nomePessoa)
-                                ,@codUfOrigem
-                                ,(SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeOrigem)
-                                ,@obsOrigem
-                                ,@codUfDestino
-                                ,(SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeDestino)
-                                ,@obsDestino
-                                ,(SELECT codProjeto FROM tbProjetos WHERE nomeProjeto = @nomeProjeto)
-                                ,@dataDeslocamento);", conn);
+                @"
+INSERT INTO tbDeslocamento(
+    codColaborador
+    ,codUfOrigem
+    ,codCidadeOrigem
+    ,obsOrigem
+    ,codUfDestino
+    ,codCidadeDestino
+    ,obsDestino
+    ,codProjeto
+    ,dataDeslocamento
+    ,horaInicioDeslocamento
+    ,horaFimDeslocamento
+    ,totalMinutosDeslocamento
+    ,minutosExtrasDeslocamento)
+VALUES(
+    (SELECT codPessoa FROM tbPessoas WHERE nomePessoa = @nomePessoa)
+    ,@codUfOrigem
+    ,(SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeOrigem)
+    ,@obsOrigem
+    ,@codUfDestino
+    ,(SELECT codCidade FROM tbCidades WHERE nomeCidade = @nomeCidadeDestino)
+    ,@obsDestino
+    ,(SELECT codProjeto FROM tbProjetos WHERE nomeProjeto = @nomeProjeto)
+    ,@dataDeslocamento
+    ,@horaInicioDeslocamento
+    ,@horaFimDeslocamento
+    ,@totalMinutosDeslocamento
+    ,@minutosExtrasDeslocamento);", conn);
+
 
             cmd.Parameters.AddWithValue("nomePessoa", comboColaborador.Text.Trim());
             cmd.Parameters.AddWithValue("codUfOrigem", comboUfOrigem.Text.Trim());
@@ -223,10 +235,15 @@ namespace Atividades
             cmd.Parameters.AddWithValue("obsDestino", textObsTermino.Text.Trim());
             cmd.Parameters.AddWithValue("nomeProjeto", comboProjetoVinculado.Text.Trim());
             cmd.Parameters.AddWithValue("dataDeslocamento", dateTimePicker1.Text.TrimStart());
+            cmd.Parameters.AddWithValue("horaInicioDeslocamento", textHoraInicio.Text.Trim());
+            cmd.Parameters.AddWithValue("horaFimDeslocamento", textHoraTermino.Text.Trim());
+            cmd.Parameters.AddWithValue("totalMinutosDeslocamento", totalMinutosDeslocamento);
+            cmd.Parameters.AddWithValue("minutosExtrasDeslocamento", calculaMinutosExtras());
             try
             {
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Registro Salvo com Sucesso!", "Operação Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Registro Salvo com Sucesso!", "Operação Realizada", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Information);
                 comboProjetoVinculado.Text = String.Empty;
                 comboCidadeDestino.Text = String.Empty;
                 comboCidadeOrigem.Text = String.Empty;
@@ -237,6 +254,8 @@ namespace Atividades
                 textHoraTermino.Text = String.Empty;
                 textObsInicio.Text = String.Empty;
                 textObsTermino.Text = String.Empty;
+                totalMinutosExtras = 0;
+                totalMinutosDeslocamento = 0;
                 conn.Close();
                 
 

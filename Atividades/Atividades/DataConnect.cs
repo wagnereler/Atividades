@@ -89,8 +89,8 @@ CREATE TABLE [tbDeslocamento](
     [obsDestino] VARCHAR(100), 
     [codProjeto] INT, 
     [dataDeslocamento] VARCHAR(10), 
-    [horaInicio] NVARCHAR(5), 
-    [horaFim] VARCHAR(5), 
+    [horaInicioDeslocamento] NVARCHAR(5), 
+    [horaFimDeslocamento] VARCHAR(5), 
     [totalMinutosDeslocamento] INT, 
     [minutosExtrasDeslocamento] INT);");
 
